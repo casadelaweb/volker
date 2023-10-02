@@ -1,0 +1,49 @@
+@import "src/styles/shared";
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+  padding: 24px 20px 32px;
+  background: #f5f5f5;
+
+  &-title {
+    @extend .h4;
+    text-align: center;
+  }
+
+  &-subtitle {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  &-input {
+    padding: 20px;
+    background: white;
+    width: 100%;
+  }
+
+  &-obligatory {
+    color: mediumvioletred;
+  }
+
+  &-note {
+    font-weight: 300;
+
+    input {
+      margin-right: 10px;
+    }
+  }
+
+  &-button {
+    background: darkseagreen;
+    color: white;
+    font-weight: 500;
+    padding: 20px;
+    transition: background-color 0.5s;
+
+    &:active {
+      background: mediumseagreen;
+    }
+  }
+}

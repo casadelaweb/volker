@@ -1,0 +1,39 @@
+@import "src/styles/forms.scss";
+@import "src/styles/buttons.scss";
+
+.swiper-pagination {
+  background: rgba(white, 0.25);
+  bottom: 4px !important;
+
+  &-bullet {
+    $size: 8px;
+    width: $size * 4;
+    height: $size;
+    margin: 0 $size * 0.5;
+    border-radius: $size;
+    background: black;
+    transition: width 0.334s, opacity 0.334s;
+
+    //&-active {
+    //  width: $size * 4;
+    //}
+  }
+}
+
+[type=checkbox], [type=radio] {
+  border: 2px solid darkseagreen;
+
+  &::before {
+    background: darkseagreen;
+  }
+
+  &[data-alt] {
+    &:checked {
+      background: darkseagreen;
+    }
+  }
+}
+
+.required {
+  color: palevioletred;
+}
