@@ -23,7 +23,7 @@ export default {
     breadcrumbs,
     Suggestions,
   },
-  data: function () {
+  data: function() {
     return {
       siteUrl: this.$store.state.main.site_url,
       title: 'Название акции или специального предложения',
@@ -38,24 +38,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .offer {
-  @extend .section;
+  @include section;
 
   &-container {
-    @extend .container;
+    @include container;
   }
 
   &-title {
-    @extend .h2;
+    @include h2;
     margin-bottom: 40px;
   }
 
   &-img {
     display: block;
-    height: 480px;
     width: 100%;
+    height: 480px;
     margin-bottom: 20px;
   }
 }

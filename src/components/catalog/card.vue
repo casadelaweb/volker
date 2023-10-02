@@ -56,9 +56,9 @@
 
 <script lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Lazy, A11y, Pagination } from 'swiper'
+import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
-import 'swiper/scss/lazy'
+
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
@@ -73,7 +73,7 @@ export default {
       required: true,
     },
   },
-  data: function () {
+  data: function() {
     return {
       settings: {
         pagination: {
@@ -97,7 +97,6 @@ export default {
   setup() {
     return {
       modules: [
-        Lazy,
         Pagination,
         A11y,
       ],
@@ -107,17 +106,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .card {
-  min-width: 0;
+  position: relative;
   // border: 2px solid #f5f5f5;
   // padding: 20px 20px 24px;
+  z-index: 0;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 10px;
-  position: relative;
-  z-index: 0;
+  min-width: 0;
 
   &-title {
     font-size: 18px;
@@ -138,11 +137,11 @@ export default {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.025em;
+    margin: 0 4px;
     padding: 4px 8px;
+    color: white;
     border-radius: 8px;
     background: #ff648d;
-    color: white;
-    margin: 0 4px;
 
     //&_recommended {
     //  background: #ff648d;
@@ -175,9 +174,9 @@ export default {
     @include flex(center, center);
     font-weight: 500;
     // padding: 10px;
-    background: #f5f5f5;
     height: 48px;
     transition: background-color 0.25s, color 0.25s;
+    background: #f5f5f5;
   }
 }
 </style>

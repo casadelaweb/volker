@@ -1,6 +1,6 @@
 <template>
   <section class="display">
-    <div class="container">
+    <div class="display-container">
       <sectionTop :button="sectionTopProps.button" :title="sectionTopProps.title" />
       <div v-if="isLoading" class="display-empty">
         <img alt="loading" class="lazy" data-src="src/assets/img/loading.gif" src="src/assets/img/placeholder.jpg">
@@ -21,13 +21,12 @@
 
 <script lang="ts">
 import sectionTop from 'src/components/ui/section-top.vue'
-import axios from 'axios'
 
 export default {
   components: {
     sectionTop,
   },
-  data: function () {
+  data: function() {
     return {
       sectionTopProps: {
         title: {
@@ -40,19 +39,11 @@ export default {
         },
       },
       categories: [],
-      isLoading: true,
+      isLoading: false,
     }
   },
   methods: {
     async getCategories() {
-      try {
-        const response = await axios.get('/api/categories')
-        this.categories = response.data
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
     },
   },
   mounted() {
@@ -62,34 +53,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .display {
-  @extend .section;
+  @include section;
+
+  &-container {
+    @include container
+  }
 
   &-layout {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
     grid-template-areas:
-        "big big sm-1"
-        "big big sm-2";
+        'big big sm-1'
+        'big big sm-2';
     grid-auto-columns: 1fr;
     grid-auto-flow: row;
-    row-gap: 20px;
-    column-gap: 20px;
   }
 
   &-card {
     @include flex($d: column);
-    transition: color 0.25s, background-color 0.25s;
-    // background: #f5f5f5;
     min-height: 180px;
+    // background: #f5f5f5;
     padding: 20px;
+    transition: color 0.25s, background-color 0.25s;
     // border: 2px solid white;
+    animation: AnimationName 13s ease infinite;
     background: linear-gradient(45deg, #8dd0a1, white, #94c3e2);
     background-size: 600% 600%;
-    animation: AnimationName 13s ease infinite;
 
     @keyframes AnimationName {
       0% {
@@ -116,7 +111,7 @@ export default {
     }
 
     &-title {
-      @extend .h4;
+      @include h4;
       margin-bottom: 12px;
     }
   }

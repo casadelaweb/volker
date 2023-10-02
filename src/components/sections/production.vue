@@ -14,7 +14,7 @@ export default {
   components: {
     sectionTop,
   },
-  data: function () {
+  data: function() {
     return {
       title: {
         text: 'Видео-презентация',
@@ -25,10 +25,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .production {
-  @extend .section;
+  @include section;
 
   &-img {
     // width: 100%;

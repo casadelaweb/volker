@@ -19,40 +19,39 @@ export default class Modals {
     this.queue = []
 
     document.addEventListener('click', (event) => {
-      const { target, } = event
-      const { body, } = document
+      const {target,} = event
+      const {body,} = document
 
-      if (target.closest('[data-modal-open]')) {
+      if(target.closest('[data-modal-open]')) {
         const button = target.closest('[data-modal-open]')
         const name = button.getAttribute('data-modal-open')
         const modal = body.querySelector('[data-modal=' + name + ']')
 
-        if (modal) {
+        if(modal) {
           this.openModal(modal)
         }
       }
 
-      if (target.closest('[data-modal-close]')) {
+      if(target.closest('[data-modal-close]')) {
         const button = target.closest('[data-modal-close]')
         const name = button.getAttribute('data-modal-close')
         let modal
 
-        if (name) {
+        if(name) {
           modal = body.querySelector('[data-modal=' + name + ']')
         } else {
           modal = button.closest('[data-modal]')
         }
 
-
-        if (modal) {
+        if(modal) {
           this.closeModal(modal)
         }
       }
     })
     window.addEventListener('keyup', (event) => {
-      if (event.code === 'Escape') {
+      if(event.code === 'Escape') {
         const modal = document.body.querySelector('[data-modal]')
-        if (modal) {
+        if(modal) {
           this.closeModal(modal)
         }
       }

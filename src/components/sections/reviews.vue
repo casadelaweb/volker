@@ -66,9 +66,9 @@
 
 <script lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { A11y, Lazy, Navigation, Pagination } from 'swiper'
+import { A11y, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/scss'
-import 'swiper/scss/lazy'
+
 import 'swiper/scss/pagination'
 
 import sectionTop from 'src/components/ui/section-top.vue'
@@ -85,7 +85,7 @@ export default {
       required: true,
     },
   },
-  data: function () {
+  data: function() {
     return {
       settings: {
         pagination: {
@@ -112,7 +112,6 @@ export default {
   setup() {
     return {
       modules: [
-        Lazy,
         Pagination,
         Navigation,
         A11y,
@@ -123,10 +122,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .reviews {
-  @extend .section;
+  @include section;
   overflow: hidden;
 
   &-slider {
@@ -134,9 +133,9 @@ export default {
     padding: 20px 0 40px;
 
     &-button {
+      margin-left: 20px;
       padding: 4px 24px;
       border: 2px solid darkseagreen;
-      margin-left: 20px;
       //border-radius: 20px;
     }
   }
@@ -155,11 +154,11 @@ export default {
 
   &-rating {
     @include flex(center);
+    font-size: 20px;
     position: relative;
     z-index: 0;
-    font-size: 20px;
-    color: #808080;
     width: fit-content;
+    color: #808080;
 
     &-row {
       @include flex(center);
@@ -171,11 +170,11 @@ export default {
         z-index: 1;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
         overflow: hidden;
+        width: 100%;
         min-width: 0;
         max-width: 100%;
+        height: 100%;
         color: #ffd220;
       }
     }

@@ -1,0 +1,17 @@
+@use 'src/styles/shared' as *;
+
+.button-bordered {
+  @include flex(center, center);
+  font-weight: 600;
+  width: 160px;
+  height: 48px;
+  transition: color 0.25s, background-color 0.25s, border-color 0.25s;
+  color: darkseagreen;
+  border: 2px solid darkseagreen;
+  @include notLastChild;
+
+  &.active {
+    color: white;
+    background: darkseagreen;
+  }
+}

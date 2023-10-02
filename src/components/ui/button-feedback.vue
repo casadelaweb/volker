@@ -1,14 +1,9 @@
 <template>
-  <button class="button-bordered" type="button">
-    Оставить заявку
+  <button class="button-bordered" title="Открыть форму обратной связи" type="button">
+    <span>Оставить заявку</span>
   </button>
 </template>
 
 <script lang="ts">
 export default {}
 </script>
-
-<!--<style lang="scss">-->
-<!--@import "src/styles/buttons.scss";-->
-<!--.butt-->
-<!--</style>-->

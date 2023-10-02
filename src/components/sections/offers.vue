@@ -35,13 +35,12 @@
 
 <script lang="ts">
 import sectionTop from 'src/components/ui/section-top.vue'
-import axios from 'axios'
 
 export default {
   components: {
     sectionTop,
   },
-  data: function () {
+  data: function() {
     return {
       sectionTopProps: {
         title: {
@@ -61,16 +60,7 @@ export default {
   },
   methods: {
     async fetchOffers() {
-      try {
-        setTimeout(async () => {
-          const response = await axios.get('https://volker-group.ru/api/')
-          this.offers = response.data.offers
-        }, 1000)
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
+
     },
   },
   mounted() {
@@ -80,11 +70,11 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .offers {
   &-title {
-    @extend .h2;
+    @include h2;
     margin-bottom: 20px;
   }
 
@@ -102,28 +92,28 @@ export default {
   z-index: 0;
 
   &-activity {
-    padding: 4px 8px;
-    background: lightcoral;
-    color: white;
-    // font-weight: 500;
     letter-spacing: 0.02em;
     position: absolute;
     z-index: 0;
+    // font-weight: 500;
     top: 10px;
     right: 10px;
+    padding: 4px 8px;
+    color: white;
+    background: lightcoral;
   }
 
   &-img {
     display: block;
     // height: 200px;
     width: 100%;
+    margin-bottom: 10px;
     aspect-ratio: 16 / 9;
     object-fit: cover;
-    margin-bottom: 10px;
   }
 
   &-title {
-    @extend .h4;
+    @include h4;
   }
 }
 </style>

@@ -11,7 +11,7 @@
 
 <script lang="ts">
 export default {
-  data: function () {
+  data: function() {
     return {
       tags: [
         {
@@ -39,27 +39,27 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .tags {
-  @extend .section;
+  @include section;
 
   &-title {
-    @extend .h2;
+    @include h2;
     margin-bottom: 20px;
   }
 }
 
 .tag {
-  transition: color 0.25s, background-color 0.25s;
   display: inline-block;
-  padding: 8px 20px;
-  background: #f5f5f5;
   margin: 0 10px 10px 0;
+  padding: 8px 20px;
+  transition: color 0.25s, background-color 0.25s;
+  background: #f5f5f5;
 
   &:hover {
-    background: darkseagreen;
     color: white;
+    background: darkseagreen;
   }
 }
 </style>

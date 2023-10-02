@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .search {
   @include flex(center);
@@ -28,17 +28,17 @@ export default {
   margin: 0 40px;
 
   &-input {
-    background: none;
-    border: 2px solid #f5f5f5;
     flex: 1 0 auto;
     height: 48px;
     padding: 0 20px;
+    border: 2px solid #f5f5f5;
+    background: none;
   }
 
   &-button {
+    flex: 0 0 48px * 3;
     width: 48px * 3;
     height: 48px;
-    flex: 0 0 48px * 3;
     background: #f5f5f5;
 
     @include notLastChild;

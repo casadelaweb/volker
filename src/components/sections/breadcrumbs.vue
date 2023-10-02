@@ -24,7 +24,7 @@
 
 <script lang="ts">
 export default {
-  data: function () {
+  data: function() {
     return {
       list: this.$route.meta.breadcrumbs,
       route: this.$route,
@@ -37,13 +37,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .breadcrumbs {
-  @extend .section;
+  @include section;
 
   &-container {
-    @extend .container;
+    @include container;
   }
 }
 
@@ -52,21 +52,21 @@ export default {
 
   &-item {
     @include flex(center);
-    margin-right: 12px;
     position: relative;
     z-index: 0;
+    margin-right: 12px;
 
     &::before {
-      content: " ";
+      content: ' ';
       position: static;
       //z-index: 1;
       //top: 8px;
       //left: 100%;
-      margin: 0 8px;
       width: 8px;
       height: 8px;
-      background: black;
+      margin: 0 8px;
       border-radius: 50%;
+      background: black;
     }
 
     &.last {

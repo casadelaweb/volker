@@ -10,7 +10,7 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .logo {
   @include flex(center, center);

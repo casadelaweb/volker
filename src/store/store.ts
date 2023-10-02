@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import { offers } from 'src/store/stores'
+import { catalog } from 'src/store/db'
 
 export default createStore({
   state: () => {
@@ -12,6 +13,7 @@ export default createStore({
       },
       offers: offers,
       theme: 'light',
+      catalog: catalog
     }
   },
   getters: {},

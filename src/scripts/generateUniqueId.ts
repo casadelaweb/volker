@@ -1,7 +1,7 @@
-String.prototype.shuffle = function () {
+String.prototype.shuffle = function() {
   const a = this.split(''), n = a.length
 
-  for (let i = n - 1; i > 0; i--) {
+  for(let i = n - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
     const tmp = a[i]
     a[i] = a[j]

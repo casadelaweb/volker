@@ -50,7 +50,7 @@ export default {
       required: true,
     },
   },
-  data: function () {
+  data: function() {
     return {
       // searchQueryIsInvalid: false,
       filters: {
@@ -117,9 +117,9 @@ export default {
       this.$emit('filtrationStarts')
 
       const queries = this.filters.searchQuery
-        .toLowerCase()
-        .replace(/\s+/g, ' ')
-        .split(' ')
+      .toLowerCase()
+      .replace(/\s+/g, ' ')
+      .split(' ')
 
       const productsFiltered = []
       queries.forEach((query) => {
@@ -151,7 +151,7 @@ export default {
       const productsFiltered = []
       const model = this.filters.category.model
 
-      if (model.length > 0) {
+      if(model.length > 0) {
 
         model.forEach((category) => {
           const filtered = this.products.filter((product) => {
@@ -174,12 +174,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .filters {
   // background: #f5f5f5;
-  border-right: 2px solid #f5f5f5;
   padding-right: 20px;
+  border-right: 2px solid #f5f5f5;
 
   &-content {
     position: sticky;
@@ -188,11 +188,11 @@ export default {
   }
 
   &-search {
-    background: none;
-    transition: border-color 0.25s;
-    border: 2px solid #f5f5f5;
     width: 100%;
     padding: 20px;
+    transition: border-color 0.25s;
+    border: 2px solid #f5f5f5;
+    background: none;
 
     &:focus {
       border-color: darkseagreen;
@@ -202,8 +202,8 @@ export default {
 
 .filter {
   &-note {
-    margin-top: 10px;
     font-weight: 300;
+    margin-top: 10px;
   }
 
   &-group {
@@ -213,8 +213,8 @@ export default {
       font-size: 14px;
 
       button {
-        color: darkseagreen;
         transition: color 0.5s;
+        color: darkseagreen;
 
         &:hover {
           color: mediumseagreen;
@@ -224,7 +224,7 @@ export default {
   }
 
   &-title {
-    @extend .h4;
+    @include h4;
     margin-bottom: 20px;
   }
 

@@ -29,19 +29,19 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .section-top {
   @include flex($a: center, $j: space-between);
   margin: 20px 0 24px;
 
   &-title {
-    @extend .h2;
+    @include h2;
   }
 
   &-button {
-    color: #808080;
     font-weight: 500;
+    color: #808080;
   }
 }
 </style>

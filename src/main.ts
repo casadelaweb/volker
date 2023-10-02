@@ -1,10 +1,4 @@
-import 'restyle.css'
-import 'restyle.css/dist/checkboxes.css'
-import 'restyle.css/dist/scrollbar.css'
-import 'src/styles/fonts.scss'
-import 'src/styles/iconfont.scss'
-import Modals from 'src/scripts/modals'
-
+import 'src/styles/main.scss'
 import { createApp } from 'vue'
 import App from 'src/components/app.vue'
 import router from 'src/router/router'
@@ -15,7 +9,7 @@ app.use(router)
 app.use(store)
 app.mount('#app')
 
-import 'src/styles/main.scss'
+
 
 
 

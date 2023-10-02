@@ -36,7 +36,6 @@ import logo from 'src/components/ui/logo.vue'
 import linkTel from 'src/components/ui/link-tel.vue'
 import buttonFeedback from 'src/components/ui/button-feedback.vue'
 import modal from 'src/components/modals/modal.vue'
-import axios from 'axios'
 
 export default {
   components: {
@@ -48,7 +47,7 @@ export default {
     buttonFeedback,
     modal,
   },
-  data: function () {
+  data: function() {
     return {
       isMenuActive: false,
       headerQuickLinks: [],
@@ -57,7 +56,7 @@ export default {
   },
   methods: {
     changeMenuStateTo(state = 'toggle') {
-      const { body, } = document
+      const {body,} = document
 
       const close = () => {
         this.button.classList.remove('active')
@@ -77,20 +76,20 @@ export default {
         this.isMenuActive = true
       }
 
-      switch (state) {
-      case 'close':
-        close()
-        break
-      case 'open':
-        open()
-        break
-      case 'toggle':
-        this.isMenuActive ? close() : open()
-        break
+      switch(state) {
+        case 'close':
+          close()
+          break
+        case 'open':
+          open()
+          break
+        case 'toggle':
+          this.isMenuActive ? close() : open()
+          break
       }
     },
     updateMenu() {
-      const { body, } = document
+      const {body,} = document
 
       const headerContent = body.querySelector('[data-header=content]')
 
@@ -102,14 +101,6 @@ export default {
       this.menu.style.left = (body.getBoundingClientRect().width - maxWidth) * 0.5 + 'px'
     },
     async getHeaderQuickLinks() {
-      try {
-        const response = await axios.get('/api/header-quick-links')
-        this.headerQuickLinks = response.data
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
     },
   },
   created() {
@@ -119,7 +110,7 @@ export default {
     window.removeEventListener('resize', this.updateMenu)
   },
   mounted() {
-    const { body, } = document
+    const {body,} = document
 
     this.button = body.querySelector('[data-header=button-menu]')
     this.header = body.querySelector('[data-header]')
@@ -133,22 +124,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
-@import "src/styles/buttons.scss";
+@use 'src/styles/shared' as *;
 
 .header {
   position: sticky;
-  top: 0;
   z-index: 100;
-  background: white;
-  border-bottom: 2px solid #f5f5f5;
-  padding: 20px 0;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 20px;
+  padding: 20px 0;
+  border-bottom: 2px solid #f5f5f5;
+  background: white;
 
   &-container {
-    @extend .container;
+    @include container;
     @include flex(center, space-between, $w: wrap);
     position: relative;
     z-index: 2;

@@ -1,0 +1,68 @@
+@use 'src/styles/mixins/media' as *;
+
+@mixin h1 {
+  font-size: 36px;
+  font-weight: 700;
+  @include mediaTablet {
+    font-size: 40px;
+  }
+  @include mediaTabletBg {
+    font-size: 48px;
+  }
+}
+
+@mixin h2 {
+  font-size: 32px;
+  font-weight: 600;
+  @include mediaTablet {
+    font-size: 36px;
+  }
+  @include mediaTabletBg {
+    font-size: 40px;
+  }
+}
+
+@mixin h3 {
+  font-size: 24px;
+  font-weight: 600;
+  @include mediaTablet {
+    font-size: 32px;
+  }
+  @include mediaTabletBg {
+    font-size: 36px;
+  }
+}
+
+@mixin h4 {
+  font-size: 20px;
+  font-weight: 500;
+  @include mediaTablet {
+    font-size: 24px;
+  }
+  @include mediaTabletBg {
+    font-size: 32px;
+  }
+}
+
+@mixin h5 {
+  font-size: 18px;
+  font-weight: 500;
+  @include mediaTablet {
+    font-size: 20px;
+  }
+  @include mediaTabletBg {
+    font-size: 24px;
+  }
+}
+
+
+@mixin h6 {
+  font-size: 16px;
+  font-weight: 500;
+  @include mediaTablet {
+    font-size: 18px;
+  }
+  @include mediaTabletBg {
+    font-size: 20px;
+  }
+}

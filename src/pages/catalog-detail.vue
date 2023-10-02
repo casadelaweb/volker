@@ -125,14 +125,13 @@
 
 <script lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { A11y, Lazy, Pagination } from 'swiper'
+import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
-import 'swiper/scss/lazy'
+
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
 import Suggestions from 'src/components/sections/suggestions.vue'
-import axios from 'axios'
 import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
 
 export default {
@@ -142,7 +141,7 @@ export default {
     Suggestions,
     breadcrumbs,
   },
-  data: function () {
+  data: function() {
     return {
       settings: {
         pagination: {
@@ -181,21 +180,7 @@ export default {
       })
     },
     async fetchCatalog() {
-      try {
-        const response = await axios.get('/api/catalog')
-        response.data.forEach((category) => {
-          this.products.push(...category.products)
-        })
-        console.log(this.products)
-        this.product = this.products.find((product) => {
-          return product.id === this.$route.params.id
-        })
-        await this.createSuggestions()
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
+
     },
   },
   mounted() {
@@ -204,7 +189,6 @@ export default {
   setup() {
     return {
       modules: [
-        Lazy,
         Pagination,
         A11y,
       ],
@@ -214,14 +198,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 
 .product {
-  @extend .section;
+  @include section;
 
   &-container {
-    @extend .container;
+    @include container;
     display: grid;
     grid-template-columns: 3fr 2fr;
     column-gap: 20px;
@@ -237,21 +221,21 @@ export default {
   }
 
   &-title {
-    @extend .h2;
+    @include h2;
     margin-bottom: 20px;
   }
 
   &-price {
-    @extend .h3;
+    @include h3;
     text-align: right;
   }
 
   &-order {
-    @extend .h4;
+    @include h4;
     min-height: 56px;
-    background: darkseagreen;
     color: white;
     border-radius: 20px;
+    background: darkseagreen;
   }
 
   &-description {
@@ -271,13 +255,13 @@ export default {
     }
 
     &-name {
-      min-width: 200px;
       flex-shrink: 0;
+      min-width: 200px;
     }
 
     &-value {
-      flex-grow: 1;
       text-align: right;
+      flex-grow: 1;
     }
   }
 
@@ -301,8 +285,8 @@ export default {
 
   &-sticky {
     position: sticky;
-    top: 160px + 20px;
     z-index: 1;
+    top: 160px + 20px;
   }
 
   &-tags {
@@ -327,12 +311,12 @@ export default {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0.025em;
+    margin: 0 4px;
     padding: 4px 8px;
+    color: white;
+    // background: mediumseagreen;
     border-radius: 8px;
     background: #ff648d;
-    // background: mediumseagreen;
-    color: white;
-    margin: 0 4px;
   }
 
   &-warning {
@@ -350,20 +334,20 @@ export default {
 
   &-img {
     display: block;
-    height: 480px;
     width: 100%;
+    height: 480px;
     object-fit: cover;
     object-position: center;
   }
 }
 
 .calculator {
-  box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
-  padding: 20px;
-  border-radius: 20px;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
 
   &-label {
     @include flex(center);
@@ -382,14 +366,14 @@ export default {
 }
 
 .gallery {
-  @extend .section;
+  @include section;
 
   &-container {
-    @extend .container;
+    @include container;
   }
 
   &-title {
-    @extend .h2;
+    @include h2;
     margin-bottom: 40px;
   }
 

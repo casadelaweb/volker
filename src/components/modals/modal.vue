@@ -19,7 +19,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .modal {
   @include flex(center, center);
@@ -30,16 +30,16 @@ export default {
   width: 100%;
   height: 100%;
   // backdrop-filter: blur(2px);
-  background: rgba(black, 0.25);
-  // transform: translate(-125%, 0);
-  opacity: 0;
   transition: transform 0.5s, opacity 0.5s;
+  // transform: translate(-125%, 0);
   pointer-events: none;
+  opacity: 0;
+  background: rgba(black, 0.25);
 
   &.active {
     transform: none;
-    opacity: 1;
     pointer-events: auto;
+    opacity: 1;
   }
 
   &-button {

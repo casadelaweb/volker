@@ -36,7 +36,7 @@ export default {
   components: {
     sectionTop,
   },
-  data: function () {
+  data: function() {
     return {
       title: {
         text: 'Обратная связь',
@@ -47,12 +47,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .form {
   &-select {
-    background: white;
     padding: 20px;
+    background: white;
   }
 
   &-decor {

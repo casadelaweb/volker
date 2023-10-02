@@ -3,10 +3,10 @@
     <div class="menu-categories">
       <template v-for="(category, i) in categories" :key="category.id">
         <router-link
-          :class="[ 'menu-category', { 'active': i === 0 } ]"
-          :data-category="category.id"
-          :to="category.url"
-          @mouseenter="showProducts($event)">
+            :class="[ 'menu-category', { 'active': i === 0 } ]"
+            :data-category="category.id"
+            :to="category.url"
+            @mouseenter="showProducts($event)">
           {{ category.name }}
         </router-link>
       </template>
@@ -41,13 +41,12 @@
 
 <script lang="ts">
 import menuProductCard from 'src/components/modals/menu-product-card.vue'
-import axios from 'axios'
 
 export default {
   components: {
     menuProductCard,
   },
-  data: function () {
+  data: function() {
     return {
       categories: [],
       products: [],
@@ -71,10 +70,10 @@ export default {
       menuProductsGroup?.classList.add('active')
 
       const product = menuProductsGroup.querySelector('.menu-product')
-      if (product) {
+      if(product) {
         const productActive = menuProductsGroup.querySelector('.menu-product.active')
         let id = ''
-        if (productActive) {
+        if(productActive) {
           id = productActive.getAttribute('data-product-id')
         } else {
           product.classList.add('active')
@@ -113,24 +112,11 @@ export default {
       })
     },
     async fetchCatalog() {
-      try {
-        const response = await axios.get('/api/catalog')
-        this.categories = response.data
-        this.productPreview = this.categories[0].products[0]
-
-        this.categories.forEach((category) => {
-          this.products.push(...category.products)
-        })
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
-    },
+    }
   },
   mounted() {
     this.fetchCatalog()
-    const { body, } = document
+    const {body,} = document
     this.menu = body.querySelector('[data-menu=menu]')
 
     this.menuCategories = this.menu.querySelector('.menu-categories')
@@ -141,42 +127,42 @@ export default {
 </script>
 
 <style lang="scss">
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .menu {
   position: fixed;
   z-index: 20;
   top: 0;
   left: 0;
-  transform: translateY(-150%);
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1.5fr 1fr;
+  width: 100%;
+  transition: transform 0.5s;
+  transform: translateY(-150%);
+  pointer-events: none;
   background: white;
   box-shadow: 0 0 20px 0 rgba(black, 0.1);
-  transition: transform 0.5s;
-  pointer-events: none;
 
   &.active {
-    pointer-events: auto;
     transform: none;
+    pointer-events: auto;
   }
 
   &-categories, &-products {
     @include flex($d: column);
-    border-right: 2px solid #f5f5f5;
+    overflow-y: auto;
 
     max-height: 480px;
-    overflow-y: auto;
+    border-right: 2px solid #f5f5f5;
 
     &::-webkit-scrollbar {
       width: 3px;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #bfbfbf;
       border: 0;
       border-radius: 0;
+      background: #bfbfbf;
     }
   }
 
@@ -185,8 +171,8 @@ export default {
   }
 
   &-category {
-    transition: background-color 0.25s, color 0.25s;
     padding: 20px;
+    transition: background-color 0.25s, color 0.25s;
 
     &.active {
       background: #f5f5f5;

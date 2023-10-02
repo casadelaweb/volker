@@ -66,7 +66,6 @@
 <script lang="ts">
 import card from 'src/components/catalog/card.vue'
 import filters from 'src/components/catalog/filters.vue'
-import axios from 'axios'
 import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
 
 export default {
@@ -75,7 +74,7 @@ export default {
     filters,
     breadcrumbs,
   },
-  data: function () {
+  data: function() {
     return {
       isLoading: true,
       categories: [],
@@ -100,44 +99,9 @@ export default {
       this.changeState()
     },
     async fetchCatalog() {
-      this.isLoading = true
-      this.categories = []
-      this.productsAll = []
-      this.productsFiltered = []
 
-      const { category: categoryRoute, } = this.$route.params
-
-      try {
-        const response = await axios.get('/api/catalog', {
-          params: {
-            page: this.pagination.page,
-            limit: this.pagination.limit,
-          },
-        })
-
-        response.data.forEach((category) => {
-          if (categoryRoute && categoryRoute.length > 0) {
-            if (categoryRoute === category.id) {
-              this.productsAll.push(...category.products)
-              this.productsFiltered.push(...category.products)
-            }
-          } else {
-            this.categories.push(category)
-            this.productsAll.push(...category.products)
-            this.productsFiltered.push(...category.products)
-          }
-        })
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.pagination.total = Math.ceil(this.productsAll.length / this.pagination.limit)
-        console.log(this.pagination)
-        this.isLoading = false
-      }
     },
-    changePage(pageNumber) {
-      this.pagination.page = pageNumber
-      this.fetchCatalog()
+    changePage() {
     },
   },
   mounted() {
@@ -148,7 +112,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .pagination {
   @include flex(center, center);
@@ -160,30 +124,30 @@ export default {
 
   &-button {
     @include flex(center, center);
+    font-size: 18px;
+    font-weight: 600;
     width: 48px;
     height: 48px;
-    border: 2px solid #ff648d;
     color: #ff648d;
-    font-weight: 600;
-    font-size: 18px;
+    border: 2px solid #ff648d;
 
     &.current {
-      background: #ff648d;
       color: white;
+      background: #ff648d;
     }
   }
 }
 
 .catalog {
-  @extend .section;
+  @include section;
 
   &-title {
-    @extend .h1;
+    @include h1;
     margin-bottom: 40px;
   }
 
   &-container {
-    @extend .container;
+    @include container;
   }
 
   &-layout {
@@ -208,13 +172,13 @@ export default {
     background: rgba(white, 0.75);
 
     &-img {
-      display: block;
       position: sticky;
       top: 50%;
-      transform: translateY(-50%);
+      display: block;
       width: 128px;
       height: 128px;
       margin: 0 auto;
+      transform: translateY(-50%);
     }
   }
 
@@ -237,11 +201,11 @@ export default {
         margin-bottom: 12px;
 
         &::before {
-          content: " ";
-          border-radius: 50%;
+          content: ' ';
           width: 10px;
           height: 10px;
           margin-right: 10px;
+          border-radius: 50%;
           background: darkseagreen;
         }
       }
@@ -263,9 +227,9 @@ export default {
 
   &-sorting {
     @include flex(center, space-between);
+    margin-bottom: 40px;
     padding: 20px;
     box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
-    margin-bottom: 40px;
   }
 
   &-cards {

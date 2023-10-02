@@ -1,5 +1,7 @@
-@import "src/styles/forms.scss";
-@import "src/styles/buttons.scss";
+@import 'restyle.css/dist/restyle.css';
+@import 'restyle.css/dist/scrollbar.css';
+@import 'restyle.css/dist/checkboxes.css';
+@import 'src/styles/ui';
 
 .swiper-pagination {
   background: rgba(white, 0.25);

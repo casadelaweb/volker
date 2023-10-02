@@ -39,7 +39,7 @@ export default {
       required: true,
     },
   },
-  data: function () {
+  data: function() {
     return {
       siteUrl: this.$store.state.main.site_url,
       // isPreviewLoading: true,
@@ -49,19 +49,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .menu-card {
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 10px;
-  opacity: 0;
-  pointer-events: none;
   transition: opacity 0.25s, pointer-events 0.25s;
+  pointer-events: none;
+  opacity: 0;
 
   &.active {
-    opacity: 1;
     pointer-events: auto;
+    opacity: 1;
   }
 
   &-title {
@@ -77,16 +77,16 @@ export default {
 
   &-img {
     display: block;
-    object-fit: cover;
-    height: 240px;
     width: 100%;
+    height: 240px;
+    object-fit: cover;
   }
 
   &-button {
     @include flex(center, center);
+    height: 48px;
     margin-top: auto;
     background: #f5f5f5;
-    height: 48px;
   }
 }
 </style>

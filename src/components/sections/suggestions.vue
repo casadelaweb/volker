@@ -25,7 +25,7 @@ export default {
   props: {
     title: {
       type: Object,
-      default: function () {
+      default: function() {
         return {
           text: 'Рекомендуемое',
           url: '/catalog/recommended',
@@ -35,7 +35,7 @@ export default {
     },
     button: {
       type: Object,
-      default: function () {
+      default: function() {
         return {
           text: 'Смотреть все',
           url: '/catalog/recommended',
@@ -53,14 +53,14 @@ export default {
       required: true,
     },
   },
-  data: function () {
+  data: function() {
     return {}
   },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
+@use 'src/styles/shared' as *;
 
 .suggestions {
   &-layout {
@@ -74,20 +74,20 @@ export default {
     text-align: center;
 
     &-warning {
-      @extend .h4;
+      @include h4;
       margin: 40px 0 20px;
     }
 
     &-button {
       @include flex(center, center);
-      margin: 0 auto;
-      width: 240px;
-      height: 48px;
-      background: darkseagreen;
-      color: white;
       font-weight: 500;
       letter-spacing: 0.025em;
+      width: 240px;
+      height: 48px;
+      margin: 0 auto;
+      color: white;
       border-radius: 24px;
+      background: darkseagreen;
     }
   }
 }

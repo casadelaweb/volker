@@ -1,10 +1,6 @@
 <template>
   <footer class="footer">
-    <div class="container">
-      <!--      <label class="setting">-->
-      <!--        <input :required="theme" class="setting-input" data-alt type="checkbox" @change="toggleColorTheme">-->
-      <!--        <span class="setting-text">Темная тема</span>-->
-      <!--      </label>-->
+    <div class="footer-container">
       <div class="footer-layout">
         <div class="footer-static">
           <logo />
@@ -36,7 +32,6 @@
 import logo from 'src/components/ui/logo.vue'
 import linkTel from 'src/components/ui/link-tel.vue'
 import buttonFeedback from 'src/components/ui/button-feedback.vue'
-import axios from 'axios'
 
 export default {
   components: {
@@ -44,42 +39,37 @@ export default {
     linkTel,
     buttonFeedback,
   },
-  data: function () {
+  data: function() {
     return {
       theme: this.$store.state.theme === 'dark',
-      catalog: [],
+      catalog: this.$store.state.catalog,
       isLoading: true,
     }
   },
   methods: {
     async fetchCatalog() {
-      try {
-        const response = await axios.get('/api/catalog')
-        this.catalog = response.data.map((category) => {
-          return category
-        })
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
     },
   },
   mounted() {
+    this.isLoading = false
+    console.log(this.catalog)
     this.fetchCatalog()
   },
 }
 </script>
 
 <style lang="scss" scoped>
-@import "src/styles/shared";
-@import "src/styles/buttons.scss";
+@use 'src/styles/shared' as *;
 
 .footer {
   padding: 40px 0 160px;
   // background: #383b40;
   // color: white;
   box-shadow: 0 -40px 40px 0 rgba(black, 0.05);
+
+  &-container {
+    @include container;
+  }
 
   &-layout {
     display: grid;
@@ -100,8 +90,8 @@ export default {
     margin-bottom: 10px;
 
     &-category {
-      display: block;
       font-weight: 600;
+      display: block;
       margin-bottom: 20px;
     }
   }
