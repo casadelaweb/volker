@@ -17,15 +17,17 @@ export interface iPage {
 
 /** структура для страницы товара */
 export interface iProduct extends iPage {
+  preview: iImage,
   images: iImage[],
+  discount: number,
   parameters: any[],
   recommend: boolean,
-  discount: number,
 }
 
 /** структура для страницы категории */
 export interface iCategory extends iPage {
-  products: iProduct[]
+  preview: iImage,
+  products: iProduct[],
 }
 
 export type iCatalog = iCategory[]

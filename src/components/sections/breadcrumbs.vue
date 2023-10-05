@@ -30,9 +30,9 @@ export default {
       route: this.$route,
     }
   },
-  mounted() {
-    console.log(this.$route, this.$router)
-  },
+  //mounted() {
+  //  console.log(this.$route, this.$router)
+  //},
 }
 </script>
 

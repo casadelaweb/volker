@@ -23,10 +23,10 @@ export default {
 
 <style lang="scss">
 #app {
-  display: flex;
-  flex-direction: column;
   position: relative;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 main {

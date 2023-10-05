@@ -3,18 +3,22 @@
 @import 'restyle.css/dist/checkboxes.css';
 @import 'src/styles/ui';
 
+header, footer {
+  display: none !important;
+}
+
 .swiper-pagination {
-  background: rgba(white, 0.25);
   bottom: 4px !important;
+  background: rgba(white, 0.25);
 
   &-bullet {
     $size: 8px;
     width: $size * 4;
     height: $size;
     margin: 0 $size * 0.5;
+    transition: width 0.334s, opacity 0.334s;
     border-radius: $size;
     background: black;
-    transition: width 0.334s, opacity 0.334s;
 
     //&-active {
     //  width: $size * 4;

@@ -38,12 +38,10 @@
 </template>
 
 <script lang="ts">
-import modal from 'src/components/modals/modal.vue'
+
 
 export default {
-  components: {
-    modal,
-  },
+  components: {},
   props: {
     products: {
       type: Array,

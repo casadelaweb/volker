@@ -222,7 +222,7 @@ export default {
 
   &-category {
     padding: 20px;
-    background: #f0f0f0;
+    background: #f5f5f5;
   }
 
   &-sorting {

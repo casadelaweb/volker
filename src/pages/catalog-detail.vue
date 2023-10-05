@@ -251,7 +251,7 @@ export default {
 
     &:nth-child(odd) {
       background: #f5f5f5;
-      // border: 2px solid #f0f0f0;
+      // border: 2px solid #f5f5f5;
     }
 
     &-name {
@@ -379,7 +379,7 @@ export default {
 
   &-video {
     @include flex(center, center);
-    background: #f0f0f0;
+    background: #f5f5f5;
     aspect-ratio: 21 / 9;
   }
 }

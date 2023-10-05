@@ -13,7 +13,8 @@ export default createStore({
       },
       offers: offers,
       theme: 'light',
-      catalog: catalog
+      catalog: catalog,
+      categories: catalog,
     }
   },
   getters: {},

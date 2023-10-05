@@ -1,11 +1,5 @@
 @use 'src/styles/variables' as *;
 
-@mixin mediaOnlyMobile {
-  @media (max-width: $breakpointTablet - 1px) {
-    @content;
-  }
-}
-
 @mixin mediaMobileConventional {
   @media (min-width: $breakpointMobileConventional) {
     @content;
@@ -24,32 +18,14 @@
   }
 }
 
-@mixin mediaOnlyTablet {
-  @media (min-width: $breakpointTablet) and (max-width: $breakpointTabletBg - 1px) {
-    @content;
-  }
-}
-
 @mixin mediaTabletBg {
   @media (min-width: $breakpointTabletBg) {
     @content;
   }
 }
 
-@mixin mediaOnlyTabletBg {
-  @media (min-width: $breakpointTabletBg) and (max-width: $breakpointLaptop - 1px) {
-    @content;
-  }
-}
-
-@mixin mediaOnlyTablets {
-  @media (min-width: $breakpointTablet) and (max-width: $breakpointLaptop - 1px) {
-    @content;
-  }
-}
-
-@mixin mediaOnlyMobileAndAllTablets {
-  @media (max-width: $breakpointLaptop - 1px) {
+@mixin mediaLaptopSmall {
+  @media (min-width: $breakpointLaptopSmall) {
     @content;
   }
 }

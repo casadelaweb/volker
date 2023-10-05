@@ -1,11 +1,11 @@
 <template>
   <breadcrumbs />
   <display />
-  <deals />
-  <production />
-  <form-feedback />
-  <suggestions :products="productsRecommended" />
-  <reviews :reviews="reviews.list" />
+  <!--  <deals />-->
+  <!--  <production />-->
+  <!--  <form-feedback />-->
+  <!--  <suggestions :products="productsRecommended" />-->
+  <!--  <reviews :reviews="reviews.list" />-->
 </template>
 
 <script lang="ts">

@@ -1,6 +1,5 @@
 <template>
   <a class="logo" href="/">
-    <!-- <img alt="logo" class="modals-logo-img" src="../img/placeholder.jpg"> -->
     логотип
   </a>
 </template>

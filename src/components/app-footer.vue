@@ -46,15 +46,15 @@ export default {
       isLoading: true,
     }
   },
-  methods: {
-    async fetchCatalog() {
-    },
-  },
-  mounted() {
-    this.isLoading = false
-    console.log(this.catalog)
-    this.fetchCatalog()
-  },
+  //methods: {
+  //  async fetchCatalog() {
+  //  },
+  //},
+  //mounted() {
+  //  this.isLoading = false
+  //  console.log(this.catalog)
+  //  this.fetchCatalog()
+  //},
 }
 </script>
 
@@ -62,9 +62,8 @@ export default {
 @use 'src/styles/shared' as *;
 
 .footer {
+  margin-top: 40px;
   padding: 40px 0 160px;
-  // background: #383b40;
-  // color: white;
   box-shadow: 0 -40px 40px 0 rgba(black, 0.05);
 
   &-container {

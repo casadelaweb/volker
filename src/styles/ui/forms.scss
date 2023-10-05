@@ -13,14 +13,25 @@
   }
 
   &-subtitle {
+    font-size: 14px;
+    letter-spacing: 0.02em;
     display: inline-block;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
+    @include mediaTablet {
+      font-size: 16px;
+    }
   }
 
   &-input {
+    font-size: 14px;
     width: 100%;
-    padding: 20px;
+    padding: 16px 20px;
+    border-radius: 8px;
     background: white;
+    @include mediaTablet {
+      font-size: 16px;
+      padding: 20px;
+    }
   }
 
   &-obligatory {
@@ -28,7 +39,12 @@
   }
 
   &-note {
+    font-size: 13px;
     font-weight: 300;
+    letter-spacing: -0.02em;
+    @include mediaTablet {
+      font-size: 14px;
+    }
 
     input {
       margin-right: 10px;
@@ -36,11 +52,18 @@
   }
 
   &-button {
+    font-size: 14px;
     font-weight: 500;
-    padding: 20px;
+    letter-spacing: 0.02em;
+    padding: 16px 20px;
     transition: background-color 0.5s;
     color: white;
+    border-radius: 8px;
     background: darkseagreen;
+    @include mediaTablet {
+      font-size: 16px;
+      padding: 20px;
+    }
 
     &:active {
       background: mediumseagreen;
