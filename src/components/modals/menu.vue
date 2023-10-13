@@ -3,10 +3,10 @@
     <div class="menu-categories">
       <template v-for="(category, i) in categories" :key="category.id">
         <router-link
-            :class="[ 'menu-category', { 'active': i === 0 } ]"
-            :data-category="category.id"
-            :to="category.url"
-            @mouseenter="showProducts($event)">
+          :class="[ 'menu-category', { 'active': i === 0 } ]"
+          :data-category="category.id"
+          :to="category.url"
+          @mouseenter="showProducts($event)">
           {{ category.name }}
         </router-link>
       </template>

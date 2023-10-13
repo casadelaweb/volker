@@ -50,19 +50,6 @@
 
 @mixin h5 {
   line-height: 1.15;
-  font-size: 18px;
-  font-weight: 500;
-  @include mediaTablet {
-    font-size: 20px;
-  }
-  @include mediaTabletBg {
-    font-size: 24px;
-  }
-}
-
-
-@mixin h6 {
-  line-height: 1.15;
   font-size: 16px;
   font-weight: 500;
   @include mediaTablet {
@@ -70,5 +57,18 @@
   }
   @include mediaTabletBg {
     font-size: 20px;
+  }
+}
+
+
+@mixin h6 {
+  line-height: 1.15;
+  font-size: 14px;
+  font-weight: 500;
+  @include mediaTablet {
+    font-size: 16px;
+  }
+  @include mediaTabletBg {
+    font-size: 18px;
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="suggestions">
-    <div class="container">
+    <div class="suggestions-container">
       <section-top :button="button" :title="title" />
       <div v-if="products.length > 0" class="suggestions-layout">
         <card v-for="product in products" :key="product.id" :product="product" />
@@ -63,6 +63,12 @@ export default {
 @use 'src/styles/shared' as *;
 
 .suggestions {
+  @include section;
+
+  &-container {
+    @include container;
+  }
+
   &-layout {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

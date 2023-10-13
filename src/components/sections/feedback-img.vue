@@ -1,6 +1,6 @@
 <template>
-  <section class="section">
-    <div class="container">
+  <section class="feedbackImg">
+    <div class="feedbackImg-container">
       <section-top :title="title" />
       <div class="form-layout">
         <div class="form-decor"></div>
@@ -48,6 +48,14 @@ export default {
 
 <style lang="scss" scoped>
 @use 'src/styles/shared' as *;
+
+.feedbackImg {
+  @include section;
+
+  &-container {
+    @include container;
+  }
+}
 
 .form {
   &-select {

@@ -1,16 +1,16 @@
 <template>
   <breadcrumbs />
   <display />
-  <!--  <deals />-->
-  <!--  <production />-->
-  <!--  <form-feedback />-->
-  <!--  <suggestions :products="productsRecommended" />-->
-  <!--  <reviews :reviews="reviews.list" />-->
+  <offers />
+  <production />
+  <form-feedback />
+  <suggestions :products="productsRecommended" />
+  <reviews :reviews="reviews.list" />
 </template>
 
 <script lang="ts">
 import display from 'src/components/catalog/display.vue'
-import deals from 'src/components/sections/offers.vue'
+import offers from 'src/components/sections/offers.vue'
 import suggestions from 'src/components/sections/suggestions.vue'
 import formFeedback from 'src/components/sections/feedback-img.vue'
 import production from 'src/components/sections/production.vue'
@@ -22,7 +22,7 @@ export default {
     breadcrumbs,
     suggestions,
     display,
-    deals,
+    offers,
     formFeedback,
     production,
     reviews,

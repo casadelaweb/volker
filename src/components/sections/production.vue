@@ -1,6 +1,6 @@
 <template>
   <section class="production">
-    <div class="container">
+    <div class="production-container">
       <section-top :title="title" />
       <div class="production-img"></div>
     </div>
@@ -29,6 +29,10 @@ export default {
 
 .production {
   @include section;
+
+  &-container {
+    @include container;
+  }
 
   &-img {
     // width: 100%;

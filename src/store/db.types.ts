@@ -16,7 +16,7 @@ export interface iPage {
 }
 
 /** структура для страницы товара */
-export interface iProduct extends iPage {
+export interface iPageProduct extends iPage {
   preview: iImage,
   images: iImage[],
   discount: number,
@@ -27,8 +27,17 @@ export interface iProduct extends iPage {
 /** структура для страницы категории */
 export interface iCategory extends iPage {
   preview: iImage,
-  products: iProduct[],
+  products: iPageProduct[],
 }
 
 export type iCatalog = iCategory[]
+
+export interface iPageOffer extends iPage {
+  preview: iImage,
+  activity: string,
+  date: {
+    published: string,
+    modified: string,
+  }
+}
 

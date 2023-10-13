@@ -1,33 +1,16 @@
 <template>
   <section class="offers">
-    <div class="container">
+    <div class="offers-container">
 
       <sectionTop :button="sectionTopProps.button" :title="sectionTopProps.title" />
 
       <div v-if="!isLoading" class="offers-layout">
 
-        <article v-for="offer in offers" :key="offer.id" class="offer" itemscope itemtype="https://schema.org/Article">
-          <link :href="siteUrl + offer.url" itemprop="mainEntityOfPage">
-          <link :href="siteUrl + offer.img.src" itemprop="image">
-          <meta :content="offer.title" itemprop="headline name">
-          <meta :content="offer.description" itemprop="description">
-          <meta :content="offer.date_published" itemprop="datePublished">
-          <meta :content="offer.date_modified" itemprop="dateModified">
-
-          <div class="offer-activity">{{ offer.activity }}</div>
-          <router-link :title="offer.title" :to="offer.url">
-            <img :alt="offer.img.alt" :data-src="offer.img.src" class="lazy offer-img"
-                 src="src/assets/img/placeholder.jpg">
-          </router-link>
-          <h3 class="offer-title">
-            <router-link :title="offer.title" :to="offer.url"> {{ offer.title }}</router-link>
-          </h3>
-        </article>
+        <offer v-for="offer in offers" :key="offer.id" :offer="offer" />
 
       </div>
       <div v-else>
-        <img alt="loading" class="lazy" data-src="src/assets/img/loading.gif"
-             src="src/assets/img/placeholder.jpg">
+        <img alt="loading" src="src/assets/img/loading.gif">
       </div>
     </div>
   </section>
@@ -35,10 +18,11 @@
 
 <script lang="ts">
 import sectionTop from 'src/components/ui/section-top.vue'
+import offer from 'src/components/sections/offer.vue'
 
 export default {
   components: {
-    sectionTop,
+    sectionTop, offer,
   },
   data: function() {
     return {
@@ -53,14 +37,12 @@ export default {
         },
       },
       offers: this.$store.state.offers,
-      siteUrl: this.$store.state.main.site_url,
-      siteName: this.$store.state.main.site_name,
       isLoading: true,
     }
   },
   methods: {
     async fetchOffers() {
-
+      this.isLoading = false
     },
   },
   mounted() {
@@ -73,6 +55,12 @@ export default {
 @use 'src/styles/shared' as *;
 
 .offers {
+  margin: 40px 0 80px;
+
+  &-container {
+    @include container;
+  }
+
   &-title {
     @include h2;
     margin-bottom: 20px;
@@ -80,40 +68,15 @@ export default {
 
   &-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     column-gap: 20px;
     row-gap: 20px;
-  }
-}
-
-.offer {
-  @include flex($d: column);
-  position: relative;
-  z-index: 0;
-
-  &-activity {
-    letter-spacing: 0.02em;
-    position: absolute;
-    z-index: 0;
-    // font-weight: 500;
-    top: 10px;
-    right: 10px;
-    padding: 4px 8px;
-    color: white;
-    background: lightcoral;
-  }
-
-  &-img {
-    display: block;
-    // height: 200px;
-    width: 100%;
-    margin-bottom: 10px;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-  }
-
-  &-title {
-    @include h4;
+    @include mediaMobileBg {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mediaTabletBg {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 </style>

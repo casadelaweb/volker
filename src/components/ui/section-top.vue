@@ -32,7 +32,7 @@ export default {
 @use 'src/styles/shared' as *;
 
 .section-top {
-  @include flex($a: center, $j: space-between);
+  @include flex(center, space-between);
   margin: 0 0 32px;
 
   &-title {
@@ -42,12 +42,38 @@ export default {
   &-button {
     font-size: 13px;
     font-weight: 500;
+    position: relative;
+    z-index: 0;
+    transition: color 0.25s;
     color: #808080;
     @include mediaTablet {
       font-size: 14px;
     }
     @include mediaTabletBg {
       font-size: 16px;
+    }
+
+    &::before {
+      // todo: вынести в отдельный mixin
+      content: ' ';
+      position: absolute;
+      z-index: 1;
+      top: calc(100% + 2px);
+      left: 0;
+      width: 100%;
+      height: 2px;
+      transition: transform 0.5s;
+      transform: scale(0);
+      transform-origin: 0 50%;
+      background: darkseagreen;
+    }
+
+    &:hover {
+      color: darkseagreen;
+
+      &:before {
+        transform: scale(1)
+      }
     }
   }
 }

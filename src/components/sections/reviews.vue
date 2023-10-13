@@ -1,6 +1,6 @@
 <template>
   <section class="reviews">
-    <div class="container">
+    <div class="reviews-container">
       <section-top title="Отзывы">
         <div class="reviews-slider-controls">
           <button class="reviews-slider-button" title="Предыдущий слайд" type="button">
@@ -68,9 +68,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/scss'
-
 import 'swiper/scss/pagination'
-
 import sectionTop from 'src/components/ui/section-top.vue'
 
 export default {
@@ -127,6 +125,10 @@ export default {
 .reviews {
   @include section;
   overflow: hidden;
+
+  &-container {
+    @include container;
+  }
 
   &-slider {
     overflow: unset;

@@ -60,9 +60,9 @@ export default {
 @use 'src/styles/shared' as *;
 
 .display {
-  @include section;
   overflow-x: hidden;
   max-width: 100%;
+  margin: 40px 0 80px;
 
   &-container {
     @include container

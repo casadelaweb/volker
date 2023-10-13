@@ -1,3 +1,5 @@
+import { iPageOffer } from 'src/store/db.types.ts'
+
 export const headerQuickLinks = [
   {
     id: 'offers',
@@ -44,18 +46,81 @@ export const reviews = [
   },
 ]
 
-export const offers = [
+export const offers: iPageOffer[] = [
   {
     id: 'offer-15123',
-    url: '/offer-id15123/',
+    url: '/offers/offer-15123',
     title: 'Приведи друга',
-    description: 'Обязательное краткое описание статьи для Яндекса длиной от 50 до 150 символов.',
+    description: {
+      short: 'Обязательное краткое описание статьи для Яндекса длиной от 50 до 150 символов.',
+      full: 'Обязательное подробное описание статьи для Яндекса длиной до 512 символов.'
+    },
+    keywords: ['акция'],
     activity: 'все лето',
-    img: {
-      src: '/assets/img/placeholder-dark.jpg',
+    preview: {
+      url: '/vite.svg',
       alt: 'img',
     },
-    date_published: '2019-04-22',
-    date_modified: '2019-04-22',
+    date: {
+      published: '2019-04-22',
+      modified: '2019-04-22',
+    }
+  },
+  {
+    id: 'offer-4325425',
+    url: '/offers/offer-4325425',
+    title: 'Предложение или акция с достаточно длинным названием',
+    description: {
+      short: 'Обязательное краткое описание статьи для Яндекса длиной от 50 до 150 символов.',
+      full: 'Обязательное подробное описание статьи для Яндекса длиной до 512 символов.'
+    },
+    keywords: ['акция'],
+    activity: '',
+    preview: {
+      url: '/vite.svg',
+      alt: 'img',
+    },
+    date: {
+      published: '2019-04-22',
+      modified: '2019-04-22',
+    }
+  },
+  {
+    id: 'offer-12345',
+    url: '/offers/offer-12345',
+    title: 'Приведи друга',
+    description: {
+      short: 'Обязательное краткое описание статьи для Яндекса длиной от 50 до 150 символов.',
+      full: 'Обязательное подробное описание статьи для Яндекса длиной до 512 символов.'
+    },
+    keywords: ['акция'],
+    activity: 'все лето',
+    preview: {
+      url: '/vite.svg',
+      alt: 'img',
+    },
+    date: {
+      published: '2019-04-22',
+      modified: '2019-04-22',
+    }
+  },
+  {
+    id: 'offer-1234',
+    url: '/offers/offer-1234',
+    title: 'Приведи друга',
+    description: {
+      short: 'Обязательное краткое описание статьи для Яндекса длиной от 50 до 150 символов.',
+      full: 'Обязательное подробное описание статьи для Яндекса длиной до 512 символов.'
+    },
+    keywords: ['акция'],
+    activity: 'все лето',
+    preview: {
+      url: '/vite.svg',
+      alt: 'img',
+    },
+    date: {
+      published: '2019-04-22',
+      modified: '2019-04-22',
+    }
   },
 ]
