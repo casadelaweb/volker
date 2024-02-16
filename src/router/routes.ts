@@ -1,26 +1,24 @@
-import index from 'src/pages/index.vue'
-import contacts from 'src/pages/contacts.vue'
-import catalog from 'src/pages/catalog.vue'
-import catalogDetail from 'src/pages/catalog-detail.vue'
-import offers from 'src/pages/offers.vue'
-import offer from 'src/pages/offers-detail.vue'
-import notFound from 'src/pages/not-found.vue'
+import Home from 'src/views/pages/Home.vue'
+import Catalog from 'src/views/pages/Catalog.vue'
+import Category from 'src/views/pages/Category.vue'
+import Product from 'src/views/pages/Product.vue'
+import Text from 'src/views/pages/Text.vue'
 
 export const routes = [
   {
     name: 'Главная страница',
     path: '/',
-    component: index,
+    component: Home,
   },
   {
-    name: 'Контакты',
-    path: '/contacts/',
-    component: contacts,
+    name: 'Каталог',
+    path: '/catalog/',
+    component: Catalog
   },
   {
     name: 'Каталог или страница категории в каталоге',
     path: '/catalog/:category?',
-    component: catalog,
+    component: Category,
     meta: {
       breadcrumbs: [
         {
@@ -36,22 +34,32 @@ export const routes = [
   },
   {
     name: 'Страница товара',
-    path: '/catalog/:category/:id',
-    component: catalogDetail,
+    path: '/product/:id',
+    component: Product,
   },
   {
-    name: 'Акции и предложения',
-    path: '/offers/',
-    component: offers,
+    name: 'Custom Shop',
+    path: '/custom/',
+    component: Text,
   },
   {
-    name: 'Акция',
-    path: '/offers/:id',
-    component: offer,
+    name: 'Доставка',
+    path: '/shipping/',
+    component: Text,
   },
   {
-    name: 'Страница 404',
-    path: '/:pathMatch(.*)*',
-    component: notFound,
+    name: 'О компании',
+    path: '/about/',
+    component: Text,
+  },
+  {
+    name: 'Политика конфиденциальности',
+    path: '/privacy-policy/',
+    component: Text,
+  },
+  {
+    name: 'Пользовательское соглашение',
+    path: '/user-agreement/',
+    component: Text,
   },
 ]

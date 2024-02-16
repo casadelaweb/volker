@@ -1,0 +1,157 @@
+@use 'src/styles/shared/variables' as *;
+@use 'src/styles/shared/mixins/helpers' as *;
+@use 'src/styles/shared/mixins/media' as *;
+
+@mixin container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+  @include mediaMobileM {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  @include mediaTabletS {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+  @include mediaTabletM {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  //@include mediaTabletL {
+  //}
+  @include mediaLaptopXs {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 1024px;
+  }
+  @include mediaLaptopS {
+    max-width: 1180px;
+  }
+  //@include mediaLaptopM {
+  //  max-width: 1180px;
+  //}
+  @include mediaLaptopL {
+    max-width: 1280px;
+  }
+  @include mediaDesktop {
+    max-width: 1440px;
+  }
+}
+
+@mixin scrollbar {
+  @media (any-hover: hover) {
+    &::-webkit-scrollbar {
+      width: 10px
+    }
+    &::-webkit-scrollbar-track {
+      background: white;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #505050;
+      border: 3px solid white;
+    }
+  }
+}
+
+@mixin overlay {
+  position: fixed;
+  z-index: 101;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.334s;
+  pointer-events: none;
+  opacity: 0;
+  background: rgba(#505050, 0.5);
+
+  &.active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}
+
+@mixin section {
+  padding: 40px 0;
+}
+
+@mixin buttonTemplate {
+  @include flex(center, center);
+  font-size: 14px;
+  column-gap: 7px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  @include mediaLaptopL {
+    font-size: 16px;
+    column-gap: 10px;
+    padding: 10px 20px;
+  }
+  @include mediaDesktop {
+    font-size: 18px;
+    column-gap: 12px;
+    padding: 12px 24px;
+  }
+}
+
+@mixin buttonAccented {
+  @include buttonTemplate;
+  background: darkseagreen;
+  color: white;
+}
+
+@mixin link($addBottomLineOnHover: true) {
+  $fontSizeM: 14px;
+  $fontSizeL: 16px;
+  display: inline-block;
+  width: fit-content;
+  @if ($addBottomLineOnHover == true) {
+    @include addBottomLineOnHover;
+  }
+  @include hoverableDevice {
+    &:hover {
+      color: darkseagreen;
+    }
+  }
+  font-size: $fontSizeM;
+  @include mediaLaptopL {
+    font-size: $fontSizeL;
+  }
+  //@include mediaDesktop {
+  //  font-size: 18px;
+  //}
+
+  &._custom {
+    @include addBottomLineOnHover(lightcoral);
+    font-weight: 500;
+    color: lightcoral;
+    //@include hoverableDevice {
+    //  &:hover {
+    //    color: lightcoral;
+    //  }
+    //}
+  }
+}
+
+@mixin linkRound {
+  @include flex(center, center);
+  flex: 0 0 auto;
+  border: 2px solid #f0f0f0;
+  transition: border-color 0.334s, color 0.334s;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 14px;
+  @include mediaDesktop {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+  }
+
+  &:hover {
+    color: darkseagreen;
+    border-color: darkseagreen;
+  }
+}

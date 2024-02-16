@@ -1,40 +1,153 @@
-$icon-filter: '\e992';
-$icon-tel: '\e942';
-$icon-location: '\e948';
-$icon-search: '\e986';
+$icon-squares-5: '\e900';
+$icon-squares-7: '\e901';
+$icon-square: '\e902';
+$icon-squares-3: '\e903';
+$icon-squares-4: '\e904';
+$icon-squares-6: '\e905';
+$icon-squares-8: '\e906';
+$icon-telegram: '\e907';
+$icon-vk: '\e908';
+$icon-arrow-down: '\e909';
+$icon-arrow-left: '\e90a';
+$icon-arrow-right: '\e90b';
+$icon-arrow-up: '\e90c';
+$icon-close: '\e90d';
+$icon-filters: '\e90e';
+$icon-heart: '\e90f';
+$icon-heart-fill: '\e910';
+$icon-location: '\e911';
+$icon-menu: '\e913';
+$icon-mute: '\e914';
+$icon-person: '\e915';
+$icon-search: '\e916';
+$icon-suitcase: '\e917';
 
 @font-face {
   font-family: 'iconfont';
-  src: url('src/assets/fonts/iconfont.ttf?vz2v54') format('truetype'),
-  url('src/assets/fonts/iconfont.woff?vz2v54') format('woff'),
-  url('src/assets/fonts/iconfont.svg?vz2v54#iconfont') format('svg');
+  src: url('src/assets/iconfonts/iconfont.eot?d09flu');
+  src: url('src/assets/iconfonts/iconfont.eot?d09flu#iefix') format('embedded-opentype'),
+  url('src/assets/iconfonts/iconfont.ttf?d09flu') format('truetype'),
+  url('src/assets/iconfonts/iconfont.woff?d09flu') format('woff'),
+  url('src/assets/iconfonts/iconfont.svg?d09flu#iconfont') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
 }
 
 .iconfont {
-  /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'iconfont', emoji !important;
-  speak: never;
-  font-style: normal;
+  // @include flex(center, center);
   font-weight: normal;
+  font-style: normal;
   font-variant: normal;
-  text-transform: none;
   line-height: 1;
+  text-transform: none;
+  //display: inline-flex;
+  flex: 0 0 auto;
+  speak: never;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-filter {
+.icon-squares-5 {
   &:before {
-    content: $icon-filter;
+    content: $icon-squares-5;
   }
 }
 
-.icon-tel {
+.icon-squares-7 {
   &:before {
-    content: $icon-tel;
+    content: $icon-squares-7;
+  }
+}
+
+.icon-square {
+  &:before {
+    content: $icon-square;
+  }
+}
+
+.icon-squares-3 {
+  &:before {
+    content: $icon-squares-3;
+  }
+}
+
+.icon-squares-4 {
+  &:before {
+    content: $icon-squares-4;
+  }
+}
+
+.icon-squares-6 {
+  &:before {
+    content: $icon-squares-6;
+  }
+}
+
+.icon-squares-8 {
+  &:before {
+    content: $icon-squares-8;
+  }
+}
+
+.icon-telegram {
+  &:before {
+    content: $icon-telegram;
+  }
+}
+
+.icon-vk {
+  &:before {
+    content: $icon-vk;
+  }
+}
+
+.icon-arrow-down {
+  &:before {
+    content: $icon-arrow-down;
+  }
+}
+
+.icon-arrow-left {
+  &:before {
+    content: $icon-arrow-left;
+  }
+}
+
+.icon-arrow-right {
+  &:before {
+    content: $icon-arrow-right;
+  }
+}
+
+.icon-arrow-up {
+  &:before {
+    content: $icon-arrow-up;
+  }
+}
+
+.icon-close {
+  &:before {
+    content: $icon-close;
+  }
+}
+
+.icon-filters {
+  &:before {
+    content: $icon-filters;
+  }
+}
+
+.icon-heart {
+  &:before {
+    content: $icon-heart;
+  }
+}
+
+.icon-heart-fill {
+  &:before {
+    content: $icon-heart-fill;
   }
 }
 
@@ -44,9 +157,33 @@ $icon-search: '\e986';
   }
 }
 
+.icon-menu {
+  &:before {
+    content: $icon-menu;
+  }
+}
+
+.icon-mute {
+  &:before {
+    content: $icon-mute;
+  }
+}
+
+.icon-person {
+  &:before {
+    content: $icon-person;
+  }
+}
+
 .icon-search {
   &:before {
     content: $icon-search;
+  }
+}
+
+.icon-suitcase {
+  &:before {
+    content: $icon-suitcase;
   }
 }
 

@@ -17,7 +17,7 @@
     letter-spacing: 0.02em;
     display: inline-block;
     // margin-bottom: 10px;
-    @include mediaTablet {
+    @include mediaTabletM {
       font-size: 16px;
     }
   }
@@ -28,7 +28,7 @@
     padding: 16px 20px;
     border-radius: 8px;
     background: white;
-    @include mediaTablet {
+    @include mediaTabletM {
       font-size: 16px;
       padding: 20px;
     }
@@ -42,7 +42,7 @@
     font-size: 13px;
     font-weight: 300;
     letter-spacing: -0.02em;
-    @include mediaTablet {
+    @include mediaTabletM {
       font-size: 14px;
     }
 
@@ -56,11 +56,11 @@
     font-weight: 500;
     letter-spacing: 0.02em;
     padding: 16px 20px;
-    transition: background-color 0.5s;
+    transition: background-color 0.334s;
     color: white;
     border-radius: 8px;
     background: darkseagreen;
-    @include mediaTablet {
+    @include mediaTabletM {
       font-size: 16px;
       padding: 20px;
     }

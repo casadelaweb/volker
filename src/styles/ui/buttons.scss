@@ -5,7 +5,7 @@
   font-weight: 600;
   width: 160px;
   height: 48px;
-  transition: color 0.25s, background-color 0.25s, border-color 0.25s;
+  transition: color 0.334s, background-color 0.334s, border-color 0.334s;
   color: darkseagreen;
   border: 2px solid darkseagreen;
   @include notLastChild;
@@ -14,4 +14,16 @@
     color: white;
     background: darkseagreen;
   }
+}
+
+.link {
+  @include link;
+}
+
+.container {
+  @include container;
+}
+
+.row {
+  @include flex;
 }

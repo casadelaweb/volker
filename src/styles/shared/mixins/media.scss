@@ -1,0 +1,74 @@
+// Samsung Galaxy S5
+@mixin mediaMobileS {
+  @media screen and (min-width: 360px) {
+    @content;
+  }
+}
+
+// iPhone SE, Xiaomi Note
+@mixin mediaMobileM {
+  @media screen and (min-width: 375px) {
+    @content;
+  }
+}
+
+// большинство iPhone серии Pro и Plus
+@mixin mediaMobileL {
+  @media screen and (min-width: 400px) {
+    @content;
+  }
+}
+
+// Surface Duo
+@mixin mediaTabletS {
+  @media screen and (min-width: 540px) {
+    @content;
+  }
+}
+
+// iPad Mini, iPad
+@mixin mediaTabletM {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// iPad Pro
+@mixin mediaTabletL {
+  @media screen and (min-width: 1024px) {
+    @content;
+  }
+}
+
+// Небольшие экраны с масштабированием на уровне ОС х1.5
+@mixin mediaLaptopXs {
+  @media screen and (min-width: 1180px) {
+    @content;
+  }
+}
+
+// Небольшие экраны с масштабированием на уровне ОС x1.25
+@mixin mediaLaptopS {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin mediaLaptopM {
+  @media screen and (min-width: 1366px) {
+    @content;
+  }
+}
+
+@mixin mediaLaptopL {
+  @media screen and (min-width: 1440px) {
+    @content;
+  }
+}
+
+// Стандартные Full HD
+@mixin mediaDesktop {
+  @media screen and (min-width: 1920px) {
+    @content;
+  }
+}
