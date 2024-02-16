@@ -1,9 +1,11 @@
+// Inter
+
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Light.ttf') format('truetype');
+  src: url('src/assets/fonts/Inter/Inter-Light.ttf') format('truetype');
 }
 
 @font-face {
@@ -11,7 +13,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Regular.ttf') format('truetype');
+  src: url('src/assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -19,7 +21,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Medium.ttf') format('truetype');
+  src: url('src/assets/fonts/Inter/Inter-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -27,7 +29,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Semibold.ttf') format('truetype');
+  src: url('src/assets/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -35,9 +37,93 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('src/assets/fonts/Inter-Bold.ttf') format('truetype');
+  src: url('src/assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
+}
+
+// Jost
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('src/assets/fonts/Jost/Jost-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('src/assets/fonts/Jost/Jost-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('src/assets/fonts/Jost/Jost-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('src/assets/fonts/Jost/Jost-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('src/assets/fonts/Jost/Jost-Bold.ttf') format('truetype');
+}
+
+// Mulish
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('src/assets/fonts/Mulish/Mulish-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('src/assets/fonts/Mulish/Mulish-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('src/assets/fonts/Mulish/Mulish-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('src/assets/fonts/Mulish/Mulish-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('src/assets/fonts/Mulish/Mulish-Bold.ttf') format('truetype');
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Mulish', sans-serif;
 }

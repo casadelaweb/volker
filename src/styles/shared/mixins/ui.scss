@@ -37,7 +37,8 @@
     max-width: 1280px;
   }
   @include mediaDesktop {
-    max-width: 1440px;
+    // max-width: 1440px;
+    max-width: 1600px;
   }
 }
 
@@ -100,6 +101,13 @@
   @include buttonTemplate;
   background: darkseagreen;
   color: white;
+}
+
+@mixin buttonOutline {
+  @include buttonTemplate;
+  font-weight: 600;
+  border: 2px solid darkseagreen;
+  color: darkseagreen;
 }
 
 @mixin link($addBottomLineOnHover: true) {
