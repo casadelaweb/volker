@@ -71,7 +71,7 @@ export default {
   $fontSizeM: 14px;
   $fontSizeL: 16px;
   position: sticky;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   padding: 16px 0;
   background: white;

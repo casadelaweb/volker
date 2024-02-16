@@ -1,66 +1,150 @@
 <template>
-  <breadcrumbs/>
+  <!--  <section class="catalog">-->
+  <!--    <div class="catalog-container">-->
+  <!--      <h1 class="catalog-title">-->
+  <!--        <router-link title="Каталог" to="/catalog/">Каталог</router-link>-->
+  <!--      </h1>-->
+  <!--      <div class="catalog-layout">-->
+
+  <!--        <filters :products="productsAll" @filtrationEnds="updateProducts"-->
+  <!--                 @filtrationStarts="changeState('loading')"/>-->
+
+  <!--        <div class="catalog-main">-->
+
+  <!--          <div v-if="isLoading" class="catalog-loading">-->
+  <!--            <img alt="loading" class="catalog-loading-img lazy"-->
+  <!--                 data-src="src/assets/img/loading.gif"-->
+  <!--                 src="src/assets/img/placeholder.jpg">-->
+  <!--          </div>-->
+
+  <!--          <div v-if="productsFiltered && productsFiltered.length === 0" class="catalog-nomatch">-->
+  <!--            <h2 class="catalog-nomatch-title">-->
+  <!--              К сожалению, по Вашему запросу <span-->
+  <!--              class="catalog-nomatch-query">"{{ searchQueryLatest }}"</span> ничего-->
+  <!--              не найдено.-->
+  <!--            </h2>-->
+  <!--            <ul class="catalog-nomatch-list">-->
+  <!--              <li>Убедитесь, что все слова написаны без ошибок.</li>-->
+  <!--              <li>Попробуйте использовать другие ключевые слова.</li>-->
+  <!--              <li>Попробуйте использовать более популярные ключевые слова.</li>-->
+  <!--              <li>Попробуйте уменьшить количество слов в запросе.</li>-->
+  <!--            </ul>-->
+  <!--          </div>-->
+
+  <!--          <div class="catalog-categories">-->
+  <!--            <article v-for="(category) in this.categories" :key="category.id"-->
+  <!--                     class="catalog-category">-->
+  <!--              <h2 class="catalog-category-title">-->
+  <!--                <router-link :to="category.url">{{ category.name }}</router-link>-->
+  <!--              </h2>-->
+  <!--              &lt;!&ndash;<img :alt="category.name" class="catalog-category-img" data-src src="src/assets/img/placeholder.jpg">&ndash;&gt;-->
+  <!--              &lt;!&ndash;<div class="catalog-category-description">{{ category.description.short }}</div>&ndash;&gt;-->
+  <!--            </article>-->
+  <!--          </div>-->
+  <!--          <div class="catalog-sorting">-->
+  <!--            <div> Всего результатов: {{ this.productsFiltered.length }}</div>-->
+  <!--            <div>сортировать по: сначала недорогие</div>-->
+  <!--            <div>группировать по: категории</div>-->
+  <!--            <div>показывать по: 24 / 48 / 96</div>-->
+  <!--          </div>-->
+  <!--          <div class="catalog-cards">-->
+  <!--            <card v-for="product in productsFiltered" :key="product.id" :product="product"/>-->
+  <!--          </div>-->
+  <!--          <div class="pagination">-->
+  <!--            <div v-for="pageNumber in this.pagination.total" :key="pageNumber"-->
+  <!--                 class="pagination-item">-->
+  <!--              <button :class="{-->
+  <!--                'current': pageNumber === this.pagination.page-->
+  <!--              }" class="pagination-button" type="button" @click="changePage(pageNumber)">-->
+  <!--                {{ pageNumber }}-->
+  <!--              </button>-->
+  <!--            </div>-->
+  <!--          </div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </section>-->
+
   <section class="catalog">
     <div class="catalog-container">
-      <h1 class="catalog-title">
-        <router-link title="Каталог" to="/catalog/">Каталог</router-link>
-      </h1>
+      <div class="catalog-header">
+        <h1 class="catalog-title">Название категории товаров</h1>
+      </div>
       <div class="catalog-layout">
-
-        <filters :products="productsAll" @filtrationEnds="updateProducts"
-                 @filtrationStarts="changeState('loading')"/>
-
-        <div class="catalog-main">
-
-          <div v-if="isLoading" class="catalog-loading">
-            <img alt="loading" class="catalog-loading-img lazy"
-                 data-src="src/assets/img/loading.gif"
-                 src="src/assets/img/placeholder.jpg">
+        <form class="filters">
+          <div class="filters-header">
+            <div class="filters-title">Фильтры</div>
+            <button class="filter-close" title="Закрыть" type="button">
+              <span class="iconfont icon-close"></span>
+            </button>
           </div>
-
-          <div v-if="productsFiltered && productsFiltered.length === 0" class="catalog-nomatch">
-            <h2 class="catalog-nomatch-title">
-              К сожалению, по Вашему запросу <span
-              class="catalog-nomatch-query">"{{ searchQueryLatest }}"</span> ничего
-              не найдено.
-            </h2>
-            <ul class="catalog-nomatch-list">
-              <li>Убедитесь, что все слова написаны без ошибок.</li>
-              <li>Попробуйте использовать другие ключевые слова.</li>
-              <li>Попробуйте использовать более популярные ключевые слова.</li>
-              <li>Попробуйте уменьшить количество слов в запросе.</li>
-            </ul>
+          <div class="filters-body">
+            <fieldset class="filter">
+              <legend class="filter-legend">
+                <span class="filter-legend-title">Название фильтра</span>
+                <span class="filter-legend-icon iconfont icon-arrow-down"></span>
+              </legend>
+              <div class="filter-body">
+                <label class="filter-label">
+                  <input class="filter-input" type="checkbox">
+                  <span class="filter-span">Вот какой-то фильтр</span>
+                </label>
+                <label class="filter-label">
+                  <input class="filter-input" type="checkbox">
+                  <span class="filter-span">Вот какой-то фильтр</span>
+                </label>
+                <label class="filter-label">
+                  <input class="filter-input" type="checkbox">
+                  <span class="filter-span">Вот какой-то фильтр</span>
+                </label>
+              </div>
+            </fieldset>
           </div>
-
-          <div class="catalog-categories">
-            <article v-for="(category) in this.categories" :key="category.id"
-                     class="catalog-category">
-              <h2 class="catalog-category-title">
-                <router-link :to="category.url">{{ category.name }}</router-link>
-              </h2>
-              <!--<img :alt="category.name" class="catalog-category-img" data-src src="src/assets/img/placeholder.jpg">-->
-              <!--<div class="catalog-category-description">{{ category.description.short }}</div>-->
-            </article>
+          <div class="filters-footer">
+            <button class="filters-reset" type="button">
+              Сбросить
+            </button>
+            <button class="filters-submit" type="button">
+              Применить
+            </button>
           </div>
-          <div class="catalog-sorting">
-            <div> Всего результатов: {{ this.productsFiltered.length }}</div>
-            <div>сортировать по: сначала недорогие</div>
-            <div>группировать по: категории</div>
-            <div>показывать по: 24 / 48 / 96</div>
-          </div>
-          <div class="catalog-cards">
-            <card v-for="product in productsFiltered" :key="product.id" :product="product"/>
-          </div>
-          <div class="pagination">
-            <div v-for="pageNumber in this.pagination.total" :key="pageNumber"
-                 class="pagination-item">
-              <button :class="{
-                'current': pageNumber === this.pagination.page
-              }" class="pagination-button" type="button" @click="changePage(pageNumber)">
-                {{ pageNumber }}
+        </form>
+        <div class="products">
+          <article v-for="product in products" :key="product.id" class="product">
+            <div class="product-buttons">
+              <button class="product-fav" title="Добавить в избранное" type="button">
+                <span class="iconfont icon-heart"></span>
+              </button>
+              <button class="product-cart" title="Добавить в корзину" type="button">
+                <span class="iconfont icon-suitcase"></span>
               </button>
             </div>
-          </div>
+
+            <router-link :title="product.title" :to="product.url">
+              <img :alt="product.title" :src="product.img.url" class="product-img">
+            </router-link>
+            <div class="product-body">
+              <h2 class="product-title">
+                <router-link :title="product.title" :to="product.url">
+                  {{ product.title }}
+                </router-link>
+              </h2>
+              <div class="product-prices">
+                <span class="product-prices-caption">Цена: </span>
+                <div v-if="product.priceOld" class="product-price _old">
+                  {{ product.priceOld }}
+                  <template v-if="product.currency">{{ product.currency }}</template>
+                </div>
+                <div class="product-price">
+                  {{ product.price }}
+                  <template v-if="product.currency">{{ product.currency }}</template>
+                </div>
+              </div>
+              <router-link :to="product.url" class="product-button">
+                Подробнее
+              </router-link>
+            </div>
+          </article>
         </div>
       </div>
     </div>
@@ -68,19 +152,101 @@
 </template>
 
 <script lang="ts">
-// import card from 'src/components/catalog/card.vue'
-// import filters from 'src/components/catalog/filters.vue'
-// import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
+import { defineComponent } from 'vue'
+import card from 'src/views/components/catalog/card.vue'
+import filters from 'src/views/components/catalog/filters.vue'
+import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 
-export default {
-  // components: {
-  //   card,
-  //   filters,
-  //   breadcrumbs,
-  // },
+export default defineComponent({
+  components: {
+    card,
+    filters,
+    breadcrumbs,
+  },
   data: function () {
     return {
-      isLoading: true,
+      products: [
+        {
+          id: 'teriohnasg',
+          url: '/product/teriohnasg/',
+          title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit minima',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: '13340',
+          priceOld: '15560',
+          currency: '₽',
+        },
+        {
+          id: 'teriohnasg2',
+          url: '/product/teriohnasg2/',
+          title: 'Lorem ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: '5340',
+          currency: '₽',
+        },
+        {
+          id: 'teriohnasg3',
+          url: '/product/teriohnasg3/',
+          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: 'по запросу',
+        },
+        {
+          id: 'teriohnasg',
+          url: '/product/teriohnasg/',
+          title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit minima',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: '13340',
+          priceOld: '15560',
+          currency: '₽',
+        },
+        {
+          id: 'teriohnasg2',
+          url: '/product/teriohnasg2/',
+          title: 'Lorem ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: '5340',
+          currency: '₽',
+        },
+        {
+          id: 'teriohnasg3',
+          url: '/product/teriohnasg3/',
+          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: 'по запросу',
+        },
+        {
+          id: 'teriohnasg2',
+          url: '/product/teriohnasg2/',
+          title: 'Lorem ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: '5340',
+          currency: '₽',
+        },
+        {
+          id: 'teriohnasg3',
+          url: '/product/teriohnasg3/',
+          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
+          img: {
+            url: 'src/assets/img/placeholder.jpg',
+          },
+          price: 'по запросу',
+        },
+      ],
+      isLoading: false,
       categories: [],
       productsAll: [],
       productsFiltered: [],
@@ -112,7 +278,7 @@ export default {
     this.fetchCatalog()
     // console.log(this.$route)
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -152,13 +318,6 @@ export default {
 
   &-container {
     @include container;
-  }
-
-  &-layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    column-gap: 20px;
-    // row-gap: 40px;
   }
 
   &-main {
@@ -244,4 +403,244 @@ export default {
   }
 }
 
+.catalog {
+  &-layout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 40px;
+  }
+}
+
+.filters {
+  // background: #f0f0f0;
+  position: sticky;
+  top: 100px;
+  z-index: 1;
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+  height: fit-content;
+  border-radius: 8px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
+
+  &-header, &-footer {
+    @include flex(center, space-between);
+    padding: 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  &-title {
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  &-close {
+    $size: 36px;
+    flex: 0 0 auto;
+    width: $size;
+    height: $size;
+    font-size: $size * 0.5;
+    border-radius: 50%;
+    background: rgba(white, 0.5);
+    box-shadow: 0 2px 4px 0 rgba(black, 0.05);
+    transition: transform 0.25s, color 0.25s;
+
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  &-footer {
+    border-bottom: 0;
+  }
+
+  &-reset {
+    @include buttonOutline;
+  }
+
+  &-submit {
+    @include buttonAccented;
+  }
+}
+
+.filter {
+  @include flex($d: column);
+
+  &-legend {
+    @include flex(center, space-between);
+    width: 100%;
+    flex: 0 0 auto;
+    padding: 20px;
+    transition: background-color 0.25s;
+    cursor: pointer;
+    @include hoverableDevice {
+      &:hover {
+        background: #f5f5f5;
+      }
+    }
+
+    &:active {
+      background: #f0f0f0;
+    }
+
+    &-title {
+    }
+
+    &-icon {
+    }
+  }
+
+  &-body {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+    padding: 20px;
+  }
+
+  &-label {
+    @include flex(center);
+    column-gap: 10px;
+    min-width: 0;
+    width: fit-content;
+    transition: color 0.25s;
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+  }
+
+  &-input {
+  }
+
+  &-span {
+  }
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+  column-gap: 20px;
+  flex: 0 0 auto;
+  min-width: 0;
+  min-height: 0;
+}
+
+.product {
+  @include flex($d: column);
+  //row-gap: 20px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
+  // padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  z-index: 0;
+
+  &-buttons {
+    @include flex($d: column);
+    row-gap: 12px;
+    position: absolute;
+    z-index: 1;
+    top: 16px;
+    right: 8px;
+  }
+
+  &-fav, &-cart {
+    $size: 36px;
+    flex: 0 0 auto;
+    width: $size;
+    height: $size;
+    font-size: $size * 0.5;
+    border-radius: 50%;
+    background: rgba(white, 0.5);
+    box-shadow: 0 2px 4px 0 rgba(black, 0.05);
+    transition: transform 0.25s, color 0.25s;
+
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
+  }
+
+  //&-fav {
+  //}
+  //
+  //&-cart {
+  //}
+
+  &-img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    background: #f0f0f0;
+    flex: 0 0 auto;
+  }
+
+  &-body {
+    @include flex($d: column);
+    flex: 1 0 auto;
+    row-gap: 24px;
+    padding: 16px 16px 24px;
+    //@include mediaMobileL {
+    //  row-gap: 20px;
+    //  padding: 20px;
+    //}
+  }
+
+  &-title {
+    @include lineClamp(3);
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    margin-bottom: auto;
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+  }
+
+  &-prices {
+    @include flex(center);
+    column-gap: 4px;
+    font-size: 18px;
+
+    &-caption {
+      margin-right: auto;
+    }
+  }
+
+  &-price {
+    font-weight: 600;
+
+    &._old {
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-right: 8px;
+    }
+  }
+
+  //&-currency {
+  //  font-weight: 600;
+  //}
+
+  &-button {
+    @include buttonOutline;
+  }
+}
 </style>

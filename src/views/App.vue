@@ -9,11 +9,12 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import AppHeader from 'src/views/components/AppHeader.vue'
 import AppFooter from 'src/views/components/AppFooter.vue'
 import FeedbackHorizontal from 'src/views/components/sections/FeedbackHorizontal.vue'
 
-export default {
+export default defineComponent({
   components: {
     AppFooter,
     FeedbackHorizontal,
@@ -21,8 +22,8 @@ export default {
   },
   data: function () {
     return {}
-  }
-}
+  },
+})
 </script>
 
 <style lang="scss">

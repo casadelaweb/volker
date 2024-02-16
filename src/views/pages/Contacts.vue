@@ -1,5 +1,5 @@
 <template>
-  <breadcrumbs/>
+
   <section class="section">
     <div class="container">
       <section-top title="Контакты"/>

@@ -25,9 +25,10 @@
 </template>
 
 <script lang="ts">
-import sectionTop from 'src/components/ui/section-top.vue'
+import { defineComponent } from 'vue'
+import sectionTop from 'src/views/components/ui/section-top.vue'
 
-export default {
+export default defineComponent({
   components: {
     sectionTop,
   },
@@ -54,11 +55,11 @@ export default {
   mounted() {
     this.getCategories()
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .display {
   overflow-x: hidden;
@@ -74,7 +75,7 @@ export default {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 10px;
     row-gap: 10px;
-    @include mediaMobileBg {
+    @include mediaMobileL {
       grid-template-columns: repeat(3, 1fr);
     }
     @include mediaTabletM {
@@ -108,7 +109,7 @@ export default {
     @include mediaTabletL {
       aspect-ratio: 3 / 2;
     }
-    @include mediaLaptopSmall {
+    @include mediaLaptopXs {
       aspect-ratio: 16 / 9;
     }
 
@@ -135,7 +136,7 @@ export default {
       font-weight: 500;
       letter-spacing: 0.02em;
       margin-bottom: 12px;
-      @include mediaMobileBg {
+      @include mediaMobileM {
         font-size: 14px;
       }
       @include mediaTabletM {

@@ -107,7 +107,7 @@ export default {
 </script>
 
 <style lang="scss">
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .card {
   position: relative;

@@ -1,5 +1,5 @@
 <template>
-  <breadcrumbs/>
+
   <div>
     акции и предложения
   </div>

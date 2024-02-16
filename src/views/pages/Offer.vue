@@ -1,5 +1,5 @@
 <template>
-  <breadcrumbs/>
+
   <section class="offer" itemscope itemtype="https://schema.org/Article">
     <meta :content="title" itemprop="headline name">
     <meta :content="description" itemprop="description">

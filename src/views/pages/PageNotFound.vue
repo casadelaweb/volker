@@ -1,5 +1,5 @@
 <template>
-  <breadcrumbs/>
+
   <section class="section">
     <div class="container">
       <h1 class="h1">404 - Не найдено</h1>

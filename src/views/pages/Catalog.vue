@@ -5,11 +5,13 @@
       <div class="catalog-categories">
         <article v-for="category in categories" :key="category.id" class="catalog-category">
           <h2 class="catalog-category-title">
-            <a :href="category.url"> {{ category.title }} </a>
+            <router-link :to="category.url">
+              {{ category.title }}
+            </router-link>
           </h2>
-          <a :href="category.url">
+          <router-link :to="category.url">
             <img :alt="category.title" :src="category.img.url" class="catalog-category-img">
-          </a>
+          </router-link>
           <div class="catalog-category-description">
             {{ category.description }}
           </div>
@@ -20,8 +22,9 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   data: function () {
     return {
       categories: [
@@ -82,7 +85,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -103,11 +106,11 @@ export default {
   &-categories {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 14px;
-    row-gap: 14px;
+    column-gap: 8px;
+    row-gap: 8px;
     @include mediaMobileM {
-      column-gap: 16px;
-      row-gap: 16px;
+      column-gap: 12px;
+      row-gap: 12px;
     }
     @include mediaTabletS {
       row-gap: 20px;
@@ -115,6 +118,8 @@ export default {
     }
     @include mediaTabletL {
       grid-template-columns: repeat(3, 1fr);
+      row-gap: 24px;
+      column-gap: 24px;
     }
     @include mediaLaptopS {
       grid-template-columns: repeat(4, 1fr);
@@ -123,15 +128,26 @@ export default {
 
   &-category {
     @include flex($d: column);
-    row-gap: 10px;
-    padding: 20px;
+    row-gap: 8px;
+    padding: 12px;
     border: 1px solid #f0f0f0;
     box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
     border-radius: 8px;
+    @include mediaMobileM {
+      row-gap: 12px;
+      padding: 16px;
+    }
+    @include mediaTabletS {
+      row-gap: 16px;
+      padding: 20px;
+    }
 
     &-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 500;
+      @include mediaTabletM {
+        font-size: 18px;
+      }
     }
 
     &-img {
@@ -141,8 +157,11 @@ export default {
     }
 
     &-description {
-      font-size: 14px;
+      font-size: 13px;
       color: #505050;
+      @include mediaTabletM {
+        font-size: 14px;
+      }
     }
   }
 }

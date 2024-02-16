@@ -42,9 +42,9 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 
-
-export default {
+export default defineComponent({
   components: {},
   props: {
     products: {
@@ -172,11 +172,11 @@ export default {
       this.$emit('filtrationEnds', productsFiltered, this.filters.searchQuery)
     },
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .filters {
   // background: #f5f5f5;
