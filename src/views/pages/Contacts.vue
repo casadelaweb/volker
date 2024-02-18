@@ -2,7 +2,7 @@
 
   <section class="section">
     <div class="container">
-      <section-top title="Контакты"/>
+      <SectionTop title="Контакты"/>
       <div class="layout">
         <div class="info">
           <div class="info-item">
@@ -28,14 +28,14 @@
 </template>
 
 <script lang="ts">
-import sectionTop from 'src/components/ui/section-top.vue'
+import SectionTop from 'src/components/ui/section-top.vue'
 import feedbackHorizontal from 'src/components/sections/feedback-horizontal.vue'
 import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
 
 export default {
   components: {
     breadcrumbs,
-    sectionTop,
+    SectionTop,
     feedbackHorizontal,
   },
 }

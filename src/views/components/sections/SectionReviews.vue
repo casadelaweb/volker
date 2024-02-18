@@ -1,16 +1,16 @@
 <template>
   <section class="reviews">
     <div class="reviews-container">
-      <section-top title="Отзывы">
+      <SectionTop :title="{ text:'Отзывы', }">
         <div class="reviews-slider-controls">
           <button class="reviews-slider-button" title="Предыдущий слайд" type="button">
-            prev
+            <span class="iconfont icon-arrow-left"></span>
           </button>
           <button class="reviews-slider-button" title="Следующий слайд" type="button">
-            next
+            <span class="iconfont icon-arrow-right"></span>
           </button>
         </div>
-      </section-top>
+      </SectionTop>
       <swiper :lazy="settings.lazy"
               :loop="settings.loop"
               :modules="modules"
@@ -23,19 +23,19 @@
           <article class="review">
             <div class="review-rating">
               <div class="review-rating-row">
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
               </div>
               <div :style="'width: '+ calculateRatingOverlayWidth(review.rating) + '%;'"
-                   class="review-rating-row_overlay">
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
-                <div class="iconfont icon-location"></div>
+                   class="review-rating-row _overlay">
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
+                <div class="iconfont icon-heart-fill"></div>
               </div>
             </div>
             <div class="review-body">{{ review.body }}</div>
@@ -44,42 +44,35 @@
         </swiper-slide>
 
       </swiper>
-
-      <!--      <form class="form">-->
-      <!--        <label class="form-label">-->
-      <!--          <span class="form-subtitle">Ваше имя <span class="form-obligatory">*</span></span>-->
-      <!--          <input class="form-input" placeholder="Имя" required type="text">-->
-      <!--        </label>-->
-      <!--        <label class="form-label">-->
-      <!--          <span class="form-subtitle">Комментарий <span class="form-obligatory">*</span></span>-->
-      <!--          <textarea class="form-input" placeholder="Комментарий"></textarea>-->
-      <!--        </label>-->
-      <!--        <label class="form-note">-->
-      <!--          <input class="form-checkbox" data-alt required type="checkbox">-->
-      <!--          <span>Нажимая на кнопку "Отправить" вы даете согласие на хранение и обработку персональных данных.</span>-->
-      <!--        </label>-->
-      <!--        <button class="form-button" type="button">Отправить</button>-->
-      <!--      </form>-->
     </div>
   </section>
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/scss'
 import 'swiper/scss/pagination'
-import sectionTop from 'src/components/ui/section-top.vue'
+import SectionTop from 'src/views/components/ui/SectionTop.vue'
 
-export default {
+interface review {
+  id: string,
+  title: string,
+  body: string,
+  author: string,
+  rating: number,
+}
+
+export default defineComponent({
   components: {
     Swiper,
     SwiperSlide,
-    sectionTop,
+    SectionTop,
   },
   props: {
     reviews: {
-      type: Array,
+      type: Array<review>,
       required: true,
     },
   },
@@ -103,7 +96,7 @@ export default {
     }
   },
   methods: {
-    calculateRatingOverlayWidth(rating) {
+    calculateRatingOverlayWidth(rating: number) {
       return rating * 100 / 5
     },
   },
@@ -116,11 +109,11 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .reviews {
   @include section;
@@ -134,24 +127,39 @@ export default {
     overflow: unset;
     padding: 20px 0 40px;
 
+    &-controls {
+      @include flex(center);
+      column-gap: 40px;
+    }
+
     &-button {
-      margin-left: 20px;
-      padding: 4px 24px;
+      @include flex(center, center);
+      flex: 0 0 auto;
+      border-radius: 8px;
+      width: 64px;
+      height: 32px;
+      font-size: 16px;
       border: 2px solid darkseagreen;
-      //border-radius: 8px;
+      color: darkseagreen;
     }
   }
 
   &-slide {
-    box-shadow: 4px 4px 24px 0 rgba(black, 0.1);
+    @include flex($d: column);
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
+    border: 1px solid #f0f0f0;
   }
 }
 
 .review {
+  flex: 1 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   row-gap: 10px;
   padding: 20px;
+  // border-radius: 8px;
   // min-height: 180px;
 
   &-rating {
@@ -160,13 +168,14 @@ export default {
     position: relative;
     z-index: 0;
     width: fit-content;
-    color: #808080;
+    color: #f0f0f0;
 
     &-row {
       @include flex(center);
+      column-gap: 8px;
       $this: &;
 
-      &_overlay {
+      &._overlay {
         @extend #{$this};
         position: absolute;
         z-index: 1;
@@ -177,7 +186,7 @@ export default {
         min-width: 0;
         max-width: 100%;
         height: 100%;
-        color: #ffd220;
+        color: #f5ca20;
       }
     }
   }

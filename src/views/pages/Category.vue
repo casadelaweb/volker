@@ -74,31 +74,14 @@
         <form class="filters">
           <div class="filters-header">
             <div class="filters-title">Фильтры</div>
-            <button class="filter-close" title="Закрыть" type="button">
+            <button class="filters-close" title="Закрыть" type="button">
               <span class="iconfont icon-close"></span>
             </button>
           </div>
           <div class="filters-body">
-            <fieldset class="filter">
-              <legend class="filter-legend">
-                <span class="filter-legend-title">Название фильтра</span>
-                <span class="filter-legend-icon iconfont icon-arrow-down"></span>
-              </legend>
-              <div class="filter-body">
-                <label class="filter-label">
-                  <input class="filter-input" type="checkbox">
-                  <span class="filter-span">Вот какой-то фильтр</span>
-                </label>
-                <label class="filter-label">
-                  <input class="filter-input" type="checkbox">
-                  <span class="filter-span">Вот какой-то фильтр</span>
-                </label>
-                <label class="filter-label">
-                  <input class="filter-input" type="checkbox">
-                  <span class="filter-span">Вот какой-то фильтр</span>
-                </label>
-              </div>
-            </fieldset>
+            <Filter v-for="filter in categoryFilters" :inputs="filter.inputs"
+                    :isOpenDefault="filter.isOpenDefault" :title="filter.title"
+                    :type="filter.type"/>
           </div>
           <div class="filters-footer">
             <button class="filters-reset" type="button">
@@ -109,7 +92,7 @@
             </button>
           </div>
         </form>
-        <div class="products">
+        <div :class="products.length === 0 ? 'products _empty' : 'products' ">
           <article v-for="product in products" :key="product.id" class="product">
             <div class="product-buttons">
               <button class="product-fav" title="Добавить в избранное" type="button">
@@ -145,6 +128,21 @@
               </router-link>
             </div>
           </article>
+
+          <div v-if="products.length === 0" class="catalog-nomatch">
+            <h2 class="catalog-nomatch-title">
+              К сожалению, по Вашему запросу <span
+              class="catalog-nomatch-query">"{{ searchQueryLatest }}"</span> ничего
+              не найдено.
+            </h2>
+            <ul class="catalog-nomatch-list">
+              <li>Убедитесь, что все слова написаны без ошибок.</li>
+              <li>Попробуйте использовать другие ключевые слова.</li>
+              <li>Попробуйте использовать более популярные ключевые слова.</li>
+              <li>Попробуйте уменьшить количество слов в запросе.</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>
@@ -156,12 +154,14 @@ import { defineComponent } from 'vue'
 import card from 'src/views/components/catalog/card.vue'
 import filters from 'src/views/components/catalog/filters.vue'
 import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
+import Filter from 'src/views/components/Filter.vue'
 
 export default defineComponent({
   components: {
     card,
     filters,
     breadcrumbs,
+    Filter,
   },
   data: function () {
     return {
@@ -256,6 +256,51 @@ export default defineComponent({
         limit: 3,
         total: 0,
       },
+      categoryFilters: [
+        {
+          title: 'test title filter',
+          isOpenDefault: true,
+          type: 'checkbox',
+          inputs: [
+            {
+              name: 'test',
+              value: 'test1',
+              label: 'test title 1',
+            },
+            {
+              name: 'test',
+              value: 'test2',
+              label: 'test title 3',
+            },
+            {
+              name: 'test',
+              value: 'test3',
+              label: 'test title 3',
+            },
+          ]
+        },
+        {
+          title: 'Сортировать',
+          type: 'radio',
+          inputs: [
+            {
+              name: 'sort',
+              value: 'az',
+              label: 'По алфавиту',
+            },
+            {
+              name: 'sort',
+              value: 'price_ascending',
+              label: 'Сначала дешевле',
+            },
+            {
+              name: 'sort',
+              value: 'price_descending',
+              label: 'Сначала дороже',
+            },
+          ]
+        }
+      ],
     }
   },
   methods: {
@@ -446,6 +491,9 @@ export default defineComponent({
     background: rgba(white, 0.5);
     box-shadow: 0 2px 4px 0 rgba(black, 0.05);
     transition: transform 0.25s, color 0.25s;
+    @include mediaLaptopXs {
+      display: none;
+    }
 
     @include hoverableDevice {
       &:hover {
@@ -471,68 +519,19 @@ export default defineComponent({
   }
 }
 
-.filter {
-  @include flex($d: column);
-
-  &-legend {
-    @include flex(center, space-between);
-    width: 100%;
-    flex: 0 0 auto;
-    padding: 20px;
-    transition: background-color 0.25s;
-    cursor: pointer;
-    @include hoverableDevice {
-      &:hover {
-        background: #f5f5f5;
-      }
-    }
-
-    &:active {
-      background: #f0f0f0;
-    }
-
-    &-title {
-    }
-
-    &-icon {
-    }
-  }
-
-  &-body {
-    display: grid;
-    grid-template-columns: 1fr;
-    row-gap: 16px;
-    padding: 20px;
-  }
-
-  &-label {
-    @include flex(center);
-    column-gap: 10px;
-    min-width: 0;
-    width: fit-content;
-    transition: color 0.25s;
-    @include hoverableDevice {
-      &:hover {
-        color: darkseagreen;
-      }
-    }
-  }
-
-  &-input {
-  }
-
-  &-span {
-  }
-}
 
 .products {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  row-gap: 20px;
+  row-gap: 40px;
   column-gap: 20px;
   flex: 0 0 auto;
   min-width: 0;
   min-height: 0;
+
+  &._empty {
+    display: block
+  }
 }
 
 .product {

@@ -7,13 +7,20 @@
     <meta :content="offer.date.published" itemprop="datePublished">
     <meta :content="offer.date.modified" itemprop="dateModified">
 
-    <div v-if="offer.activity !== ''" class="offer-activity"> {{ offer.activity }}</div>
+    <div v-if="offer.activity !== ''" class="offer-activity">
+      {{ offer.activity }}
+    </div>
     <router-link :title="offer.title" :to="offer.url" class="offer-preview">
       <img :alt="offer.preview.alt" :src="offer.preview.url" class="offer-img" loading="lazy">
     </router-link>
     <h3 class="offer-title">
-      <router-link :title="offer.title" :to="offer.url"> {{ offer.title }}</router-link>
+      <router-link :title="offer.title" :to="offer.url">
+        {{ offer.title }}
+      </router-link>
     </h3>
+    <div class="offer-description">
+      {{ offer.description.short }}
+    </div>
   </article>
 </template>
 
@@ -45,10 +52,11 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .offer {
-  // @include flex($d: column);
+  @include flex($d: column);
+  row-gap: 10px;
   position: relative;
   z-index: 0;
   padding: 10px;
@@ -69,6 +77,7 @@ export default defineComponent({
     padding: 4px 8px;
     color: white;
     background: lightcoral;
+    border-radius: 8px;
     @include mediaTabletM {
       font-size: 14px;
     }
@@ -81,12 +90,10 @@ export default defineComponent({
   }
 
   &-img {
-    display: block;
     width: 100%;
-    margin-bottom: 10px;
     transition: transform 0.334s;
-    aspect-ratio: 21 / 9;
-    object-fit: contain;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
 
     &:hover {
       transform: scale(1.25);
@@ -95,6 +102,11 @@ export default defineComponent({
 
   &-title {
     @include h6;
+  }
+
+  &-description {
+    font-size: 14px;
+    line-height: 1.4;
   }
 }
 </style>

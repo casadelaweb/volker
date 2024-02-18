@@ -1,7 +1,7 @@
 <template>
   <section class="feedbackImg">
     <div class="feedbackImg-container">
-      <section-top :title="title"/>
+      <SectionTop :title="title"/>
       <div class="form-layout">
         <div class="form-decor"></div>
         <form class="form">
@@ -31,11 +31,11 @@
 </template>
 
 <script lang="ts">
-import sectionTop from 'src/components/ui/section-top.vue'
+import SectionTop from 'src/components/ui/section-top.vue'
 
 export default {
   components: {
-    sectionTop,
+    SectionTop,
   },
   data: function () {
     return {

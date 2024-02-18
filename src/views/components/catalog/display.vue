@@ -1,7 +1,7 @@
 <template>
   <section class="display">
     <div class="display-container">
-      <sectionTop :button="sectionTopProps.button" :title="sectionTopProps.title"/>
+      <SectionTop :button="SectionTopProps.button" :title="SectionTopProps.title"/>
       <div v-if="isLoading" class="display-empty">
         <img alt="loading" class="lazy" data-src="src/assets/img/loading.gif"
              src="src/assets/img/placeholder.jpg">
@@ -26,15 +26,15 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import sectionTop from 'src/views/components/ui/section-top.vue'
+import SectionTop from 'src/views/components/ui/section-top.vue'
 
 export default defineComponent({
   components: {
-    sectionTop,
+    SectionTop,
   },
   data: function () {
     return {
-      sectionTopProps: {
+      SectionTopProps: {
         title: {
           text: 'Каталог',
           url: '/catalog/',

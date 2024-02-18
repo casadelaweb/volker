@@ -13,23 +13,21 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  props: {
-    title: {
-      type: Object,
-      required: true,
-    },
-    button: {
-      type: Object,
-      required: false,
-    },
-  },
-}
+<script lang="ts" setup>
+defineProps<{
+  title: {
+    text: string,
+    url: string,
+  }
+  button?: {
+    text: string,
+    url: string,
+  }
+}>()
 </script>
 
 <style lang="scss">
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .section-top {
   @include flex(center, space-between);

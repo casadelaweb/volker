@@ -1,18 +1,19 @@
 <template>
   <section class="production">
     <div class="production-container">
-      <section-top :title="title"/>
+      <SectionTop :title="title"/>
       <div class="production-img"></div>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import sectionTop from 'src/components/ui/section-top.vue'
+import { defineComponent } from 'vue'
+import SectionTop from 'src/views/components/ui/SectionTop.vue'
 
-export default {
+export default defineComponent({
   components: {
-    sectionTop,
+    SectionTop,
   },
   data: function () {
     return {
@@ -21,11 +22,11 @@ export default {
       },
     }
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .production {
   @include section;

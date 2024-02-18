@@ -1,7 +1,7 @@
 <template>
   <section class="suggestions">
     <div class="suggestions-container">
-      <section-top :button="button" :title="title"/>
+      <SectionTop :button="button" :title="title"/>
       <div v-if="products.length > 0" class="suggestions-layout">
         <card v-for="product in products" :key="product.id" :product="product"/>
       </div>
@@ -14,13 +14,13 @@
 </template>
 
 <script lang="ts">
-import sectionTop from 'src/components/ui/section-top.vue'
+import SectionTop from 'src/components/ui/section-top.vue'
 import card from 'src/components/catalog/card.vue'
 
 export default {
   components: {
     card,
-    sectionTop,
+    SectionTop,
   },
   props: {
     title: {

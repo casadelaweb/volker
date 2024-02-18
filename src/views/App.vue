@@ -3,7 +3,6 @@
   <main id="main">
     <router-view :key="$route.path"></router-view>
   </main>
-
   <FeedbackHorizontal></FeedbackHorizontal>
   <AppFooter></AppFooter>
 </template>
