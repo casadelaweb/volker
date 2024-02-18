@@ -79,6 +79,7 @@ export default {
   border-bottom: 2px solid #f0f0f0;
   display: none;
   @include mediaLaptopXs {
+    display: block;
   }
 
   &-container {

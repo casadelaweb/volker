@@ -114,6 +114,10 @@ export default {
 .footer {
   margin-top: 40px;
   box-shadow: 0 -40px 40px 0 rgba(black, 0.05);
+  display: none;
+  @include mediaLaptopXs {
+    display: block;
+  }
 
   &-logo {
     display: inline-block;
