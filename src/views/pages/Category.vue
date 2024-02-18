@@ -69,12 +69,17 @@
     <div class="catalog-container">
       <div class="catalog-header">
         <h1 class="catalog-title">Название категории товаров</h1>
+        <button style="margin: 20px 0 40px;" type="button" @click="handleClick">
+          <span class="iconfont icon-filters"></span>
+        </button>
       </div>
       <div class="catalog-layout">
+        <!-- todo: декомпозировать в отдельные компоненты -->
+
         <form class="filters">
           <div class="filters-header">
             <div class="filters-title">Фильтры</div>
-            <button class="filters-close" title="Закрыть" type="button">
+            <button class="filters-close" title="Закрыть" type="button" @click="handleClick">
               <span class="iconfont icon-close"></span>
             </button>
           </div>
@@ -92,7 +97,12 @@
             </button>
           </div>
         </form>
+        <Teleport to="#app">
+          <div class="filters-overlay" @click="handleClick"></div>
+        </Teleport>
+
         <div :class="products.length === 0 ? 'products _empty' : 'products' ">
+
           <article v-for="product in products" :key="product.id" class="product">
             <div class="product-buttons">
               <button class="product-fav" title="Добавить в избранное" type="button">
@@ -280,6 +290,48 @@ export default defineComponent({
           ]
         },
         {
+          title: 'test 2 title filter',
+          type: 'checkbox',
+          inputs: [
+            {
+              name: 'test',
+              value: 'test1',
+              label: 'test title 1',
+            },
+            {
+              name: 'test',
+              value: 'test2',
+              label: 'test title 3',
+            },
+            {
+              name: 'test',
+              value: 'test3',
+              label: 'test title 3',
+            },
+          ]
+        },
+        {
+          title: 'test 3 title filter',
+          type: 'checkbox',
+          inputs: [
+            {
+              name: 'test',
+              value: 'test1',
+              label: 'test title 1',
+            },
+            {
+              name: 'test',
+              value: 'test2',
+              label: 'test title 3',
+            },
+            {
+              name: 'test',
+              value: 'test3',
+              label: 'test title 3',
+            },
+          ]
+        },
+        {
           title: 'Сортировать',
           type: 'radio',
           inputs: [
@@ -318,6 +370,13 @@ export default defineComponent({
     },
     changePage() {
     },
+    handleClick(event: MouseEvent) {
+      const modal = document.body.querySelector('.filters')
+      const overlay = document.body.querySelector('.filters-overlay')
+
+      modal.classList.toggle('_active')
+      overlay.classList.toggle('_active')
+    }
   },
   mounted() {
     this.fetchCatalog()
@@ -450,29 +509,54 @@ export default defineComponent({
 
 .catalog {
   &-layout {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    column-gap: 40px;
+    @include mediaLaptopXs {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      column-gap: 16px;
+    }
   }
 }
 
 .filters {
-  // background: #f0f0f0;
-  position: sticky;
-  top: 100px;
-  z-index: 1;
+  @include flex($d: column);
   flex: 0 0 auto;
   min-width: 0;
   min-height: 0;
-  height: fit-content;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100%;
+  background: white;
   border-radius: 8px;
   border: 1px solid #f0f0f0;
   box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
+  pointer-events: none;
+  transform: translate(-100%, 0);
+  transition: transform 0.334s;
+  @include mediaLaptopXs {
+    position: sticky;
+    top: 100px;
+    z-index: 1;
+    height: fit-content;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  &._active {
+    pointer-events: auto;
+    transform: none;
+  }
 
   &-header, &-footer {
     @include flex(center, space-between);
     padding: 20px;
     border-bottom: 1px solid #f0f0f0;
+  }
+
+  &-body {
+    overflow-x: auto;
   }
 
   &-title {
@@ -507,6 +591,7 @@ export default defineComponent({
   }
 
   &-footer {
+    margin-top: auto;
     border-bottom: 0;
   }
 
@@ -517,17 +602,37 @@ export default defineComponent({
   &-submit {
     @include buttonAccented;
   }
-}
 
+  &-overlay {
+    position: fixed;
+    z-index: 90;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(black, 0.25);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.334s;
+
+    &._active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
 
 .products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  row-gap: 40px;
-  column-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 16px;
+  column-gap: 16px;
   flex: 0 0 auto;
   min-width: 0;
   min-height: 0;
+  @include mediaLaptopXs {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   &._empty {
     display: block

@@ -77,6 +77,9 @@ export default {
   background: white;
   box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
   border-bottom: 2px solid #f0f0f0;
+  display: none;
+  @include mediaLaptopXs {
+  }
 
   &-container {
     @include container;
