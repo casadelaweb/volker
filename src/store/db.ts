@@ -1,1019 +1,379 @@
-export const catalog = [
-  {
-    id: 'trotuarnaya-plitka',
-    title: 'Тротуарная плитка',
-    description: {
-      short: 'Несколько цветовых схем, повышенная износостойкость и срок службы от 20 лет.',
-      full: 'Заполните подробное описание'
-    },
-    url: '/catalog/trotuarnaya-plitka',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'angliyskiy-bulyzhnik',
-        category: 'trotuarnaya-plitka',
-        title: 'Английский булыжник',
-        description: {
-          short: 'Для дорожек, тротуаров и площадок в европейском стиле',
-          full: 'Пешеходные дорожки, тротуары и площадки выложенные английским булыжником внешне напоминают мощение на улицах европейских городов прошлого столетия. Простая геометрическая форма и 6 цветовых схем позволяют создать разнообразные украшающие узоры, что подойдет для любого участка.'
-        },
-        url: '/catalog/trotuarnaya-plitka/angliyskiy-bulyzhnik',
-        products: [],
-        keywords: 'тротуарная, плитка, английский, булыжник',
-        images: [
-          {
-            url: '/uploads/angliyskiy-bulyzhnik/0.jpg',
-            thumb: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/angliyskiy-bulyzhnik/1.jpg',
-            thumb: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/angliyskiy-bulyzhnik/2.jpg',
-            thumb: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/angliyskiy-bulyzhnik/3.jpg',
-            thumb: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/angliyskiy-bulyzhnik/4.jpg',
-            thumb: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/angliyskiy-bulyzhnik/thumb-h180-4.jpg'
-            }
-          }
-        ],
-        price: 'от 1100',
-        parameters: [
-          {
-            title: 'Доступные цвета',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры',
-            value: '25 x 12 x 5 (см)'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'english-bricks',
-        recommend: false
+export const database = {
+  'catalog': [
+    {
+      'id': 'slabs',
+      'url': '/catalog/slabs/',
+      'title': 'Тротуарная плитка',
+      'description': {
+        'short': 'Несколько цветовых схем, повышенная износостойкость и срок службы от 20 лет.',
+        'full': ''
       },
-      {
-        id: 'greciya-malaya',
-        category: 'trotuarnaya-plitka',
-        title: 'Греция малая',
-        description: {
-          short: 'Плитка с аутентичными узорами, вдохновленными тематикой античной Греции',
-          full: 'Тротуарная плитка Греция малая выполнена в тематике античной Греции, доступны несколько вариантов узоров и 6 вариаций цветовых схем. Конструктивно выполнена из кевлар-бетона и имеет внушительный срок службы от 20 лет.'
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
         },
-        url: '/catalog/trotuarnaya-plitka/greciya-malaya',
-        products: [],
-        keywords: 'тротуарная, плитка, Греция, греческая, малая',
-        images: [
-          {
-            url: '/uploads/greciya-malaya/0.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/1.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/2.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/3.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/4.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-4.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/5.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-5.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-5.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/6.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-6.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-6.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/7.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-7.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-7.jpg'
-            }
-          },
-          {
-            url: '/uploads/greciya-malaya/8.jpg',
-            thumb: {
-              url: '/uploads/greciya-malaya/thumb-h240-8.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/greciya-malaya/thumb-h180-8.jpg'
-            }
-          }
-        ],
-        price: 'от 1250',
-        parameters: [
-          {
-            title: 'Доступные цвета',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры',
-            value: '25 x 12 x 5 (см)'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'english-bricks-1',
-        recommend: false
+        'keywords': ''
       },
-      {
-        id: 'klever-krakovskiy',
-        category: 'trotuarnaya-plitka',
-        title: 'Клевер Краковский',
-        description: {
-          short: 'Брусчатка с нестандартной, фигурной формой в виде клевера',
-          full: false
-        },
-        url: '/catalog/trotuarnaya-plitka/klever-krakovskiy',
-        products: [],
-        keywords: 'тротуарная, плитка, клевер, краковский, брусчатка',
-        images: [
-          {
-            url: '/uploads/klever-krakovskiy/0.jpg',
-            thumb: {
-              url: '/uploads/klever-krakovskiy/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/klever-krakovskiy/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/klever-krakovskiy/1.jpg',
-            thumb: {
-              url: '/uploads/klever-krakovskiy/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/klever-krakovskiy/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/klever-krakovskiy/2.jpg',
-            thumb: {
-              url: '/uploads/klever-krakovskiy/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/klever-krakovskiy/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/klever-krakovskiy/3.jpg',
-            thumb: {
-              url: '/uploads/klever-krakovskiy/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/klever-krakovskiy/thumb-h180-3.jpg'
-            }
-          }
-        ],
-        price: 'от 900',
-        parameters: [
-          {
-            title: 'Доступные цвета',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры',
-            value: '29 x 29 x 4.5 (см)'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'english-bricks-2',
-        recommend: true
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Тротуарная плитка'
       }
-    ],
-  },
-  {
-    id: 'bordyurnye-kamni',
-    title: 'Бордюрные камни',
-    description: {
-      short: 'Для оформления пешеходных дорожек, площадок и зеленых участков.',
-      full: false
     },
-    url: '/catalog/bordyurnye-kamni',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'porebrik-gotika',
-        category: 'bordyurnye-kamni',
-        title: 'Поребрик Готика',
-        description: {
-          short: 'Необычное решение с готическим орнаментом для тротуарного поребрика подчеркнет любой рисунок тротуарной плитки.',
-          full: false
-        },
-        url: '/catalog/bordyurnye-kamni/porebrik-gotika',
-        products: [],
-        keywords: 'поребрик, бордюр, готика',
-        images: [
-          {
-            url: '/uploads/porebrik-gotika/0.jpg',
-            thumb: {
-              url: '/uploads/porebrik-gotika/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/porebrik-gotika/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/porebrik-gotika/1.jpg',
-            thumb: {
-              url: '/uploads/porebrik-gotika/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/porebrik-gotika/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/porebrik-gotika/2.jpg',
-            thumb: {
-              url: '/uploads/porebrik-gotika/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/porebrik-gotika/thumb-h180-2.jpg'
-            }
-          }
-        ],
-        price: 'от 200',
-        parameters: [
-          {
-            title: 'Доступные цвета',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры',
-            value: '50 x 20.5 (см)'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'english-bricks-3',
-        recommend: false
-      }
-    ],
-  },
-  {
-    id: 'zabory',
-    title: 'Заборы',
-    description: {
-      short: 'Заполните описание категории!',
-      full: false
-    },
-    url: '/catalog/zabory',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'reechnyy-zabor',
-        category: 'zabory',
-        title: 'Реечный забор',
-        description: {
-          short: 'Эффективно защищает от пыли и излишнего внимания посторонних. Обеспечивает достаточный уровень проветриваемости.',
-          full: false
-        },
-        url: '/catalog/zabory/reechnyy-zabor',
-        products: [],
-        keywords: 'забор, реечный',
-        images: [
-          {
-            url: '/uploads/reechnyy-zabor/0.jpg',
-            thumb: {
-              url: '/uploads/reechnyy-zabor/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/reechnyy-zabor/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/reechnyy-zabor/1.jpg',
-            thumb: {
-              url: '/uploads/reechnyy-zabor/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/reechnyy-zabor/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/reechnyy-zabor/2.jpg',
-            thumb: {
-              url: '/uploads/reechnyy-zabor/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/reechnyy-zabor/thumb-h180-2.jpg'
-            }
-          }
-        ],
-        price: 'от 800',
-        parameters: [
-          {
-            title: 'Срок эксплуатации',
-            value: 'До 30 лет'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'reechnyi-zabor',
-        recommend: false
-      }
-    ],
-  },
-  {
-    id: 'vorota-i-kalitki',
-    title: 'Ворота и калитки',
-    description: {
-      short: 'Заполните описание категории!',
-      full: false
-    },
-    url: '/catalog/vorota-i-kalitki',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'otkatnye-vorota',
-        category: 'vorota-i-kalitki',
-        title: 'Откатные ворота',
-        description: {
-          short: 'Откатные (также называемые сдвижными) ворота изготовляются из проф. листа, поликарбоната, металлоштакетника и из дерева. Высокое удобство использования, а также хорошая стойкость к погодно-сезонным факторам делают данный тип предпочтительным для большинства клиентов.',
-          full: 'Лучший вариант для автовладельца, в особенности, в снежную погоду. Полная автоматизация - механизм работает на электродвижках и управляется через пульт дистанционного управления.'
-        },
-        url: '/catalog/vorota-i-kalitki/otkatnye-vorota',
-        products: [],
-        keywords: 'ворота, откатные',
-        images: [
-          {
-            url: '/uploads/otkatnye-vorota/0.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/otkatnye-vorota/1.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/otkatnye-vorota/2.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/otkatnye-vorota/3.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/otkatnye-vorota/4.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-4.jpg'
-            }
-          },
-          {
-            url: '/uploads/otkatnye-vorota/5.jpg',
-            thumb: {
-              url: '/uploads/otkatnye-vorota/thumb-h240-5.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/otkatnye-vorota/thumb-h180-5.jpg'
-            }
-          }
-        ],
-        price: 'от 36 000',
-        parameters: [
-          {
-            title: 'Срок эксплуатации',
-            value: 'До 30 лет'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'reechnyi-zabor',
-        recommend: true
+    {
+      'id': 'borders',
+      'url': '/catalog/borders/',
+      'title': 'Бордюрные камни',
+      'description': {
+        'short': 'Для оформления пешеходных дорожек, площадок и зеленых участков.',
+        'full': ''
       },
-      {
-        id: 'raspashnye-vorota',
-        category: 'vorota-i-kalitki',
-        title: 'Распашные ворота',
-        description: {
-          short: 'Самый распространенный тип ворот, используемый при обустройстве небольшого дачного участка и частной территорий. Для изготовления ворот используются как традиционные дерево и металлические листы, так и более современные – проф. настил и поликарбонат. Единственный недостаток эксплуатации распашных ворот – необходимость достаточного пространства для открывания створок и периодическая чистка прилегающей территории.',
-          full: 'Самый распространенный тип ворот, используемый при обустройстве небольшого дачного участка и частной территорий. Для изготовления ворот используются как традиционные дерево и металлические листы, так и более современные – проф. настил и поликарбонат. Единственный недостаток эксплуатации распашных ворот – необходимость достаточного пространства для открывания створок и периодическая чистка прилегающей территории.\n\nПростота монтажа - установка распашных ворот занимает небольшое количество человекочасов и отличается невысокой ценой.\n\nМинимум дополнительного обслуживания в период эксплуатации и длительный срок активного использования.\n\nВозможность автоматизации с использованием электродвижков и пульта дистанционного управления.'
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
         },
-        url: '/catalog/vorota-i-kalitki/raspashnye-vorota',
-        products: [],
-        keywords: 'ворота, распашные',
-        images: [
-          {
-            url: '/uploads/raspashnye-vorota/0.jpg',
-            thumb: {
-              url: '/uploads/raspashnye-vorota/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/raspashnye-vorota/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/raspashnye-vorota/1.jpg',
-            thumb: {
-              url: '/uploads/raspashnye-vorota/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/raspashnye-vorota/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/raspashnye-vorota/2.jpg',
-            thumb: {
-              url: '/uploads/raspashnye-vorota/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/raspashnye-vorota/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/raspashnye-vorota/3.jpg',
-            thumb: {
-              url: '/uploads/raspashnye-vorota/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/raspashnye-vorota/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/raspashnye-vorota/4.jpg',
-            thumb: {
-              url: '/uploads/raspashnye-vorota/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/raspashnye-vorota/thumb-h180-4.jpg'
-            }
-          }
-        ],
-        price: 'от 18 000',
-        parameters: [
-          {
-            title: 'Срок эксплуатации',
-            value: 'До 30 лет'
-          },
-          {
-            title: 'Производство',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'reechnyi-zabor-1',
-        recommend: true
+        'keywords': ''
       },
-      {
-        id: 'kalitki',
-        category: 'vorota-i-kalitki',
-        title: 'Калитки',
-        description: {
-          short: 'Традиционно, в качестве конструкционных материалов применяются металл и дерево, однако возможна установка калиток из других материалов, таких как поликарбонат и проф. лист. Процесс установки не представляет трудностей, занимает мало времени и отличается дешевизной.',
-          full: 'Простота монтажа - установка калиток занимает мало человекочасов и отличается комфортной ценой.\n\nБольшое пространство для творческого подхода - подберем к стилю дома, участка и забора.'
-        },
-        url: '/catalog/vorota-i-kalitki/kalitki',
-        products: [],
-        keywords: 'калитка, калитки',
-        images: [
-          {
-            url: '/uploads/kalitki/0.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/kalitki/1.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/kalitki/2.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/kalitki/3.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/kalitki/4.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-4.jpg'
-            }
-          },
-          {
-            url: '/uploads/kalitki/5.jpg',
-            thumb: {
-              url: '/uploads/kalitki/thumb-h240-5.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kalitki/thumb-h180-5.jpg'
-            }
-          }
-        ],
-        price: 'от 8 000',
-        parameters: [
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'kalitki',
-        recommend: false
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Бордюрные камни'
       }
-    ],
-  },
-  {
-    id: 'navesy',
-    title: 'Навесы',
-    description: {
-      short: 'Заполните описание категории!',
-      full: false
     },
-    url: '/catalog/navesy',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'polnorazmernye-navesy',
-        category: 'navesy',
-        title: 'Полноразмерные навесы',
-        description: {
-          short: 'Заполните это описание!',
-          full: 'Большой выбор конструктивных особенностей, варианты для автомобиля, зоны отдыха, мангала и детской площадки.\n\nПространство для творческого подхода - подберем к стилю дома, участка и забора.'
-        },
-        url: '/catalog/navesy/polnorazmernye-navesy',
-        products: [],
-        keywords: 'навес, навесы',
-        images: [
-          {
-            url: '/uploads/polnorazmernye-navesy/0.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/1.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/2.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-2.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/3.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-3.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-3.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/4.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-4.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-4.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/5.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-5.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-5.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/6.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-6.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-6.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/7.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-7.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-7.jpg'
-            }
-          },
-          {
-            url: '/uploads/polnorazmernye-navesy/8.jpg',
-            thumb: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h240-8.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/polnorazmernye-navesy/thumb-h180-8.jpg'
-            }
-          }
-        ],
-        price: 'от 4500',
-        parameters: [
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'polnorazmernye-navesy',
-        recommend: false
+    {
+      'id': 'fences',
+      'url': '/catalog/fences/',
+      'title': 'Заборы',
+      'description': {
+        'short': '',
+        'full': ''
       },
-      {
-        id: 'kompaktnye-navesy',
-        category: 'navesy',
-        title: 'Компактные навесы',
-        description: {
-          short: 'Заполните это описание!',
-          full: 'Пространство для творческого подхода - подберем к стилю дома, участка и забора. Защищает входную группу от снега и дождя. Выделяет и привлекает внимание.'
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
         },
-        url: '/catalog/navesy/kompaktnye-navesy',
-        products: [],
-        keywords: 'навес, навесы',
-        images: [
-          {
-            url: '/uploads/kompaktnye-navesy/0.jpg',
-            thumb: {
-              url: '/uploads/kompaktnye-navesy/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kompaktnye-navesy/thumb-h180-0.jpg'
-            }
-          },
-          {
-            url: '/uploads/kompaktnye-navesy/1.jpg',
-            thumb: {
-              url: '/uploads/kompaktnye-navesy/thumb-h240-1.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kompaktnye-navesy/thumb-h180-1.jpg'
-            }
-          },
-          {
-            url: '/uploads/kompaktnye-navesy/2.jpg',
-            thumb: {
-              url: '/uploads/kompaktnye-navesy/thumb-h240-2.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kompaktnye-navesy/thumb-h180-2.jpg'
-            }
-          }
-        ],
-        price: 'от 10 000',
-        parameters: [
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'polnorazmernye-navesy-1',
-        recommend: false
+        'keywords': ''
+      },
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Заборы'
       }
-    ],
-  },
-  {
-    id: 'blagoustroystvo-territoriy',
-    title: 'Благоустройство территорий',
-    description: {
-      short: 'Заполните описание категории!',
-      full: false
     },
-    url: '/catalog/blagoustroystvo-territoriy',
-    keywords: [],
-    preview: {
-      url: '',
-    },
-    products: [
-      {
-        id: 'zhelob-vodostok',
-        category: 'blagoustroystvo-territoriy',
-        title: 'Желоб (водосток)',
-        description: {
-          short: 'Благодаря гидрофобизатору, идеальное решение для водостока',
-          full: false
-        },
-        url: '/catalog/blagoustroystvo-territoriy/zhelob-vodostok',
-        products: [],
-        keywords: 'желоб, водосток',
-        images: [
-          {
-            url: '/uploads/zhelob-vodostok/0.jpg',
-            thumb: {
-              url: '/uploads/zhelob-vodostok/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/zhelob-vodostok/thumb-h180-0.jpg'
-            }
-          }
-        ],
-        price: 'от 140',
-        parameters: [
-          {
-            title: 'Доступные цвета:',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал:',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы:',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры:',
-            value: '50 x 16.5 (см)'
-          },
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'zhelob-vodostok',
-        recommend: true
+    {
+      'id': 'gates',
+      'url': '/catalog/gates/',
+      'title': 'Ворота и калитки',
+      'description': {
+        'short': '',
+        'full': ''
       },
-      {
-        id: 'navershie-na-zabornyy-stolb',
-        category: 'blagoustroystvo-territoriy',
-        title: 'Навершие на заборный столб',
-        description: {
-          short: 'Более долговечное решение для навершия для заборного кирпичного столба. Благодаря гидрофобизатору абсолютно водонепроницаемое.',
-          full: false
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
         },
-        url: '/catalog/blagoustroystvo-territoriy/navershie-na-zabornyy-stolb',
-        products: [],
-        keywords: 'забор, заборы, навершие, навершия, крышка, крышки, столб, столбы',
-        images: [
-          {
-            url: '/uploads/navershie-na-zabornyy-stolb/0.jpg',
-            thumb: {
-              url: '/uploads/navershie-na-zabornyy-stolb/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/navershie-na-zabornyy-stolb/thumb-h180-0.jpg'
-            }
-          }
-        ],
-        price: 'от 400',
-        parameters: [
-          {
-            title: 'Доступные цвета:',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал:',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы:',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры:',
-            value: '50 x 50 (см)'
-          },
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'zhelob-vodostok-1',
-        recommend: true
+        'keywords': ''
       },
-      {
-        id: 'kryshka-parapetnaya-dlya-zabora',
-        category: 'blagoustroystvo-territoriy',
-        title: 'Крышка парапетная для забора',
-        description: {
-          short: 'Подчеркнет каменный стиль Вашего каменного забора',
-          full: false
-        },
-        url: '/catalog/blagoustroystvo-territoriy/kryshka-parapetnaya-dlya-zabora',
-        products: [],
-        keywords: 'забор, заборы, крышка, крыша',
-        images: [
-          {
-            url: '/uploads/kryshka-parapetnaya-dlya-zabora/0.jpg',
-            thumb: {
-              url: '/uploads/kryshka-parapetnaya-dlya-zabora/thumb-h240-0.jpg'
-            },
-            thumbSmall: {
-              url: '/uploads/kryshka-parapetnaya-dlya-zabora/thumb-h180-0.jpg'
-            }
-          }
-        ],
-        price: 'от 200',
-        parameters: [
-          {
-            title: 'Доступные цвета:',
-            value: 'Серый, красный, песочный, коричневый, кофейный, вишневый'
-          },
-          {
-            title: 'Материал:',
-            value: 'Кевлар-бетон, гранитный щебень'
-          },
-          {
-            title: 'Срок службы:',
-            value: 'от 25 лет'
-          },
-          {
-            title: 'Размеры:',
-            value: '35 x 28 (см)'
-          },
-          {
-            title: 'Производство:',
-            value: 'Россия'
-          }
-        ],
-        pageName: 'zhelob-vodostok-2',
-        recommend: false
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Ворота и калитки'
       }
-    ],
-  }
-]
+    },
+    {
+      'id': 'awnings',
+      'url': '/catalog/awnings/',
+      'title': 'Навесы',
+      'description': {
+        'short': '',
+        'full': ''
+      },
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Навесы'
+      }
+    },
+    {
+      'id': 'territory-improvements',
+      'url': '/catalog/territory-improvements/',
+      'title': 'Благоустройство территорий',
+      'description': {
+        'short': '',
+        'full': ''
+      },
+      'keywords': '',
+      'parent': {
+        'id': 'catalog',
+        'url': '/catalog/',
+        'title': 'Каталог',
+        'description': {
+          'short': '',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'preview': {
+        'url': '',
+        'httpUrl': '',
+        'alt': 'Благоустройство территорий'
+      }
+    }
+  ],
+  'products': [
+    {
+      'id': 'english-brick',
+      'url': '/catalog/slabs/english-brick/',
+      'title': 'Английский булыжник',
+      'description': {
+        'short': '',
+        'full': ''
+      },
+      'keywords': 'английский булыжник тротуарная плитка',
+      'parent': {
+        'id': 'slabs',
+        'url': '/catalog/slabs/',
+        'title': 'Тротуарная плитка',
+        'description': {
+          'short': 'Несколько цветовых схем, повышенная износостойкость и срок службы от 20 лет.',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'category': {
+        'id': 'slabs',
+        'title': 'Тротуарная плитка'
+      },
+      'discount': false,
+      'images': [
+        {
+          'url': '/site/assets/files/1016/0.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1016/0.jpg',
+          'alt': 'Английский булыжник'
+        },
+        {
+          'url': '/site/assets/files/1016/1.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1016/1.jpg',
+          'alt': 'Английский булыжник'
+        },
+        {
+          'url': '/site/assets/files/1016/2.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1016/2.jpg',
+          'alt': 'Английский булыжник'
+        },
+        {
+          'url': '/site/assets/files/1016/3.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1016/3.jpg',
+          'alt': 'Английский булыжник'
+        },
+        {
+          'url': '/site/assets/files/1016/4.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1016/4.jpg',
+          'alt': 'Английский булыжник'
+        }
+      ],
+      'recommend': true,
+      'price': 1200
+    },
+    {
+      'id': 'border-gothic',
+      'url': '/catalog/borders/border-gothic/',
+      'title': 'Поребрик Готика',
+      'description': {
+        'short': 'Необычное решение с готическим орнаментом для тротуарного поребрика подчеркнет любой рисунок тротуарной плитки.',
+        'full': ''
+      },
+      'keywords': '',
+      'parent': {
+        'id': 'borders',
+        'url': '/catalog/borders/',
+        'title': 'Бордюрные камни',
+        'description': {
+          'short': 'Для оформления пешеходных дорожек, площадок и зеленых участков.',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'category': {
+        'id': 'borders',
+        'title': 'Бордюрные камни'
+      },
+      'discount': false,
+      'images': [],
+      'recommend': false,
+      'price': 200
+    },
+    {
+      'id': 'kirpichnik',
+      'url': '/catalog/slabs/kirpichnik/',
+      'title': 'Кирпичник',
+      'description': {
+        'short': 'Тротуарная плитка Кирпичник широко распространена благодаря простоте монтажа и высокой декоративности. Доступна в 6 цветовых схемах.',
+        'full': ''
+      },
+      'keywords': '',
+      'parent': {
+        'id': 'slabs',
+        'url': '/catalog/slabs/',
+        'title': 'Тротуарная плитка',
+        'description': {
+          'short': 'Несколько цветовых схем, повышенная износостойкость и срок службы от 20 лет.',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'category': {
+        'id': 'slabs',
+        'title': 'Тротуарная плитка'
+      },
+      'discount': false,
+      'images': [],
+      'recommend': false,
+      'price': ''
+    },
+    {
+      'id': 'otkatnye-vorota',
+      'url': '/catalog/gates/otkatnye-vorota/',
+      'title': 'Откатные ворота',
+      'description': {
+        'short': '',
+        'full': ''
+      },
+      'keywords': '',
+      'parent': {
+        'id': 'gates',
+        'url': '/catalog/gates/',
+        'title': 'Ворота и калитки',
+        'description': {
+          'short': '',
+          'full': ''
+        },
+        'keywords': ''
+      },
+      'category': {
+        'id': 'gates',
+        'title': 'Ворота и калитки'
+      },
+      'discount': 25,
+      'images': [
+        {
+          'url': '/site/assets/files/1031/0-1.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/0-1.jpg',
+          'alt': 'Откатные ворота'
+        },
+        {
+          'url': '/site/assets/files/1031/1.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/1.jpg',
+          'alt': 'Откатные ворота'
+        },
+        {
+          'url': '/site/assets/files/1031/2.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/2.jpg',
+          'alt': 'Откатные ворота'
+        },
+        {
+          'url': '/site/assets/files/1031/3.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/3.jpg',
+          'alt': 'Откатные ворота'
+        },
+        {
+          'url': '/site/assets/files/1031/4.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/4.jpg',
+          'alt': 'Откатные ворота'
+        },
+        {
+          'url': '/site/assets/files/1031/5.jpg',
+          'httpUrl': 'http://volker-group/site/assets/files/1031/5.jpg',
+          'alt': 'Откатные ворота'
+        }
+      ],
+      'recommend': true,
+      'price': ''
+    }
+  ],
+  'offers': [
+    {
+      'id': 'invite-friends',
+      'url': '/offers/invite-friends/',
+      'title': 'Приведи друга',
+      'description': {
+        'short': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.',
+        'full': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.'
+      },
+      'keywords': 'акция приведи друга',
+      'parent': {
+        'id': 'offers',
+        'url': '/offers/',
+        'title': 'Акции и предложения',
+        'description': {
+          'short': 'Заполните краткое описание',
+          'full': 'Заполните подробное описание'
+        },
+        'keywords': 'акция приведи друга предложение'
+      },
+      'preview': {
+        'url': '/site/assets/files/1018/friend-invite_1.png',
+        'httpUrl': 'http://volker-group/site/assets/files/1018/friend-invite_1.png',
+        'alt': 'Приведи друга'
+      },
+      'isActive': 1
+    },
+    {
+      'id': 'invite-friends-1',
+      'url': '/offers/invite-friends-1/',
+      'title': 'Тестовая акция',
+      'description': {
+        'short': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.',
+        'full': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.'
+      },
+      'keywords': 'акция тестовая тест',
+      'parent': {
+        'id': 'offers',
+        'url': '/offers/',
+        'title': 'Акции и предложения',
+        'description': {
+          'short': 'Заполните краткое описание',
+          'full': 'Заполните подробное описание'
+        },
+        'keywords': 'акция приведи друга предложение'
+      },
+      'preview': {
+        'url': '/site/assets/files/1023/logomax.png',
+        'httpUrl': 'http://volker-group/site/assets/files/1023/logomax.png',
+        'alt': 'Тестовая акция'
+      },
+      'isActive': 1
+    }
+  ]
+}

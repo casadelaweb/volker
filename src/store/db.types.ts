@@ -13,15 +13,27 @@ export interface iPage {
   },
   url: string,
   keywords: string[],
+  parent: iPage,
+}
+
+interface iProductParameter {
+  key: string,
+  value: string,
 }
 
 /** структура для страницы товара */
 export interface iPageProduct extends iPage {
   preview: iImage,
   images: iImage[],
-  discount: number,
-  parameters: any[],
+  discount: false | number,
+  parameters: iProductParameter[],
   recommend: boolean,
+  price: number | string,
+  currency: string,
+  category: {
+    id: string,
+    title: string,
+  }
 }
 
 /** структура для страницы категории */

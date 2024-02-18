@@ -1,6 +1,5 @@
 import { createStore } from 'vuex'
-import { offers } from 'src/store/stores'
-import { catalog } from 'src/store/db'
+import { database } from 'src/store/db'
 
 export default createStore({
   state: () => {
@@ -11,10 +10,11 @@ export default createStore({
         site_tel: ' +7 922 628 7911',
         site_currency: '₽',
       },
-      offers: offers,
+      offers: database.offers,
       theme: 'light',
-      catalog: catalog,
-      categories: catalog,
+      catalog: database.catalog,
+      categories: database.catalog,
+      database: database,
     }
   },
   getters: {},
