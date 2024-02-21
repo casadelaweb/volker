@@ -322,10 +322,10 @@ export const database = {
       'price': ''
     }
   ],
-  'offers': [
+  'promos': [
     {
       'id': 'invite-friends',
-      'url': '/offers/invite-friends/',
+      'url': '/promos/invite-friends/',
       'title': 'Приведи друга',
       'description': {
         'short': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.',
@@ -333,8 +333,8 @@ export const database = {
       },
       'keywords': 'акция приведи друга',
       'parent': {
-        'id': 'offers',
-        'url': '/offers/',
+        'id': 'promos',
+        'url': '/promos/',
         'title': 'Акции и предложения',
         'description': {
           'short': 'Заполните краткое описание',
@@ -351,7 +351,7 @@ export const database = {
     },
     {
       'id': 'invite-friends-1',
-      'url': '/offers/invite-friends-1/',
+      'url': '/promos/invite-friends-1/',
       'title': 'Тестовая акция',
       'description': {
         'short': 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab harum laboriosam nemo recusandae voluptatibus. Eligendi, porro vel. Ab aut consequuntur delectus dolorem labore maxime nisi odit, omnis reiciendis vitae voluptatem.',
@@ -359,8 +359,8 @@ export const database = {
       },
       'keywords': 'акция тестовая тест',
       'parent': {
-        'id': 'offers',
-        'url': '/offers/',
+        'id': 'promos',
+        'url': '/promos/',
         'title': 'Акции и предложения',
         'description': {
           'short': 'Заполните краткое описание',

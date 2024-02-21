@@ -1,5 +1,4 @@
 <template>
-
   <section class="section">
     <div class="container">
       <h1 class="h1">404 - Не найдено</h1>
@@ -8,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
+import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 
 export default {
   components: {

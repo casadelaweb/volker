@@ -1,5 +1,5 @@
 <template>
-  <SectionOffers/>
+  <SectionPromos/>
   <SectionReviews :reviews="reviews"/>
   <Production/>
 </template>
@@ -8,14 +8,14 @@
 import { defineComponent } from 'vue'
 import Production from 'src/views/components/sections/Production.vue'
 import SectionReviews from 'src/views/components/sections/SectionReviews.vue'
-import SectionOffers from 'src/views/components/sections/SectionOffers.vue'
+import SectionPromos from 'src/views/components/sections/SectionPromos.vue'
 
 export default defineComponent({
   components: {
-    SectionOffers,
+    SectionPromos,
     Production,
     SectionReviews,
-    SectionOffers,
+    SectionPromos,
   },
   data: function () {
     return {

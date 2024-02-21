@@ -1,5 +1,4 @@
 <template>
-
   <section class="section">
     <div class="container">
       <SectionTop title="Контакты"/>
@@ -20,28 +19,31 @@
             <div style="margin-bottom: 4px">Сб. - Вс.: с 9:00 до 18:00</div>
           </div>
         </div>
-        <div class="map"></div>
+        <div class="map">
+          здесь будет карта
+        </div>
       </div>
     </div>
   </section>
-  <feedback-horizontal/>
 </template>
 
 <script lang="ts">
-import SectionTop from 'src/components/ui/section-top.vue'
-import feedbackHorizontal from 'src/components/sections/feedback-horizontal.vue'
-import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
+import SectionTop from 'src/views/components/ui/SectionTop.vue'
+import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
+  name: 'Contacts',
   components: {
     breadcrumbs,
     SectionTop,
-    feedbackHorizontal,
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>
+@use 'src/styles/shared' as *;
+
 .layout {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -67,6 +69,7 @@ export default {
 }
 
 .map {
+  @include flex(center, center);
   background: #fff9f2;
 }
 </style>

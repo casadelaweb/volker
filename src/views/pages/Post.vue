@@ -8,7 +8,9 @@
 </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   data: function () {
     return {
       title: 'Post title',
@@ -28,7 +30,7 @@ export default {
 `
     }
   },
-}
+})
 </script>
 
 <style lang="scss">

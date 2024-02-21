@@ -71,9 +71,9 @@ export default {
           url: '/about/',
         },
         {
-          id: 'offers',
+          id: 'promos',
           title: 'Акции',
-          url: '/offers/',
+          url: '/promos/',
         },
         {
           id: 'shipping',
@@ -85,6 +85,11 @@ export default {
           title: 'Контакты',
           url: '/contacts/',
         },
+        // {
+        //   id: 'posts',
+        //   title: 'Посты',
+        //   url: '/posts/',
+        // },
       ],
       links2: [
         {

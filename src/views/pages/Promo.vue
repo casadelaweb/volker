@@ -1,23 +1,23 @@
 <template>
 
-  <section class="offer" itemscope itemtype="https://schema.org/Article">
+  <section class="promo" itemscope itemtype="https://schema.org/Article">
     <meta :content="title" itemprop="headline name">
     <meta :content="description" itemprop="description">
     <link :href="siteUrl + img.src" itemprop="image">
 
-    <div class="offer-container">
-      <h1 class="offer-title">{{ title }}</h1>
-      <img :alt="title" :data-src="img.src" class="lazy offer-img"
+    <div class="promo-container">
+      <h1 class="promo-title">{{ title }}</h1>
+      <img :alt="title" :data-src="img.src" class="lazy promo-img"
            src="src/assets/img/placeholder.jpg">
-      <div class="offer-description">{{ description }}</div>
+      <div class="promo-description">{{ description }}</div>
     </div>
   </section>
   <suggestions :products="suggestedProducts" title="Товары по акции"/>
 </template>
 
 <script lang="ts">
-import Suggestions from 'src/components/sections/suggestions.vue'
-import breadcrumbs from 'src/components/sections/breadcrumbs.vue'
+import Suggestions from 'src/views/components/sections/suggestions.vue'
+import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 
 export default {
   components: {
@@ -26,13 +26,13 @@ export default {
   },
   data: function () {
     return {
-      siteUrl: this.$store.state.main.site_url,
+      siteUrl: 'siteUrl',
       title: 'Название акции или специального предложения',
       img: {
         src: '/assets/img/placeholder-yellow.jpg',
       },
       description: 'Скидка 3% при покупке от 150 ед. и 5% при покупке от 300 ед. Распространяется на все товары.',
-      suggestedProducts: this.$store.state.catalog.products.slice(0, 4),
+      suggestedProducts: [],
     }
   },
 }
@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 @use 'src/styles/shared' as *;
 
-.offer {
+.promo {
   @include section;
 
   &-container {

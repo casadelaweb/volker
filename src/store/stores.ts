@@ -1,7 +1,7 @@
 export const headerQuickLinks = [
   {
-    id: 'offers',
-    url: '/offers/',
+    id: 'promos',
+    url: '/promos/',
     title: 'Акции и предложения',
   },
   {

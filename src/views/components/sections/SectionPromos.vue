@@ -1,12 +1,12 @@
 <template>
-  <section class="offers">
-    <div class="offers-container">
+  <section class="promos">
+    <div class="promos-container">
 
       <SectionTop :button="SectionTopProps.button" :title="SectionTopProps.title"/>
 
-      <div v-if="!isLoading" class="offers-layout">
+      <div v-if="!isLoading" class="promos-layout">
 
-        <offer v-for="offer in offers" :key="offer.id" :offer="offer"/>
+        <promo v-for="promo in promos" :key="promo.id" :promo="promo"/>
 
       </div>
       <div v-else>
@@ -18,29 +18,29 @@
 
 <script lang="ts">
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
-import offer from 'src/views/components/sections/offer.vue'
+import promo from 'src/views/components/sections/promo.vue'
 
 export default {
   components: {
-    SectionTop, offer,
+    SectionTop, promo,
   },
   data: function () {
     return {
       SectionTopProps: {
         title: {
           text: 'Акции и предложения',
-          url: '/offers/',
+          url: '/promos/',
         },
         button: {
           text: 'Смотреть все',
-          url: '/offers/',
+          url: '/promos/',
         },
       },
-      offers: [
+      promos: [
         {
           id: 'testid1',
           title: 'test title',
-          url: 'offers/testid1/',
+          url: 'promos/testid1/',
           description: {
             short: 'shfonn sapnpnasgd saggas'
           },
@@ -59,12 +59,12 @@ export default {
     }
   },
   methods: {
-    async fetchOffers() {
+    async fetchPromos() {
       this.isLoading = false
     },
   },
   mounted() {
-    this.fetchOffers()
+    this.fetchPromos()
   },
 }
 </script>
@@ -72,7 +72,7 @@ export default {
 <style lang="scss">
 @use 'src/styles/shared' as *;
 
-.offers {
+.promos {
   margin: 40px 0 80px;
 
   &-container {

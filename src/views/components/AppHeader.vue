@@ -34,9 +34,9 @@ export default {
     return {
       links: [
         {
-          id: 'offers',
+          id: 'promos',
           title: 'Акции',
-          url: '/offers/',
+          url: '/promos/',
         },
         {
           id: 'shipping',

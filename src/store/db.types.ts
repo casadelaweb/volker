@@ -44,7 +44,7 @@ export interface iCategory extends iPage {
 
 export type iCatalog = iCategory[]
 
-export interface iPageOffer extends iPage {
+export interface iPagePromo extends iPage {
   preview: iImage,
   activity: string,
   date: {

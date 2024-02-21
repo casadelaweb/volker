@@ -1,8 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { routes } from 'src/router/routes.js'
+import { routesMain } from 'src/router/routesMain.ts'
+import { routesCatalog } from 'src/router/routesCatalog'
 
 const router = createRouter({
-  routes: routes,
+  routes: [
+    ...routesMain,
+    ...routesCatalog,
+  ],
   history: createWebHistory(),
   scrollBehavior() {
     window.scrollTo(0, 0)

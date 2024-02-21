@@ -71,9 +71,9 @@ export default defineComponent({
             // }),
           ],
         },
-        offers: {
+        promos: {
           title: '',
-          inputName: 'offers',
+          inputName: 'promos',
           inputType: 'checkbox',
           model: 'price-low',
           list: [

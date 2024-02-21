@@ -10,7 +10,7 @@ export default createStore({
         site_tel: ' +7 922 628 7911',
         site_currency: '₽',
       },
-      offers: database.offers,
+      promos: database.promos,
       theme: 'light',
       catalog: database.catalog,
       categories: database.catalog,

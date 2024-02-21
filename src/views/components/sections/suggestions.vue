@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import SectionTop from 'src/components/ui/section-top.vue'
-import card from 'src/components/catalog/card.vue'
+import SectionTop from 'src/views/components/ui/SectionTop.vue'
+import card from 'src/views/components/catalog/card.vue'
 
 export default {
   components: {
@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @use 'src/styles/shared' as *;
+@use 'src/styles/shared' as *;
 
 .suggestions {
   @include section;

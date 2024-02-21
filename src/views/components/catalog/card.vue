@@ -5,7 +5,7 @@
     <template v-if="product.images && product.images.length > 0">
       <link :href="siteUrl + product.images[0].src" itemprop="image">
     </template>
-    <div hidden itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+    <div hidden itemprop="promos" itemscope itemtype="https://schema.org/Promo">
       <meta :content="product.price" itemprop="price">
       <meta content="RUB" itemprop="priceCurrency">
       <link href="https://schema.org/InStock" itemprop="availability">

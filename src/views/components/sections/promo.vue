@@ -1,37 +1,37 @@
 <template>
-  <article class="offer" itemscope itemtype="https://schema.org/Article">
-    <link :href="offer.url" itemprop="mainEntityOfPage">
-    <link :href="offer.preview.url" itemprop="image">
-    <meta :content="offer.title" itemprop="headline name">
-    <meta :content="offer.description.short" itemprop="description">
-    <meta :content="offer.date.published" itemprop="datePublished">
-    <meta :content="offer.date.modified" itemprop="dateModified">
+  <article class="promo" itemscope itemtype="https://schema.org/Article">
+    <link :href="promo.url" itemprop="mainEntityOfPage">
+    <link :href="promo.preview.url" itemprop="image">
+    <meta :content="promo.title" itemprop="headline name">
+    <meta :content="promo.description.short" itemprop="description">
+    <meta :content="promo.date.published" itemprop="datePublished">
+    <meta :content="promo.date.modified" itemprop="dateModified">
 
-    <div v-if="offer.activity !== ''" class="offer-activity">
-      {{ offer.activity }}
+    <div v-if="promo.activity !== ''" class="promo-activity">
+      {{ promo.activity }}
     </div>
-    <router-link :title="offer.title" :to="offer.url" class="offer-preview">
-      <img :alt="offer.preview.alt" :src="offer.preview.url" class="offer-img" loading="lazy">
+    <router-link :title="promo.title" :to="promo.url" class="promo-preview">
+      <img :alt="promo.preview.alt" :src="promo.preview.url" class="promo-img" loading="lazy">
     </router-link>
-    <h3 class="offer-title">
-      <router-link :title="offer.title" :to="offer.url">
-        {{ offer.title }}
+    <h3 class="promo-title">
+      <router-link :title="promo.title" :to="promo.url">
+        {{ promo.title }}
       </router-link>
     </h3>
-    <div class="offer-description">
-      {{ offer.description.short }}
+    <div class="promo-description">
+      {{ promo.description.short }}
     </div>
   </article>
 </template>
 
 <script lang="ts">
-import { iPageOffer } from 'src/store/db.types'
+import { iPagePromo } from 'src/store/db.types'
 import { PropType, defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    offer: {
-      type: Object as PropType<iPageOffer>,
+    promo: {
+      type: Object as PropType<iPagePromo>,
       required: true,
     },
   },
@@ -41,12 +41,12 @@ export default defineComponent({
     }
   },
   methods: {
-    async fetchOffers() {
+    async fetchPromos() {
       this.isLoading = false
     },
   },
   mounted() {
-    this.fetchOffers()
+    this.fetchPromos()
   },
 })
 </script>
@@ -54,7 +54,7 @@ export default defineComponent({
 <style lang="scss">
 @use 'src/styles/shared' as *;
 
-.offer {
+.promo {
   @include flex($d: column);
   row-gap: 10px;
   position: relative;
