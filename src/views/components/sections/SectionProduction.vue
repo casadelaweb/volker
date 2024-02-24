@@ -15,6 +15,7 @@ export default defineComponent({
   components: {
     SectionTop,
   },
+  name: 'SectionProduction',
   data: function () {
     return {
       title: {

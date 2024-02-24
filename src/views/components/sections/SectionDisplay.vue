@@ -3,22 +3,21 @@
     <div class="display-container">
       <SectionTop :button="SectionTopProps.button" :title="SectionTopProps.title"/>
       <div v-if="isLoading" class="display-empty">
-        <img alt="loading" class="lazy" data-src="src/assets/img/loading.gif"
-             src="src/assets/img/placeholder.jpg">
+        <img alt="loading" loading="lazy" src="src/assets/img/placeholder.jpg">
       </div>
       <div v-else class="display-layout">
-        <template v-for="category in categories" :key="category.id">
-          <article :id="category.id" class="display-card">
-            <img :alt="category.preview.alt ?? category.preview.title" :src="category.preview.url"
-                 class="display-card-img" loading="lazy">
-            <h2 class="display-card-title">
-              <router-link :title="category.title" :to="category.url">
-                {{ category.title }}
-              </router-link>
-            </h2>
-            <div class="display-card-description">{{ category.description.short }}</div>
-          </article>
-        </template>
+        <article v-for="category in categories" :key="category.id" class="display-card">
+          <img :alt="category.preview.alt ?? category.preview.title" :src="category.preview.url"
+               class="display-card-img" loading="lazy">
+          <h2 class="display-card-title">
+            <router-link :title="category.title" :to="category.url">
+              {{ category.title }}
+            </router-link>
+          </h2>
+          <div class="display-card-description">
+            {{ category.description.short }}
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -26,17 +25,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import SectionTop from 'src/views/components/ui/section-top.vue'
+import SectionTop from 'src/views/components/ui/SectionTop.vue'
+import axios from 'axios'
 
 export default defineComponent({
   components: {
     SectionTop,
   },
+  name: 'SectionDisplay',
   data: function () {
     return {
       SectionTopProps: {
         title: {
-          text: 'Каталог',
+          text: 'Популярные категории',
           url: '/catalog/',
         },
         button: {
@@ -44,12 +45,49 @@ export default defineComponent({
           url: '/catalog/',
         },
       },
-      categories: this.$store.state.catalog,
+      categories: [
+        {
+          id: 'test',
+          title: 'test title',
+          url: '/catalog/test/',
+          description: {
+            short: 'test description',
+          },
+          preview: {
+            alt: 'test alt',
+            title: 'test preview title',
+          },
+        }, {
+          id: 'test',
+          title: 'test title',
+          url: '/catalog/test/',
+          description: {
+            short: 'test description',
+          },
+          preview: {
+            alt: 'test alt',
+            title: 'test preview title',
+          },
+        }, {
+          id: 'test',
+          title: 'test title',
+          url: '/catalog/test/',
+          description: {
+            short: 'test description',
+          },
+          preview: {
+            alt: 'test alt',
+            title: 'test preview title',
+          },
+        },
+      ],
       isLoading: false,
     }
   },
   methods: {
     async getCategories() {
+      const response = await axios.get('/api/posts')
+      console.log(response.data)
     },
   },
   mounted() {

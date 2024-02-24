@@ -53,7 +53,7 @@ export default {
     async fetchPosts() {
       try {
         this.isLoading = true
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=${ this.postsLimit }`)
+        const response = await axios.get(`/api/posts/?_limit=${ this.postsLimit }`)
         console.log(response)
         this.posts = response.data as iPost[]
         //this.posts = this.posts.map((post) => post.url = `/promo/${ post.id }`)

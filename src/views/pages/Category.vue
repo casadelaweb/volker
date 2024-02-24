@@ -164,7 +164,7 @@ import { defineComponent } from 'vue'
 import card from 'src/views/components/catalog/card.vue'
 import filters from 'src/views/components/catalog/filters.vue'
 import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
-import Filter from 'src/views/components/Filter.vue'
+import Filter from 'src/views/components/catalog/Filter.vue'
 
 export default defineComponent({
   components: {
@@ -371,8 +371,8 @@ export default defineComponent({
     changePage() {
     },
     handleClick(event: MouseEvent) {
-      const modal = document.body.querySelector('.filters')
-      const overlay = document.body.querySelector('.filters-overlay')
+      const modal = document.body.querySelector('.filters') as HTMLElement
+      const overlay = document.body.querySelector('.filters-overlay') as HTMLElement
 
       modal.classList.toggle('_active')
       overlay.classList.toggle('_active')

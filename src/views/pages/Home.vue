@@ -1,21 +1,23 @@
 <template>
+  <SectionDisplay/>
   <SectionPromos/>
   <SectionReviews :reviews="reviews"/>
-  <Production/>
+  <SectionProduction/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Production from 'src/views/components/sections/Production.vue'
+import SectionProduction from 'src/views/components/sections/SectionProduction.vue'
 import SectionReviews from 'src/views/components/sections/SectionReviews.vue'
 import SectionPromos from 'src/views/components/sections/SectionPromos.vue'
+import SectionDisplay from 'src/views/components/sections/SectionDisplay.vue'
 
 export default defineComponent({
   components: {
+    SectionDisplay,
     SectionPromos,
-    Production,
+    SectionProduction,
     SectionReviews,
-    SectionPromos,
   },
   data: function () {
     return {

@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import SectionTop from 'src/components/ui/section-top.vue'
+import SectionTop from 'src/components/ui/SectionTop.vue'
 
 export default {
   components: {
