@@ -5,3 +5,7 @@
 * vue 3
 * typescript
 * scss
+
+`npm start` - для запуска fakeapi backend'а
+
+`npm run dev` - для запуска frontend'а
