@@ -48,11 +48,11 @@ export default {
           title: 'Custom Shop',
           url: '/custom/',
         },
-        // {
-        //   id: 'about',
-        //   title: 'О компании',
-        //   url: '/about/',
-        // },
+        {
+          id: 'pagenotfound',
+          title: '404',
+          url: '/123456/',
+        },
         // {
         //   id: 'contacts',
         //   title: 'Контакты',

@@ -4,6 +4,7 @@ import Posts from 'src/views/pages/Posts.vue'
 import Post from 'src/views/pages/Post.vue'
 import Promos from 'src/views/pages/Promos.vue'
 import Promo from 'src/views/pages/Promo.vue'
+import PageNotFound from 'src/views/pages/PageNotFound.vue'
 
 export const routesMain = [
   {
@@ -61,4 +62,14 @@ export const routesMain = [
     path: '/user-agreement/',
     component: Post,
   },
+  {
+    //path: '/404/',
+    path: '/:catchAll(.*)',
+    name: 'PageNotFound',
+    component: PageNotFound
+  },
+  // {
+  //   path: '/:catchAll(.*)',
+  //   redirect: '404'
+  // }
 ]

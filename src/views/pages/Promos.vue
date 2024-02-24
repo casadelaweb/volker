@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    setTimeout(this.fetchPosts, 2000)
+    setTimeout(this.fetchPosts, 1000)
   },
   methods: {
     async fetchPosts() {
