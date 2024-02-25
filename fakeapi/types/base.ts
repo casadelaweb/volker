@@ -1,19 +1,26 @@
+export interface iBase {
+  /** Уникальный id */
+  id: string | number,
+}
+
+export interface iPage extends iBase {
+  /** Заголовок страницы */
+  title: string,
+  /** Краткое описание страницы */
+  description: string,
+  /** Ссылка на страницу */
+  url: string,
+  /** Основной контент страницу */
+  body: string,
+}
+
 export interface iImage {
   url: string,
   alt?: string,
 }
 
-/** обязательные поля для всех страниц */
-export interface iPage {
-  id: string,
-  title: string,
-  description: {
-    short: string,
-    full: string,
-  },
-  url: string,
-  keywords: string[],
-  parent: iPage,
+export interface iPagePromo extends iPage {
+  image: iImage
 }
 
 interface iProductParameter {

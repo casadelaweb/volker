@@ -1,5 +1,5 @@
 import express from 'express'
-import { portFakeAPI } from './types/env.js'
+import { portFakeAPI } from './env.js'
 
 const app = express()
 app.use(express.json())
