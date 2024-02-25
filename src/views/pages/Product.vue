@@ -128,7 +128,7 @@ import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
-// import Suggestions from 'src/views/components/sections/suggestions.vue'
+// import Suggestions from 'src/views/components/sections/SectionSuggestions.vue'
 // import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 
 export default {

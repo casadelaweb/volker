@@ -56,6 +56,7 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
@@ -63,11 +64,12 @@ import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
-export default {
+export default defineComponent({
   components: {
     Swiper,
     SwiperSlide,
   },
+  name: 'ProductCard',
   props: {
     product: {
       type: Object,
@@ -91,8 +93,8 @@ export default {
         },
         loop: true,
       },
-      siteUrl: this.$store.state.main.site_url,
-      currency: this.$store.state.main.site_currency,
+      siteUrl: 'company@domain.test',
+      currency: 'руб.',
     }
   },
   setup() {
@@ -103,7 +105,7 @@ export default {
       ],
     }
   },
-}
+})
 </script>
 
 <style lang="scss">

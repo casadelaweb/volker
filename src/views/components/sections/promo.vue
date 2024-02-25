@@ -89,16 +89,16 @@ export default defineComponent({
     border-radius: 8px;
   }
 
-  &-img {
-    width: 100%;
-    transition: transform 0.334s;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-
-    &:hover {
-      transform: scale(1.25);
-    }
-  }
+  //&-img {
+  //  width: 100%;
+  //  //transition: transform 0.334s;
+  //  aspect-ratio: 4 / 3;
+  //  object-fit: cover;
+  //
+  //  &:hover {
+  //    transform: scale(1.25);
+  //  }
+  //}
 
   &-title {
     @include h6;

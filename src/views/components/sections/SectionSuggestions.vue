@@ -3,7 +3,7 @@
     <div class="suggestions-container">
       <SectionTop :button="button" :title="title"/>
       <div v-if="products.length > 0" class="suggestions-layout">
-        <card v-for="product in products" :key="product.id" :product="product"/>
+        <ProductCard v-for="product in products" :key="product.id" :product="product"/>
       </div>
       <div v-else class="suggestions-empty">
         <div class="suggestions-empty-warning">Пока здесь ничего нет.</div>
@@ -15,11 +15,12 @@
 
 <script lang="ts">
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
-import card from 'src/views/components/catalog/card.vue'
+import ProductCard from 'src/views/components/catalog/ProductCard.vue'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   components: {
-    card,
+    ProductCard,
     SectionTop,
   },
   props: {
@@ -56,7 +57,7 @@ export default {
   data: function () {
     return {}
   },
-}
+})
 </script>
 
 <style lang="scss" scoped>

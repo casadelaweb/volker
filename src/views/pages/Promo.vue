@@ -7,34 +7,57 @@
 
     <div class="promo-container">
       <h1 class="promo-title">{{ title }}</h1>
-      <img :alt="title" :data-src="img.src" class="lazy promo-img"
-           src="src/assets/img/placeholder.jpg">
+      <img :alt="title" class="promo-img" loading="lazy" src="src/assets/img/placeholder.jpg">
       <div class="promo-description">{{ description }}</div>
     </div>
   </section>
-  <suggestions :products="suggestedProducts" title="Товары по акции"/>
+  <SectionSuggestions :products="suggestedProducts" title="Товары по акции"/>
 </template>
 
 <script lang="ts">
-import Suggestions from 'src/views/components/sections/suggestions.vue'
+import SectionSuggestions from 'src/views/components/sections/SectionSuggestions.vue'
 import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
+import axios from 'axios'
 
 export default {
   components: {
     breadcrumbs,
-    Suggestions,
+    SectionSuggestions,
   },
   data: function () {
     return {
       siteUrl: 'siteUrl',
       title: 'Название акции или специального предложения',
       img: {
-        src: '/assets/img/placeholder-yellow.jpg',
+        src: 'src/assets/img/placeholder.jpg',
       },
       description: 'Скидка 3% при покупке от 150 ед. и 5% при покупке от 300 ед. Распространяется на все товары.',
       suggestedProducts: [],
+      isLoading: true,
     }
   },
+  methods: {
+    async fetchData(url: string) {
+
+
+      try {
+        let result = false
+        this.isLoading = true
+        const response = await axios.get(url)
+        console.log(response)
+        result = response.data
+      } catch (error) {
+        console.log(error)
+      } finally {
+        this.isLoading = false
+      }
+
+
+    },
+  },
+  mounted() {
+    this.fetchData('posts/')
+  }
 }
 </script>
 
@@ -46,6 +69,7 @@ export default {
 
   &-container {
     @include container;
+    //overflow: hidden;
   }
 
   &-title {
@@ -54,9 +78,9 @@ export default {
   }
 
   &-img {
-    display: block;
+    //display: block;
     width: 100%;
-    height: 480px;
+    aspect-ratio: 21 / 9;
     margin-bottom: 20px;
   }
 }

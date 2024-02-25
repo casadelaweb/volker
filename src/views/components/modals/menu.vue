@@ -41,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import menuProductCard from 'src/components/modals/menu-product-card.vue'
+import menuProductCard from 'src/components/modals/menu-product-ProductCard.vue'
 
 export default {
   components: {

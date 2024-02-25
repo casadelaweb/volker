@@ -47,16 +47,15 @@ export default {
     }
   },
   mounted() {
-    setTimeout(this.fetchPosts, 1000)
+    this.fetchPosts(`/api/posts/?limit${ this.postsLimit }`)
   },
   methods: {
-    async fetchPosts() {
+    async fetchPosts(url: string,) {
       try {
         this.isLoading = true
-        const response = await axios.get(`/api/posts/?_limit=${ this.postsLimit }`)
+        const response = await axios.get(url)
         console.log(response)
         this.posts = response.data as iPost[]
-        //this.posts = this.posts.map((post) => post.url = `/promo/${ post.id }`)
       } catch (error) {
         console.log(error)
       } finally {

@@ -161,7 +161,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import card from 'src/views/components/catalog/card.vue'
+import card from 'src/views/components/catalog/ProductCard.vue'
 import filters from 'src/views/components/catalog/filters.vue'
 import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 import Filter from 'src/views/components/catalog/Filter.vue'

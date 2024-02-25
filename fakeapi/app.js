@@ -1,10 +1,36 @@
 import express from 'express'
 import { portFakeAPI } from './types/env.js'
-import router from './routers/router.js'
 
 const app = express()
 app.use(express.json())
-app.use('/', router)
+
+
+app.get('/', (request, response) => {
+  response.send('hello')
+})
+
+app.get('/posts', (request, response) => {
+  const result = [
+    {
+      id: 'test_id',
+      title: 'test title',
+      description: 'test description',
+      body: 'test body',
+    }
+  ]
+  setTimeout(() => response.status(200).json(result), 1000)
+})
+app.get('/products', (request, response) => {
+  const result = [
+    {
+      id: 'test_id',
+      title: 'test title',
+      description: 'test description',
+      body: 'test body',
+    }
+  ]
+  setTimeout(() => response.status(200).json(result), 1000)
+})
 
 function handleInit() {
   console.log(`server has been started on http://localhost:${ portFakeAPI }/`)
