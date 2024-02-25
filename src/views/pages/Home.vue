@@ -1,4 +1,5 @@
 <template>
+  <SectionHero/>
   <SectionDisplay/>
   <SectionPromos/>
   <SectionReviews :reviews="reviews"/>
@@ -11,9 +12,11 @@ import SectionProduction from 'src/views/components/sections/SectionProduction.v
 import SectionReviews from 'src/views/components/sections/SectionReviews.vue'
 import SectionPromos from 'src/views/components/sections/SectionPromos.vue'
 import SectionDisplay from 'src/views/components/sections/SectionDisplay.vue'
+import SectionHero from 'src/views/components/sections/SectionHero.vue'
 
 export default defineComponent({
   components: {
+    SectionHero,
     SectionDisplay,
     SectionPromos,
     SectionProduction,
