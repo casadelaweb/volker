@@ -153,10 +153,12 @@ export default defineComponent({
 
 .torch {
   position: fixed;
+  top: 50%;
+  left: 50%;
   z-index: 501;
   width: 360px;
   height: 360px;
-  box-shadow: 0 0 0 999em rgba(black, 0.7);
+  box-shadow: 0 0 0 100vw rgba(black, 0.7);
   border-radius: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
