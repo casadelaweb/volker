@@ -12,7 +12,10 @@ document.addEventListener('DOMContentLoaded', () => {
   app.use(store)
 
   app.mount('#app')
-}, { passive: true, once: true, })
+}, {
+  passive: true,
+  once: true,
+})
 
 
 

@@ -1,10 +1,10 @@
 <template>
-  <AppHeader></AppHeader>
+  <AppHeader/>
   <main id="main">
     <router-view :key="$route.path"></router-view>
   </main>
-  <FeedbackHorizontal></FeedbackHorizontal>
-  <AppFooter></AppFooter>
+  <FeedbackHorizontal/>
+  <AppFooter/>
 </template>
 
 <script lang="ts">

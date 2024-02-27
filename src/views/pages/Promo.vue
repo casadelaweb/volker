@@ -11,18 +11,18 @@
       <div class="promo-description">{{ description }}</div>
     </div>
   </section>
-  <SectionSuggestions :products="suggestedProducts" title="Товары по акции"/>
+  <SectionProducts :products="suggestedProducts" title="Товары по акции"/>
 </template>
 
 <script lang="ts">
-import SectionSuggestions from 'src/views/components/sections/SectionSuggestions.vue'
+import SectionProducts from 'src/views/components/sections/SectionProducts.vue'
 import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 import axios from 'axios'
 
 export default {
   components: {
     breadcrumbs,
-    SectionSuggestions,
+    SectionProducts,
   },
   data: function () {
     return {
