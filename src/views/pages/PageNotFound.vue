@@ -119,7 +119,7 @@ export default defineComponent({
 
 .section {
   @include section;
-  height: clamp(360px, 50vh, 100vh);
+  height: clamp(50vh, 480px, 100vh);
   text-align: center;
   line-height: 1.4;
 }
