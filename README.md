@@ -5,10 +5,19 @@
 
 `пока здесь много всего поломано. Work In Progress.`
 
+___
+
 * vue 3 (Options API, переход на Composition API)
 * typescript
 * scss
 * vite
+
+___
+
+В качестве backend временно используется `fakeapi` - простой `Node` + `express` локальный сервер для
+тестирования запросов к /api. Реальное API в процессе написания (`FastAPI` + `ProcessWire API`)
+
+___
 
 `npm start` - для запуска fakeapi backend'а
 
