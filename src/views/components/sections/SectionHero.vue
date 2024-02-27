@@ -31,7 +31,7 @@ const images = ref([
 
   &-title {
     @include h1;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
   }
 
   &-slide {
@@ -40,7 +40,8 @@ const images = ref([
 
   &-img {
     width: 100%;
-    aspect-ratio: 16 / 9;
+    height: 400px;
+    //aspect-ratio: 21 / 9;
   }
 }
 </style>

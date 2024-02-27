@@ -87,7 +87,7 @@ export default defineComponent({
   methods: {
     async getCategories() {
       const response = await axios.get('/api/posts')
-      console.log(response.data)
+      //console.log(response.data)
     },
   },
   mounted() {

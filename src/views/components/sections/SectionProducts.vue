@@ -19,6 +19,7 @@ import ProductCard from 'src/views/components/catalog/ProductCard.vue'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'SectionProducts',
   components: {
     ProductCard,
     SectionTop,
@@ -72,7 +73,7 @@ export default defineComponent({
 
   &-layout {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     column-gap: 20px;
     row-gap: 40px;
   }

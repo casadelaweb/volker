@@ -1,7 +1,7 @@
 <template>
   <section class="feedback">
     <div class="feedback-container">
-      <form class="form" method="post">
+      <form action="/api/form/feedback" class="form" method="post">
         <h2 class="form-title">Оставьте заявку на обратную связь</h2>
         <div class="form-layout">
           <label class="form-label">
