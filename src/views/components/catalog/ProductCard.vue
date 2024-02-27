@@ -1,66 +1,59 @@
 <template>
-  <article class="card" itemscope itemtype="https://schema.org/Product">
-    <meta :content="product.name" itemprop="name">
-    <meta :content="product.description.short" itemprop="description">
-    <template v-if="product.images && product.images.length > 0">
-      <link :href="siteUrl + product.images[0].src" itemprop="image">
-    </template>
-    <div hidden itemprop="promos" itemscope itemtype="https://schema.org/Promo">
-      <meta :content="product.price" itemprop="price">
-      <meta content="RUB" itemprop="priceCurrency">
-      <link href="https://schema.org/InStock" itemprop="availability">
+  <article class="product">
+    <div class="product-buttons">
+      <button class="product-fav" title="Добавить в избранное" type="button">
+        <span class="iconfont icon-heart"></span>
+      </button>
+      <button class="product-cart" title="Добавить в корзину" type="button">
+        <span class="iconfont icon-suitcase"></span>
+      </button>
     </div>
-
-    <div class="card-tags">
-      <router-link v-if="product.recommend" class="card-tag card-tag_recommended"
-                   to="/catalog/recommended">
-        рекомендуемое
+    <div class="product-images">
+      <swiper :lazy="settings.lazy"
+              :loop="settings.loop"
+              :modules="modules"
+              :pagination="settings.pagination"
+              :slides-per-view="1"
+              :space-between="20">
+        <swiper-slide v-for="(img, index) in product.images" :key="index">
+          <img :alt="product.title"
+               :data-src="img.url"
+               class="swiper-lazy product-img"
+               src="src/assets/img/placeholder.jpg">
+          <div class="swiper-lazy-preloader"></div>
+        </swiper-slide>
+      </swiper>
+    </div>
+    <div class="product-body">
+      <h2 class="product-title">
+        <router-link :title="product.title" :to="product.url">
+          {{ product.title }}
+        </router-link>
+      </h2>
+      <div class="product-prices">
+        <span class="product-prices-caption">Цена: </span>
+        <div v-if="product.priceOld" class="product-price _old">
+          {{ product.priceOld }}
+          <template v-if="product.currency">{{ product.currency }}</template>
+        </div>
+        <div class="product-price">
+          {{ product.price }}
+          <template v-if="product.currency">{{ product.currency }}</template>
+        </div>
+      </div>
+      <router-link :to="product.url" class="product-button">
+        Подробнее
       </router-link>
     </div>
-
-    <div class="card-images">
-      <template v-if="product.images && product.images.length > 1">
-        <swiper :lazy="settings.lazy" :loop="settings.loop" :modules="modules"
-                :pagination="settings.pagination" :slides-per-view="1" :space-between="20">
-          <swiper-slide v-for="(img, index) in product.images" :key="index">
-            <img :alt="product.name" :data-src="img.thumb.url" class="swiper-lazy card-img"
-                 src="src/assets/img/placeholder.jpg">
-            <div class="swiper-lazy-preloader"></div>
-          </swiper-slide>
-        </swiper>
-      </template>
-      <template v-else-if="!product.images || product.images.length === 0">
-        <img :alt="product.name" class="lazy card-img"
-             src="src/assets/img/placeholder.jpg">
-      </template>
-      <template v-else>
-        <img :alt="product.name" :data-src="product.images[0].thumb.url" class="lazy card-img"
-             src="src/assets/img/placeholder.jpg">
-      </template>
-    </div>
-    <h3 class="card-title">
-      <router-link :title="product.name" :to="product.url">
-        {{ product.name }}
-      </router-link>
-    </h3>
-    <div class="card-description">
-      {{ product.description.short }}
-    </div>
-    <div class="card-price">
-      <span>{{ product.price }}</span> {{ currency }}
-    </div>
-    <router-link :title="product.name" :to="product.url" class="card-button">
-      Подробнее
-    </router-link>
   </article>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { iPageProduct } from 'src/../fakeapi/types/base.ts'
+import { defineComponent, PropType } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
-
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
@@ -72,7 +65,7 @@ export default defineComponent({
   name: 'ProductCard',
   props: {
     product: {
-      type: Object,
+      type: Object as PropType<iPageProduct>,
       required: true,
     },
   },
@@ -94,7 +87,6 @@ export default defineComponent({
         loop: true,
       },
       siteUrl: 'company@domain.test',
-      currency: 'руб.',
     }
   },
   setup() {
@@ -111,75 +103,106 @@ export default defineComponent({
 <style lang="scss">
 @use 'src/styles/shared' as *;
 
-.card {
+.product {
+  @include flex($d: column);
+  //row-gap: 20px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
+  // padding: 20px;
+  border-radius: 8px;
+  overflow: hidden;
   position: relative;
-  // border: 2px solid #f5f5f5;
-  // padding: 20px 20px 24px;
   z-index: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 10px;
-  min-width: 0;
 
-  &-title {
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  &-tags {
-    @include flex($a: center, $w: wrap);
+  &-buttons {
+    @include flex($d: column);
+    row-gap: 12px;
     position: absolute;
     z-index: 2;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
+    top: 16px;
+    right: 8px;
   }
 
-  &-tag {
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.025em;
-    margin: 0 4px;
-    padding: 4px 8px;
-    color: white;
-    border-radius: 8px;
-    background: #ff648d;
+  &-fav, &-cart {
+    $size: 36px;
+    flex: 0 0 auto;
+    width: $size;
+    height: $size;
+    font-size: $size * 0.5;
+    border-radius: 50%;
+    background: rgba(white, 0.5);
+    box-shadow: 0 2px 4px 0 rgba(black, 0.05);
+    transition: transform 0.25s, color 0.25s;
 
-    //&_recommended {
-    //  background: #ff648d;
-    //  color: white;
-    //}
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+
+    &:active {
+      transform: scale(1.1);
+    }
   }
 
   &-images {
-    min-width: 0;
   }
 
   &-img {
-    display: block;
+    aspect-ratio: 4 / 3;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    background: #f0f0f0;
+    flex: 0 0 auto;
   }
 
-  &-description {
-    @include lineClamp;
+  &-body {
+    @include flex($d: column);
+    flex: 1 0 auto;
+    row-gap: 24px;
+    padding: 16px 16px 24px;
+    //@include mediaMobileL {
+    //  row-gap: 20px;
+    //  padding: 20px;
+    //}
+  }
+
+  &-title {
+    @include lineClamp(3);
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    margin-bottom: auto;
+    @include hoverableDevice {
+      &:hover {
+        color: darkseagreen;
+      }
+    }
+  }
+
+  &-prices {
+    @include flex(center);
+    column-gap: 4px;
+    font-size: 18px;
+
+    &-caption {
+      margin-right: auto;
+    }
   }
 
   &-price {
-    font-size: 18px;
-    font-weight: 500;
-    margin: auto 0 0 auto;
+    font-weight: 600;
+
+    &._old {
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-right: 8px;
+    }
   }
 
+
   &-button {
-    @include flex(center, center);
-    font-weight: 500;
-    // padding: 10px;
-    height: 48px;
-    transition: background-color 0.334s, color 0.334s;
-    background: #f5f5f5;
+    @include buttonOutline;
   }
 }
 </style>
