@@ -2,6 +2,7 @@
   <SectionHero/>
   <SectionDisplay/>
   <SectionPromos/>
+  <SectionProducts :products="products"/>
   <SectionReviews :reviews="reviews"/>
   <SectionProduction/>
 </template>
@@ -13,9 +14,11 @@ import SectionReviews from 'src/views/components/sections/SectionReviews.vue'
 import SectionPromos from 'src/views/components/sections/SectionPromos.vue'
 import SectionDisplay from 'src/views/components/sections/SectionDisplay.vue'
 import SectionHero from 'src/views/components/sections/SectionHero.vue'
+import SectionProducts from 'src/views/components/sections/SectionProducts.vue'
 
 export default defineComponent({
   components: {
+    SectionProducts,
     SectionHero,
     SectionDisplay,
     SectionPromos,
@@ -46,6 +49,32 @@ export default defineComponent({
           body: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur iure provident tempora unde voluptate! Error et iusto libero magni odit quos repellendus voluptates!',
           author: 'test author',
           rating: 4.2,
+        },
+      ],
+      products: [
+        {
+          id: 'testid',
+          title: 'test title',
+          description: 'test description',
+          url: '/product/testid/',
+          price: 1234,
+          currency: 'руб.',
+          images: [
+            { url: 'src/assets/img/placeholder.jpg' },
+            { url: 'src/assets/img/placeholder.jpg' },
+          ],
+        },
+        {
+          id: 'testid2 ',
+          title: 'test title 2',
+          description: 'test description 2',
+          url: '/product/testid2/',
+          price: 12342,
+          currency: 'руб.',
+          images: [
+            { url: 'src/assets/img/placeholder.jpg' },
+            { url: 'src/assets/img/placeholder.jpg' },
+          ],
         },
       ],
       isLoading: true,
