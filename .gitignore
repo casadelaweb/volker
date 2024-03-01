@@ -5,4 +5,5 @@ dist
 .fleet
 .idea
 /api
+/public
 package-lock.json
