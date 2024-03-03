@@ -49,7 +49,7 @@
 </template>
 
 <script lang="ts">
-import { iPageProduct } from 'src/../fakeapi/types/base.ts'
+import { iPageProduct } from 'src/api/base.ts'
 import { defineComponent, PropType } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Pagination } from 'swiper/modules'

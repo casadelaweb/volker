@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./fakeapi/app.js",
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "compile": "vue-tsc",
+    "build": "vite build",
+    "prod": "npm run compile && npm run build",
     "preview": "vite preview"
   },
   "dependencies": {

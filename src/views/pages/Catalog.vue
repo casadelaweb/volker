@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { iPageCatalog } from '../../../fakeapi/types/base.ts'
+import { iPageCatalog } from 'src/api/base.ts'
 import axios from 'axios'
 import { ref, onMounted, Ref, computed } from 'vue'
 

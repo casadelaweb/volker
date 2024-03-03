@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { iPageProduct, iPagePromo } from 'src/../fakeapi/types/base.ts'
+import { iPageProduct, iPagePromo } from 'src/api/base.ts'
 import axios from 'axios'
 
 export const useStoreMain = defineStore('storeMain', {

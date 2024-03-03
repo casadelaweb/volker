@@ -39,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { iPageProduct } from '../../../fakeapi/types/base.ts'
+import { iPageProduct } from 'src/api/base.ts'
 import { defineComponent } from 'vue'
 import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/vue'

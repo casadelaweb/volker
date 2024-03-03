@@ -3,8 +3,6 @@
 Это репозиторий для будущего редизайна и дальнейшего расширения
 сайта [volker-group.ru](https://volker-group.ru)
 
-dev: https://volker.ninthtown.ru/
-
 `пока здесь много всего поломано. Work In Progress.`
 
 ## Технологический стек
@@ -21,10 +19,8 @@ dev: https://volker.ninthtown.ru/
 
 ## Развертывание
 
-`npm start` - для запуска fakeapi backend'а
-
 `npm run dev` - для запуска frontend'а
 
-## Тестовые площадки
+## Площадки
 
-`в процессе.`
+[dev среда](https://volker.ninthtown.ru/)
