@@ -25,6 +25,7 @@ import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
 import Filter from 'src/views/components/catalog/Filter.vue'
 import ProductCard from 'src/views/components/catalog/ProductCard.vue'
 import ProductsList from 'src/views/components/catalog/ProductsList.vue'
+import axios from 'axios'
 
 export default defineComponent({
   components: {
@@ -37,88 +38,7 @@ export default defineComponent({
   },
   data: function () {
     return {
-      products: [
-        {
-          id: 'teriohnasg',
-          url: '/product/teriohnasg/',
-          title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit minima',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: '13340',
-          priceOld: '15560',
-          currency: '₽',
-        },
-        {
-          id: 'teriohnasg2',
-          url: '/product/teriohnasg2/',
-          title: 'Lorem ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: '5340',
-          currency: '₽',
-        },
-        {
-          id: 'teriohnasg3',
-          url: '/product/teriohnasg3/',
-          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: 'по запросу',
-        },
-        {
-          id: 'teriohnasg',
-          url: '/product/teriohnasg/',
-          title: 'Lorem ipsum dolor sit amet consectetur adipisicing elit minima',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: '13340',
-          priceOld: '15560',
-          currency: '₽',
-        },
-        {
-          id: 'teriohnasg2',
-          url: '/product/teriohnasg2/',
-          title: 'Lorem ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: '5340',
-          currency: '₽',
-        },
-        {
-          id: 'teriohnasg3',
-          url: '/product/teriohnasg3/',
-          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: 'по запросу',
-        },
-        {
-          id: 'teriohnasg2',
-          url: '/product/teriohnasg2/',
-          title: 'Lorem ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: '5340',
-          currency: '₽',
-        },
-        {
-          id: 'teriohnasg3',
-          url: '/product/teriohnasg3/',
-          title: 'Lorem pnsdgpnp ipsum dolor sit amet',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg', },
-          ],
-          price: 'по запросу',
-        },
-      ],
+      products: [],
       isLoading: false,
       categoryFilters: [
         {
@@ -210,8 +130,33 @@ export default defineComponent({
       searchQueryLatest: '',
     }
   },
-  methods: {},
+  methods: {
+    async fetchData() {
+      try {
+        this.isLoading = true
+        const response = await axios({
+          method: 'get',
+          url: '/api/products/',
+          params: {
+            limit: 24,
+            category: this.currentRoute,
+          },
+        })
+        this.products = response.data
+      } catch (error) {
+        console.log(error)
+      } finally {
+        this.isLoading = false
+      }
+    }
+  },
   mounted() {
+    this.fetchData()
+  },
+  computed: {
+    currentRoute() {
+      return this.$router.currentRoute.value.params.category
+    }
   },
 })
 </script>

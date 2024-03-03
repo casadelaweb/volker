@@ -5,12 +5,13 @@
       <div class="catalog-categories">
         <article v-for="category in categories" :key="category.id" class="catalog-category">
           <h2 class="catalog-category-title">
-            <router-link :to="category.url">
+            <router-link :title="category.title" :to="category.url">
               {{ category.title }}
             </router-link>
           </h2>
-          <router-link :to="category.url">
-            <img :alt="category.title" :src="category.img.url" class="catalog-category-img">
+          <router-link :title="category.title" :to="category.url">
+            <img :alt="category.title" :src="category.image.url" class="catalog-category-img"
+                 loading="lazy">
           </router-link>
           <div class="catalog-category-description">
             {{ category.description }}
@@ -21,71 +22,35 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { iPageCatalog } from '../../../fakeapi/types/base.ts'
+import axios from 'axios'
+import { ref, onMounted, Ref, computed } from 'vue'
 
-export default defineComponent({
-  data: function () {
-    return {
-      categories: [
-        {
-          id: 'first',
-          url: '/catalog/first/',
-          title: 'Категория первая',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, sit.',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-        {
-          id: 'second',
-          url: '/catalog/second/',
-          title: 'Категория вторая',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse officiis sint voluptatum?',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-        {
-          id: 'third',
-          url: '/catalog/third/',
-          title: 'Категория третья',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti eveniet expedita hic, laudantium non quidem saepe tempora voluptatem. Aut, soluta?',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-        {
-          id: 'fourth',
-          url: '/catalog/fourth/',
-          title: 'Категория четвертая',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-        {
-          id: 'fifth',
-          url: '/catalog/fifth/',
-          title: 'Категория пятая',
-          description: 'Lorem ipsum dolor sit amet, consectetur.',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-        {
-          id: 'sixth',
-          url: '/catalog/sixth/',
-          title: 'Категория шестая',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod.',
-          img: {
-            url: 'src/assets/img/placeholder.jpg',
-          }
-        },
-      ],
-    }
-  },
+const categories: Ref<iPageCatalog[]> = ref([])
+const isLoading = ref(true)
+
+async function fetchData() {
+  isLoading.value = true
+  try {
+    const response = await axios.get('/api/catalog/')
+    console.log(response.data)
+    categories.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
 })
+
+
+// const currentRoute = computed(() => {
+//   return this.$router.currentRoute.value.params.id
+// })
 </script>
 
 <style lang="scss" scoped>
@@ -154,13 +119,16 @@ export default defineComponent({
       aspect-ratio: 16 / 9;
       width: 100%;
       background: #f0f0f0;
+      border-radius: 8px;
     }
 
     &-description {
       font-size: 13px;
+      // line-height: 1.4;
+      letter-spacing: 0.01em;
       color: #505050;
       @include mediaTabletM {
-        font-size: 14px;
+        font-size: 16px;
       }
     }
   }

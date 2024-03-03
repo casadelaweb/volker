@@ -15,7 +15,7 @@ export default defineConfig({
     copyPublicDir: false,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'app.html'),
+        main: resolve(__dirname, 'index.html'),
       },
       output: {
         assetFileNames(assetInfo) {
@@ -53,7 +53,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: `http://localhost:${ portFakeAPI }/`,
+        target: `https://volker.ninthtown.ru/api/`,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

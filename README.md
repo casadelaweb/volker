@@ -16,8 +16,8 @@ dev: https://volker.ninthtown.ru/
 
 ## Backend и API
 
-В качестве backend временно используется `fakeapi` - простой `Node` + `express` локальный сервер для
-тестирования запросов к /api. Реальное API в процессе написания (`FastAPI` + `ProcessWire API`)
+* php 8.2
+* ProcessWire
 
 ## Развертывание
 

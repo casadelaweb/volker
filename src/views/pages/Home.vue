@@ -8,6 +8,7 @@
 </template>
 
 <script lang="ts">
+import axios from 'axios'
 import { defineComponent } from 'vue'
 import SectionProduction from 'src/views/components/sections/SectionProduction.vue'
 import SectionReviews from 'src/views/components/sections/SectionReviews.vue'
@@ -83,7 +84,8 @@ export default defineComponent({
   },
   methods: {
     async fetchProducts() {
-
+      const response = await axios.get('/api/')
+      console.log(response.data)
     },
     async fetchReviews() {
     },

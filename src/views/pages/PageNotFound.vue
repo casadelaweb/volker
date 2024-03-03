@@ -156,8 +156,8 @@ export default defineComponent({
   top: 50%;
   left: 50%;
   z-index: 501;
-  width: 360px;
-  height: 360px;
+  width: 480px;
+  height: 480px;
   box-shadow: 0 0 0 100vw rgba(black, 0.7);
   border-radius: 50%;
   transform: translate(-50%, -50%);

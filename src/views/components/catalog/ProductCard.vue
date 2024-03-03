@@ -16,10 +16,7 @@
               :slides-per-view="1"
               :space-between="20">
         <swiper-slide v-for="(img, index) in product.images" :key="index">
-          <img :alt="product.title"
-               :data-src="img.url"
-               class="swiper-lazy product-img"
-               src="src/assets/img/placeholder.jpg">
+          <img :alt="product.title" :src="img.url" class="swiper-lazy product-img" loading="lazy">
           <div class="swiper-lazy-preloader"></div>
         </swiper-slide>
       </swiper>
@@ -30,6 +27,9 @@
           {{ product.title }}
         </router-link>
       </h2>
+      <div class="product-description">
+        {{ product.description }}
+      </div>
       <div class="product-prices">
         <span class="product-prices-caption">Цена: </span>
         <div v-if="product.priceOld" class="product-price _old">
@@ -100,15 +100,16 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @use 'src/styles/shared' as *;
 
 .product {
   @include flex($d: column);
-  //row-gap: 20px;
+  min-height: 0;
+  min-width: 0;
+  height: fit-content;
   border: 1px solid #f0f0f0;
   box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
-  // padding: 20px;
   border-radius: 8px;
   overflow: hidden;
   position: relative;
@@ -119,7 +120,7 @@ export default defineComponent({
     row-gap: 12px;
     position: absolute;
     z-index: 2;
-    top: 16px;
+    top: 8px;
     right: 8px;
   }
 
@@ -130,8 +131,8 @@ export default defineComponent({
     height: $size;
     font-size: $size * 0.5;
     border-radius: 50%;
-    background: rgba(white, 0.5);
-    box-shadow: 0 2px 4px 0 rgba(black, 0.05);
+    background: rgba(white, 0.9);
+    box-shadow: 2px 2px 12px 0 rgba(black, 0.2);
     transition: transform 0.25s, color 0.25s;
 
     @include hoverableDevice {
@@ -145,10 +146,18 @@ export default defineComponent({
     }
   }
 
+  &-fav {
+    .iconfont {
+      display: inline-block;
+      transform: translateY(15%);
+    }
+  }
+
   &-images {
   }
 
   &-img {
+    object-fit: cover;
     aspect-ratio: 4 / 3;
     width: 100%;
     background: #f0f0f0;
@@ -158,8 +167,8 @@ export default defineComponent({
   &-body {
     @include flex($d: column);
     flex: 1 0 auto;
-    row-gap: 24px;
-    padding: 16px 16px 24px;
+    row-gap: 16px;
+    padding: 12px 12px 16px;
     //@include mediaMobileL {
     //  row-gap: 20px;
     //  padding: 20px;
