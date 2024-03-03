@@ -5,6 +5,7 @@ import Post from 'src/views/pages/Post.vue'
 import Promos from 'src/views/pages/Promos.vue'
 import Promo from 'src/views/pages/Promo.vue'
 import PageNotFound from 'src/views/pages/PageNotFound.vue'
+import TestPage from 'src/views/pages/TestPage.vue'
 
 export const routesMain = [
   {
@@ -67,6 +68,11 @@ export const routesMain = [
     path: '/:catchAll(.*)',
     name: 'PageNotFound',
     component: PageNotFound
+  },
+  {
+    path: '/test-page/',
+    name: 'TestPage',
+    component: TestPage,
   },
   // {
   //   path: '/:catchAll(.*)',
