@@ -3,6 +3,8 @@
 Это репозиторий для будущего редизайна и дальнейшего расширения
 сайта [volker-group.ru](https://volker-group.ru)
 
+dev: https://volker.ninthtown.ru/
+
 `пока здесь много всего поломано. Work In Progress.`
 
 ## Технологический стек
