@@ -1,64 +1,54 @@
 <template>
-
-  <section class="promo" itemscope itemtype="https://schema.org/Article">
-    <meta :content="title" itemprop="headline name">
-    <meta :content="description" itemprop="description">
-    <link :href="siteUrl + img.src" itemprop="image">
-
+  <section class="promo">
     <div class="promo-container">
-      <h1 class="promo-title">{{ title }}</h1>
-      <img :alt="title" class="promo-img" loading="lazy" src="src/assets/img/placeholder.jpg">
-      <div class="promo-description">{{ description }}</div>
+      <h1 class="promo-title">{{ promo.title }}</h1>
+      <img :alt="promo.image.alt" :src="promo.image.url" class="promo-img" loading="lazy">
+      <div class="promo-description">
+        {{ promo.description }}
+      </div>
+      <div class="promo-body post-body" v-html="promo.body"></div>
     </div>
   </section>
-  <SectionProducts :products="suggestedProducts" title="Товары по акции"/>
+  <!--  <SectionProducts :products="suggestedProducts" title="Товары по акции"/>-->
 </template>
 
-<script lang="ts">
-import SectionProducts from 'src/views/components/sections/SectionProducts.vue'
-import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
+<script lang="ts" setup>
+import { useRoute } from 'vue-router'
 import axios from 'axios'
+import { onMounted, ref } from 'vue'
 
-export default {
-  components: {
-    breadcrumbs,
-    SectionProducts,
+const isLoading = ref(true)
+const promo = ref({
+  title: '',
+  description: '',
+  body: '',
+  image: {
+    url: '',
+    alt: '',
   },
-  data: function () {
-    return {
-      siteUrl: 'siteUrl',
-      title: 'Название акции или специального предложения',
-      img: {
-        src: 'src/assets/img/placeholder.jpg',
-      },
-      description: 'Скидка 3% при покупке от 150 ед. и 5% при покупке от 300 ед. Распространяется на все товары.',
-      suggestedProducts: [],
-      isLoading: true,
-    }
-  },
-  methods: {
-    async fetchData(url: string) {
+})
+const route = useRoute()
+const promoName = route.params.id
 
-
-      try {
-        let result = false
-        this.isLoading = true
-        const response = await axios.get(url)
-        console.log(response)
-        result = response.data
-      } catch (error) {
-        console.log(error)
-      } finally {
-        this.isLoading = false
-      }
-
-
-    },
-  },
-  mounted() {
-    this.fetchData('posts/')
+async function getPost() {
+  try {
+    isLoading.value = true
+    const response = await axios({
+      method: 'get',
+      url: `/api/promo/${ promoName }`,
+    })
+    console.log(response.data)
+    promo.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
   }
 }
+
+onMounted(() => {
+  getPost()
+})
 </script>
 
 <style lang="scss" scoped>
@@ -78,9 +68,10 @@ export default {
   }
 
   &-img {
-    //display: block;
+    border-radius: 8px;
+    object-fit: cover;
     width: 100%;
-    aspect-ratio: 21 / 9;
+    aspect-ratio: 4 / 1;
     margin-bottom: 20px;
   }
 }

@@ -1,30 +1,26 @@
 <template>
   <section class="promos">
     <div class="promos-container">
-      <h1 class="promos-title">Акции и предложения {{ quantity }}</h1>
+      <h1 class="promos-title">Акции и предложения</h1>
       <div class="promos-list">
         <article v-for="promo in promos" :key="promo.id" class="promo">
-          <h2 :class="isLoading ? '_loading' : ''"
-              class="promo-title">
+          <h2 class="promo-title">
             {{ promo.title }}
+            <span v-if="isLoading" class="_loading"></span>
           </h2>
-
-          <img :alt="promo.title"
-               :class="isLoading ? '_loading' : ''"
-               :src="promo.image.url"
-               class="promo-img"
-               loading="lazy">
-
-          <div :class="isLoading ? '_loading' : ''"
-               class="promo-description">
-            {{ promo.description }}
+          <div class="promo-picture">
+            <picture>
+              <img :alt="promo.title" :src="promo.image.url" class="promo-img" loading="lazy">
+            </picture>
+            <span v-if="isLoading" class="_loading"></span>
           </div>
-          <router-link
-            :class="isLoading ? '_loading' : ''"
-            class="promo-button"
-            to="/promo/test">
+          <div class="promo-description">
+            {{ promo.description }}
+            <span v-if="isLoading" class="_loading"></span>
+          </div>
+          <ButtonMain :url="promo.url" title="Подробнее" type="router-link">
             Подробнее
-          </router-link>
+          </ButtonMain>
         </article>
       </div>
     </div>
@@ -32,17 +28,35 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue'
-import { useStoreMain } from 'src/stores/storeMain.ts'
+import { onMounted, Ref, ref } from 'vue'
+//import { useStoreMain } from 'src/stores/storeMain.ts'
+import axios from 'axios'
+import { iPagePromo } from 'src/api/base.ts'
+import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
+//import { useRoute } from 'vue-router'
 
-const quantity = ref(0)
-const store = useStoreMain()
-const isLoading = store.isLoading
-let promos = store.promos
-const promosLimit: number = 24
+const isLoading = ref(true)
+const promos: Ref<iPagePromo[]> = ref([])
+//const route = useRoute()
+//const currentRoute = route.params.id
+
+async function getPromos() {
+  try {
+    isLoading.value = true
+    const response = await axios({
+      method: 'get',
+      url: `/api/promos/`,
+    })
+    promos.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
+}
 
 onMounted(() => {
-  store.getPromos()
+  getPromos()
   // const counterAnimation = setInterval(() => {
   //   if (quantity.value < store.getPromosQuantity) {
   //     quantity.value++

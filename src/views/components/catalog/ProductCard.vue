@@ -107,7 +107,7 @@ export default defineComponent({
   @include flex($d: column);
   min-height: 0;
   min-width: 0;
-  height: fit-content;
+  //height: fit-content;
   border: 1px solid #f0f0f0;
   box-shadow: 4px 4px 16px 0 rgba(black, 0.05);
   border-radius: 8px;

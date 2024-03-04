@@ -46,7 +46,7 @@ export default {
         {
           id: 'custom',
           title: 'Custom Shop',
-          url: '/custom/',
+          url: '/promo/custom-shop/',
         },
         {
           id: 'pagenotfound',
