@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 defineProps<{
-  title?: string
+  title: string
   classList?: string,
-  type?: 'link' | 'router-link' | 'button' | 'submit',
+  type: 'link' | 'router-link' | 'button' | 'submit',
   url?: string,
 }>()
 </script>

@@ -1,11 +1,11 @@
-import Home from 'src/views/pages/Home.vue'
-import Contacts from 'src/views/pages/Contacts.vue'
-import Posts from 'src/views/pages/Posts.vue'
-import Post from 'src/views/pages/Post.vue'
-import Promos from 'src/views/pages/Promos.vue'
-import Promo from 'src/views/pages/Promo.vue'
-import PageNotFound from 'src/views/pages/PageNotFound.vue'
-import TestPage from 'src/views/pages/TestPage.vue'
+import Home from 'src/views/pages/main/Home.vue'
+import Contacts from 'src/views/pages/main/Contacts.vue'
+import Posts from 'src/views/pages/main/Posts.vue'
+import Post from 'src/views/pages/main/Post.vue'
+import Promos from 'src/views/pages/catalog/Promos.vue'
+import Promo from 'src/views/pages/catalog/Promo.vue'
+import PageNotFound from 'src/views/pages/main/PageNotFound.vue'
+import TestPage from 'src/views/pages/main/TestPage.vue'
 
 export const routesMain = [
   {

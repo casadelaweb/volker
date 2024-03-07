@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 export default defineComponent({
   data: function () {
     return {
@@ -33,7 +34,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@use 'src/styles/shared' as *;
+@use 'src/styles/shared/index' as *;
 
 .post {
   @include section;
@@ -50,6 +51,12 @@ export default defineComponent({
   &-body {
     font-size: 16px;
     letter-spacing: 0.01em;
+
+    h2, h3, h4, h5, h6, p, ul, ol {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
 
     h2, h3, h4, h5, h6 {
       margin: 1em 0 0.5em;

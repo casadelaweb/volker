@@ -1,6 +1,6 @@
-import Catalog from 'src/views/pages/Catalog.vue'
-import Category from 'src/views/pages/Category.vue'
-import Product from 'src/views/pages/Product.vue'
+import Catalog from 'src/views/pages/catalog/Catalog.vue'
+import Category from 'src/views/pages/catalog/Category.vue'
+import Product from 'src/views/pages/catalog/Product.vue'
 
 export const routesCatalog = [
   {

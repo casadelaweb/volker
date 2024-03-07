@@ -68,7 +68,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-@use 'src/styles/shared' as *;
+@use 'src/styles/shared/index' as *;
 
 .promos {
   @include section;

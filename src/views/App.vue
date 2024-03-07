@@ -1,6 +1,6 @@
 <template>
   <AppHeader/>
-  <main id="main">
+  <main id="main" class="main">
     <router-view :key="$route.path"></router-view>
   </main>
   <FeedbackHorizontal/>

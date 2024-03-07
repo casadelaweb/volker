@@ -2,7 +2,7 @@
   <section class="product">
     <div class="product-container">
       <div>
-        <img alt="loading" class="lazy" src="src/assets/img/loading.gif">
+        <img alt="loading" class="lazy" src="../../../assets/img/loading.gif">
       </div>
       <div class="product-information">
         <h1 class="product-title"> {{ product.title }}</h1>
@@ -123,7 +123,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use 'src/styles/shared' as *;
+@use 'src/styles/shared/index' as *;
 
 .product {
   min-width: 0;

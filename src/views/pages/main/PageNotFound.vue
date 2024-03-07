@@ -58,7 +58,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@use 'src/styles/shared' as *;
+@use 'src/styles/shared/index' as *;
 
 .sign-word {
   color: #e6e6e6;
