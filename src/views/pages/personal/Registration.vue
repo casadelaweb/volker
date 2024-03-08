@@ -1,120 +1,109 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { IMaskComponent } from 'vue-imask'
-import { useIMask } from 'vue-imask'
 
 import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
 import Field from 'src/views/components/ui/Field.vue'
 
-const data = ref({
-  user_name: {
-    schemes: ['user_name',],
-    value: '',
-    isValid: true,
-    message: '',
-  },
-  email: {
-    schemes: ['is_email',],
-    value: '',
-    isValid: true,
-    message: '',
-  },
-  tel: {
-    schemes: ['is_tel',],
-    value: '',
-    isValid: true,
-    message: '',
-  },
-  user_type: '',
-  privacy_policy: '',
-})
-
-const { el, masked } = useIMask({
-  mask: '{+7}-(000)-000-00-00',
-})
-
-function validateForm() {
-}
-
 function validateField(input: HTMLInputElement, validationSchemes: string[],) {
   let errorsQuantity: number = 0
-  let message = ''
+  let errorText = ''
 
   validationSchemes.forEach((schemeName: string,) => {
     const value = input.value.trim()
     if (schemeName === 'user_name') {
       if (value.length < 2) {
         errorsQuantity++
-        message = 'Не менее двух символов'
+        errorText = 'Не менее двух символов'
       }
     }
-
     if (schemeName === 'no_digits') {
       if (/\d/iumg.test(value)) {
         errorsQuantity++
-        message = 'В вашем имени есть цифры? Что-то тут не так.'
+        errorText = 'В вашем имени есть цифры? Что-то тут не так.'
       }
     }
-
-    if (schemeName === 'is_email') {
+    if (schemeName === 'email') {
       const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
       if (!pattern.test(value)) {
         errorsQuantity++
-        message = 'Введите корректный email в формате xxx@xxx.xx'
+        errorText = 'Введите корректный email в формате xxx@xxx.xx'
       }
     }
-
-    if (schemeName === 'is_tel') {
+    if (schemeName === 'tel') {
       if (value.length !== 18) {
         errorsQuantity++
-        message = 'Введите телефон в формате +7-xxx-xxx-xx-xx'
+        errorText = 'Введите телефон в формате +7-xxx-xxx-xx-xx'
+      }
+    }
+    if (schemeName === 'inn') {
+      const cond1 = value.length === 10 || value.length === 12
+      console.log(cond1, !cond1)
+      if (!cond1) {
+        errorsQuantity++
+        errorText = 'Последовательность из 10 или 12 арабских цифр'
       }
     }
   })
 
   return {
     isValid: errorsQuantity === 0,
-    message,
+    errorText,
   }
 }
 
 function handleFieldUpdate(event: InputEvent) {
   const input = event.target as HTMLInputElement
-  console.log(input.value, input.checked)
+
   if (input.name === 'role') {
     fields.value.roles[1].checked = input.value === 'Юридическое лицо' && input.checked
   }
-  // const val = validateField(input, ['is_tel'])
-  // data.value.tel.isValid = val.isValid
-  // data.value.tel.message = val.message
-}
 
-function handleChange(event: InputEvent) {
-  const input = event.target as HTMLInputElement
-  switch (input.name) {
-    case 'email':
-      data.value.email.value = input.value
-      const schemes = data.value.email.schemes
-      const resp = validateField(input, schemes)
-      console.log(resp)
-      data.value.email.isValid = resp.isValid
-      data.value.email.message = resp.message
-      break
-    case 'user_name':
-      data.value.user_name.value = input.value
-      const val = validateField(input, [
-        'user_name', 'only_cyrillic', 'no_digits'
-      ])
-      data.value.user_name.isValid = val.isValid
-      data.value.user_name.message = val.message
-      break
-    case 'user_type':
-      data.value.user_type = input.value
-      break
-    default:
-      console.log(data.value)
-      break
-  }
+  // if (input.name === 'user_name') {
+  //   fields.value.main.find((obj) => {
+  //     if (obj.name === 'user_name') {
+  //       const val = validateField(input, obj.validationSchemes)
+  //       obj.isValid = val.isValid
+  //       obj.errorText = val.errorText
+  //     }
+  //   })
+  // }
+  // if (input.name === 'tel') {
+  //   fields.value.main.find((obj) => {
+  //     if (obj.name === 'tel') {
+  //       const val = validateField(input, obj.validationSchemes)
+  //       obj.isValid = val.isValid
+  //       obj.errorText = val.errorText
+  //     }
+  //   })
+  // }
+  // if (input.name === 'email') {
+  //   fields.value.main.find((obj) => {
+  //     if (obj.name === 'email') {
+  //       const val = validateField(input, obj.validationSchemes)
+  //       obj.isValid = val.isValid
+  //       obj.errorText = val.errorText
+  //     }
+  //   })
+  // }
+  //
+  // if (input.name === 'company_name') {
+  //   fields.value.legalEntity.find((obj) => {
+  //     if (obj.name === 'company_name') {
+  //       const val = validateField(input, obj.validationSchemes)
+  //       obj.isValid = val.isValid
+  //       obj.errorText = val.errorText
+  //     }
+  //   })
+  // }
+  // if (input.name === 'inn') {
+  //   fields.value.legalEntity.find((obj) => {
+  //     if (obj.name === 'inn') {
+  //       const val = validateField(input, obj.validationSchemes)
+  //       obj.isValid = val.isValid
+  //       obj.errorText = val.errorText
+  //     }
+  //   })
+  // }
 }
 
 interface iField {
@@ -122,7 +111,6 @@ interface iField {
   placeholder: string,
   name: string,
   type: 'text' | 'radio' | 'checkbox',
-  dataMask: string,
   validationSchemes: Array<string>,
   value: string,
   isValid: boolean | null,
@@ -136,10 +124,9 @@ const fields = ref({
       placeholder: 'Томас Круз',
       name: 'user_name',
       type: 'text',
-      dataMask: 'user_name',
       validationSchemes: ['user_name',],
       value: '',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
     },
     {
@@ -147,10 +134,9 @@ const fields = ref({
       placeholder: 'my@email.io',
       name: 'email',
       type: 'text',
-      dataMask: 'email',
       validationSchemes: ['email',],
       value: '',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
     },
     {
@@ -158,10 +144,9 @@ const fields = ref({
       placeholder: '+7-xxx-xxx-xx-xx',
       name: 'tel',
       type: 'text',
-      dataMask: 'tel',
       validationSchemes: ['tel',],
       value: '',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
     },
   ],
@@ -171,10 +156,9 @@ const fields = ref({
       placeholder: 'Физическое лицо',
       name: 'role',
       type: 'radio',
-      dataMask: '',
       validationSchemes: ['inn',],
       value: 'Физическое лицо',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
       checked: null as boolean | null,
     },
@@ -183,10 +167,9 @@ const fields = ref({
       placeholder: 'Юридическое лицо',
       name: 'role',
       type: 'radio',
-      dataMask: '',
       validationSchemes: ['inn',],
       value: 'Юридическое лицо',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
       checked: null as boolean | null,
     },
@@ -197,10 +180,9 @@ const fields = ref({
       placeholder: '1234567890',
       name: 'inn',
       type: 'text',
-      dataMask: 'tel',
       validationSchemes: ['inn',],
       value: '',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
     },
     {
@@ -208,10 +190,9 @@ const fields = ref({
       placeholder: 'ООО Туда Сюда',
       name: 'company_name',
       type: 'text',
-      dataMask: 'company_name',
       validationSchemes: ['company_name',],
       value: '',
-      isValid: null,
+      isValid: null as boolean | null,
       errorText: '',
     },
   ],
@@ -231,19 +212,18 @@ const fields = ref({
           <div class="form-fields">
             <fieldset class="fieldset">
               <Field v-for="(field,index) in fields.main" :key="index"
-                     :data-mask="field.dataMask"
                      :error-text="field.errorText"
                      :is-valid="field.isValid"
                      :label="field.label"
                      :name="field.name"
                      :placeholder="field.placeholder"
                      :type="field.type"
-                     :value="field.value"/>
+                     :value="field.value"
+                     @update="handleFieldUpdate"/>
             </fieldset>
             <fieldset class="fieldset">
               <legend class="fieldset-title">Выберите роль:</legend>
               <Field v-for="(field,index) in fields.roles" :key="index"
-                     :data-mask="field.dataMask"
                      :error-text="field.errorText"
                      :is-valid="field.isValid"
                      :label="field.label"
@@ -255,18 +235,17 @@ const fields = ref({
                      class-list="_checkbox"
                      @update="handleFieldUpdate"
               />
-
-              <Field v-for="(field,index) in fields.legalEntity" v-if="fields.roles[1].checked"
+              <Field v-for="(field,index) in fields.legalEntity"
+                     v-if="fields.roles[1].checked"
                      :key="index"
-                     :data-mask="field.dataMask"
                      :error-text="field.errorText"
                      :is-valid="field.isValid"
                      :label="field.label"
                      :name="field.name"
                      :placeholder="field.placeholder"
                      :type="field.type"
-                     :value="field.value"/>
-
+                     :value="field.value"
+                     @update="handleFieldUpdate"/>
             </fieldset>
           </div>
           <label class="field _checkbox">

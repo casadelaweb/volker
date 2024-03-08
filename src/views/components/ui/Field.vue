@@ -5,7 +5,6 @@ const props = defineProps<{
   type: 'text' | 'radio' | 'checkbox',
   placeholder: string,
   name: string,
-  dataMask: string,
   classList?: string,
   isValid: boolean | null,
   checked?: boolean | null,
@@ -16,14 +15,30 @@ const props = defineProps<{
 const emit = defineEmits(['update'])
 const isCheckbox = props.type === 'radio' || props.type === 'checkbox'
 
-function handleInput(event: InputEvent) {
+function handleInput(event: Event) {
   // const value = event.target.value as string
   //console.log(event)
   emit('update', event,)
 }
 
-function handleChange(event: InputEvent) {
-  emit('update', event)
+function handleFocus(event: Event) {
+  // if (props.isValid === true) return
+  //
+  // const input = event.target as HTMLInputElement
+  // const label: HTMLLabelElement = input.closest('label')
+  // const error: HTMLElement = label.querySelector('.field-error')
+  // label.classList.add('_error')
+  // error.classList.add('_active')
+}
+
+function handleBlur(event: Event) {
+  // if (props.isValid === true) return
+
+  const input = event.target as HTMLInputElement
+  const label = input.closest('label') as HTMLElement
+  const error = label.querySelector('.field-error') as HTMLElement
+  label.classList.remove('_error')
+  error.classList.remove('_active')
 }
 </script>
 
@@ -31,21 +46,20 @@ function handleChange(event: InputEvent) {
   <label :class="{ '_error': isValid === false,'_checkbox':isCheckbox }" class="field">
     <span class="field-label">{{ label }}</span>
     <input :class="{'_checkbox':isCheckbox}"
-           :data-mask="dataMask"
            :name="name"
            :placeholder="placeholder"
            :type="type"
            :value="value"
            class="field-input"
            required
-           @input="handleInput">
+           @blur="handleBlur" @focus="handleFocus" @input="handleInput">
     <span :class="{ '_active': isValid === false, }" class="field-error">
       {{ errorText }}
     </span>
   </label>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @use 'src/styles/shared' as *;
 
 .field {
