@@ -1,18 +1,36 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
+import { IMaskComponent } from 'vue-imask'
+import { useIMask } from 'vue-imask'
 
-const formData = ref({
+import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
+import Field from 'src/views/components/ui/Field.vue'
+
+const data = ref({
   user_name: {
     schemes: ['user_name',],
     value: '',
     isValid: true,
     message: '',
   },
-  email: '',
-  tel: '',
+  email: {
+    schemes: ['is_email',],
+    value: '',
+    isValid: true,
+    message: '',
+  },
+  tel: {
+    schemes: ['is_tel',],
+    value: '',
+    isValid: true,
+    message: '',
+  },
   user_type: '',
   privacy_policy: '',
+})
+
+const { el, masked } = useIMask({
+  mask: '{+7}-(000)-000-00-00',
 })
 
 function validateForm() {
@@ -37,6 +55,21 @@ function validateField(input: HTMLInputElement, validationSchemes: string[],) {
         message = 'В вашем имени есть цифры? Что-то тут не так.'
       }
     }
+
+    if (schemeName === 'is_email') {
+      const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+      if (!pattern.test(value)) {
+        errorsQuantity++
+        message = 'Введите корректный email в формате xxx@xxx.xx'
+      }
+    }
+
+    if (schemeName === 'is_tel') {
+      if (value.length !== 18) {
+        errorsQuantity++
+        message = 'Введите телефон в формате +7-xxx-xxx-xx-xx'
+      }
+    }
   })
 
   return {
@@ -45,25 +78,144 @@ function validateField(input: HTMLInputElement, validationSchemes: string[],) {
   }
 }
 
+function handleFieldUpdate(event: InputEvent) {
+  const input = event.target as HTMLInputElement
+  console.log(input.value, input.checked)
+  if (input.name === 'role') {
+    fields.value.roles[1].checked = input.value === 'Юридическое лицо' && input.checked
+  }
+  // const val = validateField(input, ['is_tel'])
+  // data.value.tel.isValid = val.isValid
+  // data.value.tel.message = val.message
+}
+
 function handleChange(event: InputEvent) {
   const input = event.target as HTMLInputElement
   switch (input.name) {
+    case 'email':
+      data.value.email.value = input.value
+      const schemes = data.value.email.schemes
+      const resp = validateField(input, schemes)
+      console.log(resp)
+      data.value.email.isValid = resp.isValid
+      data.value.email.message = resp.message
+      break
     case 'user_name':
-      formData.value.user_name.value = input.value
+      data.value.user_name.value = input.value
       const val = validateField(input, [
         'user_name', 'only_cyrillic', 'no_digits'
       ])
-      formData.value.user_name.isValid = val.isValid
-      formData.value.user_name.message = val.message
+      data.value.user_name.isValid = val.isValid
+      data.value.user_name.message = val.message
       break
     case 'user_type':
-      formData.value.user_type = input.value
+      data.value.user_type = input.value
       break
     default:
-      console.log(formData.value)
+      console.log(data.value)
       break
   }
 }
+
+interface iField {
+  label: string,
+  placeholder: string,
+  name: string,
+  type: 'text' | 'radio' | 'checkbox',
+  dataMask: string,
+  validationSchemes: Array<string>,
+  value: string,
+  isValid: boolean | null,
+  errorText: string,
+}
+
+const fields = ref({
+  main: [
+    {
+      label: 'Введите Ваше имя:',
+      placeholder: 'Томас Круз',
+      name: 'user_name',
+      type: 'text',
+      dataMask: 'user_name',
+      validationSchemes: ['user_name',],
+      value: '',
+      isValid: null,
+      errorText: '',
+    },
+    {
+      label: 'Введите Вашу электронную почту:',
+      placeholder: 'my@email.io',
+      name: 'email',
+      type: 'text',
+      dataMask: 'email',
+      validationSchemes: ['email',],
+      value: '',
+      isValid: null,
+      errorText: '',
+    },
+    {
+      label: 'Введите Ваше номер телефона:',
+      placeholder: '+7-xxx-xxx-xx-xx',
+      name: 'tel',
+      type: 'text',
+      dataMask: 'tel',
+      validationSchemes: ['tel',],
+      value: '',
+      isValid: null,
+      errorText: '',
+    },
+  ],
+  roles: [
+    {
+      label: 'Я физическое лицо',
+      placeholder: 'Физическое лицо',
+      name: 'role',
+      type: 'radio',
+      dataMask: '',
+      validationSchemes: ['inn',],
+      value: 'Физическое лицо',
+      isValid: null,
+      errorText: '',
+      checked: null as boolean | null,
+    },
+    {
+      label: 'Я юридическое лицо',
+      placeholder: 'Юридическое лицо',
+      name: 'role',
+      type: 'radio',
+      dataMask: '',
+      validationSchemes: ['inn',],
+      value: 'Юридическое лицо',
+      isValid: null,
+      errorText: '',
+      checked: null as boolean | null,
+    },
+  ],
+  legalEntity: [
+    {
+      label: 'ИНН Вашей компании:',
+      placeholder: '1234567890',
+      name: 'inn',
+      type: 'text',
+      dataMask: 'tel',
+      validationSchemes: ['inn',],
+      value: '',
+      isValid: null,
+      errorText: '',
+    },
+    {
+      label: 'Название Вашей компании:',
+      placeholder: 'ООО Туда Сюда',
+      name: 'company_name',
+      type: 'text',
+      dataMask: 'company_name',
+      validationSchemes: ['company_name',],
+      value: '',
+      isValid: null,
+      errorText: '',
+    },
+  ],
+})
 </script>
 
 <template>
@@ -78,47 +230,47 @@ function handleChange(event: InputEvent) {
           <h2 class="form-title">Регистрация</h2>
           <div class="form-fields">
             <fieldset class="fieldset">
-              <label :class="!formData.user_name.isValid ? '_error': '' " class="field">
-                <span class="field-label">Ваше имя:</span>
-                <input :class="!formData.user_name.isValid ? '_error': '' " class="field-input"
-                       data-mask="user_name"
-                       name="user_name" placeholder="Томас Круз" required
-                       type="text" @input="handleChange">
-                <span :class="!formData.user_name.isValid ? '_active': '' " class="field-error">
-                  {{ formData.user_name.message }}
-                </span>
-              </label>
-              <label class="field">
-                <span class="field-label">Ваша электронная почта:</span>
-                <input class="field-input" data-mask="email" name="email"
-                       placeholder="myemail@site.com" required type="text"
-                       @input="handleChange">
-                <span class="field-error"></span>
-              </label>
-              <label class="field">
-                <span class="field-label">Ваш номер телефона:</span>
-                <input class="field-input" data-mask="tel" name="tel"
-                       placeholder="+7-934-356-54-12" required type="text"
-                       @input="handleChange">
-                <span class="field-error"></span>
-              </label>
+              <Field v-for="(field,index) in fields.main" :key="index"
+                     :data-mask="field.dataMask"
+                     :error-text="field.errorText"
+                     :is-valid="field.isValid"
+                     :label="field.label"
+                     :name="field.name"
+                     :placeholder="field.placeholder"
+                     :type="field.type"
+                     :value="field.value"/>
             </fieldset>
             <fieldset class="fieldset">
               <legend class="fieldset-title">Выберите роль:</legend>
-              <label class="field _checkbox">
-                <input name="user_type" required type="radio" value="company"
-                       @change="handleChange">
-                <span class="field-note">Я юридическое лицо</span>
-              </label>
-              <label class="field _checkbox">
-                <input name="user_type" required type="radio" value="person"
-                       @change="handleChange">
-                <span class="field-note">Я физическое лицо</span>
-              </label>
+              <Field v-for="(field,index) in fields.roles" :key="index"
+                     :data-mask="field.dataMask"
+                     :error-text="field.errorText"
+                     :is-valid="field.isValid"
+                     :label="field.label"
+                     :name="field.name"
+                     :placeholder="field.placeholder"
+                     :style="(index + 1) === fields.roles.length ? 'margin-bottom: 16px;' : null"
+                     :type="field.type"
+                     :value="field.value"
+                     class-list="_checkbox"
+                     @update="handleFieldUpdate"
+              />
+
+              <Field v-for="(field,index) in fields.legalEntity" v-if="fields.roles[1].checked"
+                     :key="index"
+                     :data-mask="field.dataMask"
+                     :error-text="field.errorText"
+                     :is-valid="field.isValid"
+                     :label="field.label"
+                     :name="field.name"
+                     :placeholder="field.placeholder"
+                     :type="field.type"
+                     :value="field.value"/>
+
             </fieldset>
           </div>
           <label class="field _checkbox">
-            <input name="privacy_policy" required type="checkbox" @change="handleChange">
+            <input name="privacy_policy" required type="checkbox">
             <span>
               Нажимая кнопку отправить, вы соглашаетесь с
               <router-link target="_blank" title="Политика обработки персональных данных"
@@ -165,8 +317,8 @@ function handleChange(event: InputEvent) {
   &-fields {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 16px;
-    row-gap: 16px;
+    column-gap: 32px;
+    row-gap: 32px;
   }
 }
 
@@ -176,86 +328,5 @@ function handleChange(event: InputEvent) {
   }
 }
 
-.field {
-  position: relative;
-  z-index: 0;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 8px;
-  flex: 0 0 auto;
-  width: fit-content;
-  height: fit-content;
-  margin-bottom: 16px;
 
-  &._error {
-    z-index: 1;
-  }
-
-  &._checkbox {
-    display: block;
-
-    a {
-      color: darkseagreen;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
-  &-label {
-  }
-
-  &-input {
-    transition: color 0.3s, border-color 0.3s;
-    border: 2px solid #e6e6e6;
-    padding: 10px 20px;
-    border-radius: 8px;
-
-    &._error {
-      border-color: indianred;
-    }
-
-    &._success {
-      border-color: mediumseagreen;
-    }
-  }
-
-  &-error {
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    max-width: 280px;
-    background: indianred;
-    padding: 8px;
-    border-radius: 8px;
-    color: white;
-    transition: transform 0.25s, opacity 0.25s;
-    transform: translate(0, 20px);
-    pointer-events: none;
-    opacity: 0;
-
-    &::before {
-      content: ' ';
-      position: absolute;
-      z-index: 1;
-      top: -12px;
-      left: 12px;
-      width: 12px * 1.5;
-      height: 12px;
-      background: indianred;
-      clip-path: polygon(50% 0%, 0 100%, 100% 100%);;
-    }
-
-    &._active {
-      transform: translate3d(0, 0, 0);
-      pointer-events: auto;
-      opacity: 1;
-    }
-  }
-}
 </style>
