@@ -279,7 +279,7 @@ const fields = ref({
               </router-link>
             </span>
           </label>
-          <ButtonMain title="Зарегистрироваться" type="submit">
+          <ButtonMain class-list="form-submit" title="Зарегистрироваться" type="submit">
             Зарегистрироваться
           </ButtonMain>
         </div>
@@ -289,36 +289,66 @@ const fields = ref({
 </template>
 
 <style lang="scss" scoped>
+@use 'src/styles/shared' as *;
+
 .form {
+  display: block;
   padding: 0;
   overflow: hidden;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
   border-radius: 16px;
   margin: 160px 0 80px;
-  box-shadow: 4px 4px 32px 0 rgba(black, 0.3);
+  box-shadow: 4px 4px 32px 0 rgba(black, 0.1);
+  @include mediaTabletL {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  &-info, &-body {
+    padding: 20px 12px;
+    @include mediaMobileS {
+      padding: 24px 16px;
+    }
+    @include mediaTabletM {
+      padding: 32px 24px;
+    }
+    @include mediaLaptopXs {
+      padding: 32px;
+    }
+  }
 
   &-info {
     background: darkseagreen;
     color: white;
     font-weight: 500;
-    padding: 32px;
   }
 
   &-body {
-    padding: 32px;
     background: white;
-    display: grid;
-    grid-template-columns: 1fr;
-    column-gap: 16px;
-    row-gap: 16px;
+  }
+
+  &-title {
+    margin-bottom: 20px;
+    @include mediaTabletL {
+      margin-bottom: 32px;
+    }
   }
 
   &-fields {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 32px;
-    row-gap: 32px;
+    @include mediaTabletM {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 24px;
+      row-gap: 24px;
+    }
+    @include mediaLaptopL {
+      column-gap: 48px;
+      row-gap: 48px;
+    }
+  }
+
+  &-submit {
+    margin: 20px auto 0;
+    max-width: 400px;
   }
 }
 
@@ -327,6 +357,4 @@ const fields = ref({
     margin-bottom: 8px;
   }
 }
-
-
 </style>

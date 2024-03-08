@@ -55,7 +55,8 @@ function handleChange(event: InputEvent) {
   grid-template-columns: 1fr;
   row-gap: 8px;
   flex: 0 0 auto;
-  width: fit-content;
+  //width: fit-content;
+  width: 100%;
   height: fit-content;
   margin-bottom: 16px;
 
@@ -79,8 +80,11 @@ function handleChange(event: InputEvent) {
   &-input {
     transition: color 0.3s, border-color 0.3s;
     border: 2px solid #e6e6e6;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 8px;
+    @include mediaMobileS {
+      padding: 10px 20px;
+    }
 
     &._checkbox {
       order: -1;
