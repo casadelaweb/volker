@@ -202,7 +202,7 @@ const fields = ref({
 <template>
   <section class="section">
     <div class="container">
-      <form class="form" method="post">
+      <form class="form">
         <div class="form-info">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis
           ducimus ex iure maiores minima molestias officia porro sit ullam voluptate?

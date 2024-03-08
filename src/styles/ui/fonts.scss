@@ -1,129 +1,171 @@
-// Inter
+//// Inter
+//
+//@font-face {
+//  font-family: 'Inter';
+//  font-style: normal;
+//  font-weight: 300;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Inter/Inter-Light.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Inter';
+//  font-style: normal;
+//  font-weight: 400;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Inter';
+//  font-style: normal;
+//  font-weight: 500;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Inter/Inter-Medium.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Inter';
+//  font-style: normal;
+//  font-weight: 600;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Inter';
+//  font-style: normal;
+//  font-weight: 700;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
+//}
+//
+//// Jost
+//
+//@font-face {
+//  font-family: 'Jost';
+//  font-style: normal;
+//  font-weight: 300;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Jost/Jost-Light.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Jost';
+//  font-style: normal;
+//  font-weight: 400;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Jost/Jost-Regular.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Jost';
+//  font-style: normal;
+//  font-weight: 500;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Jost/Jost-Medium.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Jost';
+//  font-style: normal;
+//  font-weight: 600;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Jost/Jost-SemiBold.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Jost';
+//  font-style: normal;
+//  font-weight: 700;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Jost/Jost-Bold.ttf') format('truetype');
+//}
+//
+//// Mulish
+//
+//@font-face {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 300;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Mulish/Mulish-Light.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 400;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Mulish/Mulish-Regular.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 500;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Mulish/Mulish-Medium.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 600;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Mulish/Mulish-SemiBold.ttf') format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Mulish';
+//  font-style: normal;
+//  font-weight: 700;
+//  font-display: swap;
+//  src: url('src/assets/fonts/Mulish/Mulish-Bold.ttf') format('truetype');
+//}
+
+// Montserrat
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url('src/assets/fonts/Inter/Inter-Light.ttf') format('truetype');
+  src: url('src/assets/fonts/Montserrat/Montserrat-Light.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('src/assets/fonts/Inter/Inter-Regular.ttf') format('truetype');
+  src: url('src/assets/fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('src/assets/fonts/Inter/Inter-Medium.ttf') format('truetype');
+  src: url('src/assets/fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('src/assets/fonts/Inter/Inter-SemiBold.ttf') format('truetype');
+  src: url('src/assets/fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('src/assets/fonts/Inter/Inter-Bold.ttf') format('truetype');
-}
-
-// Jost
-
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('src/assets/fonts/Jost/Jost-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('src/assets/fonts/Jost/Jost-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('src/assets/fonts/Jost/Jost-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('src/assets/fonts/Jost/Jost-SemiBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Jost';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('src/assets/fonts/Jost/Jost-Bold.ttf') format('truetype');
-}
-
-// Mulish
-
-@font-face {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: url('src/assets/fonts/Mulish/Mulish-Light.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('src/assets/fonts/Mulish/Mulish-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('src/assets/fonts/Mulish/Mulish-Medium.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url('src/assets/fonts/Mulish/Mulish-SemiBold.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Mulish';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url('src/assets/fonts/Mulish/Mulish-Bold.ttf') format('truetype');
+  src: url('src/assets/fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
 }
 
 body {
-  font-family: 'Mulish', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
