@@ -142,21 +142,33 @@ onMounted(() => {
       background: rgba(white, 0.9);
       width: 100%;
       height: 100%;
-      padding: 32px 24px;
+      padding: 12px;
+      @include mediaMobileS {
+        padding: 16px;
+      }
+      @include mediaTabletL {
+        padding: 32px 24px;
+      }
     }
 
     &-title {
-      @include h3;
+      font-size: 16px;
       font-weight: 600;
-      letter-spacing: 0.03em;
       margin-bottom: 0.66em;
+      @include mediaTabletS {
+        font-size: 20px;
+        letter-spacing: 0.03em;
+      }
     }
 
     &-description {
-      font-size: 16px;
+      font-size: 13px;
       font-weight: 500;
-      line-height: 1.4;
-      letter-spacing: 0.03em;
+      line-height: 1.25;
+      @include mediaTabletS {
+        font-size: 16px;
+        letter-spacing: 0.03em;
+      }
     }
 
     &-img {
@@ -173,11 +185,15 @@ onMounted(() => {
       z-index: 1;
       right: 0;
       bottom: 0;
-      width: 64px;
-      height: 64px;
+      width: 40px;
+      height: 40px;
       background: mediumseagreen;
       color: white;
       border-top-left-radius: 50%;
+      @include mediaTabletS {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 }

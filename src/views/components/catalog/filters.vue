@@ -120,7 +120,7 @@ function handleClick(event: MouseEvent) {
 
     @include hoverableDevice {
       &:hover {
-        color: darkseagreen;
+        color: mediumseagreen;
       }
     }
 
