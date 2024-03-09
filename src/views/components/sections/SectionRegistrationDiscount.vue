@@ -47,18 +47,25 @@ const sectionButton = ref({
     @include container;
     @include flex(center, flex-end);
     min-height: 480px;
+    @include mediaTabletL {
+    }
   }
 
   &-main {
-    //display: grid;
-    //grid-template-columns: 1fr;
-    //column-gap: 16px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto auto;
     flex: 0 0 auto;
-    width: 400px;
     background: white;
     padding: 16px;
     border-radius: 8px;
     box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
+    @include mediaTabletM {
+      margin: 0 0 10%;
+    }
+    @include mediaTabletL {
+      margin: 0;
+    }
   }
 }
 </style>
