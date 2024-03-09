@@ -65,7 +65,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
       transition: background-color 0.334s;
 
       &:hover {
-        background: darkseagreen;
+        background: mediumseagreen;
       }
     }
   }

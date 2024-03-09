@@ -95,7 +95,7 @@ export default {
 
   &-catalog {
     @include buttonTemplate;
-    background: darkseagreen;
+    background: mediumseagreen;
     color: white;
   }
 

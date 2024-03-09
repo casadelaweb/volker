@@ -1,9 +1,9 @@
 <template>
   <SectionHero/>
   <SectionDisplay/>
+  <SectionProducts :products="products"/>
   <SectionRegistrationDiscount/>
   <SectionPromos/>
-  <SectionProducts :products="products"/>
   <SectionReviews :reviews="reviews"/>
   <SectionProduction/>
 </template>

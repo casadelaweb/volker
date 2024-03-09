@@ -139,8 +139,8 @@ export default defineComponent({
       width: 64px;
       height: 32px;
       font-size: 16px;
-      border: 2px solid darkseagreen;
-      color: darkseagreen;
+      border: 2px solid mediumseagreen;
+      color: mediumseagreen;
     }
   }
 

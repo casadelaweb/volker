@@ -7,15 +7,20 @@
       </div>
       <div v-else class="display-layout">
         <article v-for="category in categories" :key="category.id" class="display-card">
-          <img :alt="category.preview.alt ?? category.preview.title" :src="category.preview.url"
+          <img :alt="category.image.alt" :src="category.image.url"
                class="display-card-img" loading="lazy">
-          <h2 class="display-card-title">
-            <router-link :title="category.title" :to="category.url">
-              {{ category.title }}
+          <div class="display-card-body">
+            <h2 class="display-card-title">
+              <router-link :title="category.title" :to="category.url">
+                {{ category.title }}
+              </router-link>
+            </h2>
+            <div class="display-card-description">
+              {{ category.description }}
+            </div>
+            <router-link :title="category.title" :to="category.url" class="display-card-button">
+              <span class="iconfont icon-arrow-right"></span>
             </router-link>
-          </h2>
-          <div class="display-card-description">
-            {{ category.description.short }}
           </div>
         </article>
       </div>
@@ -23,76 +28,53 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
+import { onMounted, ref } from 'vue'
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
 import axios from 'axios'
 
-export default defineComponent({
-  components: {
-    SectionTop,
+const isLoading = ref(true)
+const categories = ref([{
+  id: '',
+  title: '',
+  description: '',
+  url: '',
+  image: {
+    url: '',
+    alt: '',
+  }
+}])
+const SectionTopProps = ref({
+  button: {
+    url: '/catalog/',
+    text: 'Каталог'
   },
-  name: 'SectionDisplay',
-  data: function () {
-    return {
-      SectionTopProps: {
-        title: {
-          text: 'Популярные категории',
-          url: '/catalog/',
-        },
-        button: {
-          text: 'Смотреть все',
-          url: '/catalog/',
-        },
-      },
-      categories: [
-        {
-          id: 'test',
-          title: 'test title',
-          url: '/catalog/test/',
-          description: {
-            short: 'test description',
-          },
-          preview: {
-            alt: 'test alt',
-            title: 'test preview title',
-          },
-        }, {
-          id: 'test',
-          title: 'test title',
-          url: '/catalog/test/',
-          description: {
-            short: 'test description',
-          },
-          preview: {
-            alt: 'test alt',
-            title: 'test preview title',
-          },
-        }, {
-          id: 'test',
-          title: 'test title',
-          url: '/catalog/test/',
-          description: {
-            short: 'test description',
-          },
-          preview: {
-            alt: 'test alt',
-            title: 'test preview title',
-          },
-        },
-      ],
-      isLoading: false,
-    }
-  },
-  methods: {
-    async getCategories() {
-      const response = await axios.get('/api/posts')
-      //console.log(response.data)
-    },
-  },
-  mounted() {
-    this.getCategories()
-  },
+  title: {
+    url: '/catalog/',
+    text: 'Популярные категории',
+  }
+})
+
+async function fetchData() {
+  try {
+    isLoading.value = true
+    const response = await axios({
+      method: 'get',
+      url: '/api/catalog/',
+      params: {
+        is_popular: 1,
+      }
+    })
+    categories.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(() => {
+  fetchData()
 })
 </script>
 
@@ -100,9 +82,7 @@ export default defineComponent({
 @use 'src/styles/shared' as *;
 
 .display {
-  overflow-x: hidden;
-  max-width: 100%;
-  margin: 40px 0 80px;
+  @include section;
 
   &-container {
     @include container
@@ -132,24 +112,12 @@ export default defineComponent({
   }
 
   &-card {
-    @include flex($d: column);
-    min-width: 0;
-    padding: 10px;
-    // min-height: 180px;
-    transition: color 0.334s, background-color 0.334s;
-    border: 2px solid #f5f5f5;
+    min-height: 220px;
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
     border-radius: 8px;
-    background: #f5f5f5;
-    aspect-ratio: 4 / 3;
-    @include mediaTabletM {
-      padding: 20px;
-    }
-    @include mediaTabletL {
-      aspect-ratio: 3 / 2;
-    }
-    @include mediaLaptopXs {
-      aspect-ratio: 16 / 9;
-    }
+    box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
 
     &:nth-child(1) {
       @include mediaTabletL {
@@ -169,28 +137,47 @@ export default defineComponent({
       }
     }
 
+    &-body {
+      // background: rgba(#e6e6e6, 0.9);
+      background: rgba(white, 0.9);
+      width: 100%;
+      height: 100%;
+      padding: 32px 24px;
+    }
+
     &-title {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      margin-bottom: 12px;
-      @include mediaMobileM {
-        font-size: 14px;
-      }
-      @include mediaTabletM {
-        font-size: 18px;
-      }
+      @include h3;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.66em;
     }
 
     &-description {
-      font-size: 14px;
-      display: none;
-      @include mediaTabletM {
-        font-size: 16px;
-      }
-      @include mediaTabletL {
-        display: block;
-      }
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+
+    &-img {
+      position: absolute;
+      z-index: -1;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-button {
+      @include flex(center, center);
+      position: absolute;
+      z-index: 1;
+      right: 0;
+      bottom: 0;
+      width: 64px;
+      height: 64px;
+      background: mediumseagreen;
+      color: white;
+      border-top-left-radius: 50%;
     }
   }
 }

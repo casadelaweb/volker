@@ -296,7 +296,7 @@ const fields = ref({
   }
 
   &-info {
-    background: darkseagreen;
+    background: mediumseagreen;
     color: white;
     font-weight: 500;
   }

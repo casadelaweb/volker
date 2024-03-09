@@ -142,7 +142,7 @@ export default defineComponent({
   max-width: 764px;
 
   .link {
-    color: darkseagreen;
+    color: mediumseagreen;
     font-size: inherit;
   }
 

@@ -83,7 +83,7 @@ function handleBlur(event: Event) {
     margin-bottom: 4px;
 
     a {
-      color: darkseagreen;
+      color: mediumseagreen;
 
       &:hover {
         text-decoration: underline;

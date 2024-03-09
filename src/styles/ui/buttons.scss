@@ -6,13 +6,13 @@
   width: 160px;
   height: 48px;
   transition: color 0.334s, background-color 0.334s, border-color 0.334s;
-  color: darkseagreen;
-  border: 2px solid darkseagreen;
+  color: mediumseagreen;
+  border: 2px solid mediumseagreen;
   @include notLastChild;
 
   &.active {
     color: white;
-    background: darkseagreen;
+    background: mediumseagreen;
   }
 }
 
