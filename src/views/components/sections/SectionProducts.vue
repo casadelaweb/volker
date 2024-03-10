@@ -30,7 +30,7 @@ export default defineComponent({
       default: function () {
         return {
           text: 'Рекомендуемое',
-          url: '/catalog/recommended',
+          url: '/catalog/recommended/',
         }
       },
       required: false,
@@ -40,7 +40,7 @@ export default defineComponent({
       default: function () {
         return {
           text: 'Смотреть все',
-          url: '/catalog/recommended',
+          url: '/catalog/recommended/',
         }
       },
       required: false,
@@ -73,9 +73,18 @@ export default defineComponent({
 
   &-layout {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    column-gap: 20px;
-    row-gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 12px;
+    row-gap: 12px;
+    @include mediaMobileM {
+      column-gap: 16px;
+      row-gap: 16px;
+    }
+    @include mediaTabletL {
+      grid-template-columns: repeat(4, 1fr);
+      column-gap: 20px;
+      row-gap: 20px;
+    }
   }
 
   &-empty {

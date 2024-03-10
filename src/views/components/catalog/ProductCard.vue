@@ -41,9 +41,9 @@
           <template v-if="product.currency">{{ product.currency }}</template>
         </div>
       </div>
-      <router-link :to="product.url" class="product-button">
+      <ButtonMain :url="product.url" title="Подробнее" type="router-link">
         Подробнее
-      </router-link>
+      </ButtonMain>
     </div>
   </article>
 </template>
@@ -56,9 +56,11 @@ import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
+import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
 
 export default defineComponent({
   components: {
+    ButtonMain,
     Swiper,
     SwiperSlide,
   },
@@ -167,17 +169,17 @@ export default defineComponent({
   &-body {
     @include flex($d: column);
     flex: 1 0 auto;
-    row-gap: 16px;
+    row-gap: 12px;
     padding: 12px 12px 16px;
-    //@include mediaMobileL {
-    //  row-gap: 20px;
-    //  padding: 20px;
-    //}
+    @include mediaMobileL {
+      row-gap: 20px;
+      padding: 20px;
+    }
   }
 
   &-title {
     @include lineClamp(3);
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.4;
     letter-spacing: 0.01em;
     font-weight: 500;
@@ -187,12 +189,25 @@ export default defineComponent({
         color: darkseagreen;
       }
     }
+
+    @include mediaTabletL {
+      font-size: 18px;
+    }
+  }
+
+  &-description, &-prices {
+    font-size: 13px;
+    @include mediaMobileM {
+      font-size: 14px;
+    }
+    @include mediaTabletL {
+      font-size: 16px;
+    }
   }
 
   &-prices {
     @include flex(center);
     column-gap: 4px;
-    font-size: 18px;
 
     &-caption {
       margin-right: auto;
@@ -207,11 +222,6 @@ export default defineComponent({
       text-decoration: line-through;
       margin-right: 8px;
     }
-  }
-
-
-  &-button {
-    @include buttonOutline;
   }
 }
 </style>

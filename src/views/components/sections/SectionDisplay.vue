@@ -91,20 +91,20 @@ onMounted(() => {
   &-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 10px;
-    row-gap: 10px;
-    @include mediaMobileL {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    @include mediaTabletM {
-      column-gap: 20px;
-      row-gap: 20px;
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 12px;
+    row-gap: 12px;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: row;
+    grid-template-areas:
+        'big big'
+        'sm-1 sm-2';
+    @include mediaMobileM {
+      column-gap: 16px;
+      row-gap: 16px;
     }
     @include mediaTabletL {
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(2, 1fr);
-      grid-auto-columns: 1fr;
-      grid-auto-flow: row;
       grid-template-areas:
         'big big sm-1'
         'big big sm-2';
@@ -112,29 +112,26 @@ onMounted(() => {
   }
 
   &-card {
-    min-height: 220px;
+    min-height: 180px;
     overflow: hidden;
     position: relative;
     z-index: 0;
     border-radius: 8px;
     box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
+    @include mediaTabletL {
+      min-height: 240px;
+    }
 
     &:nth-child(1) {
-      @include mediaTabletL {
-        grid-area: big;
-      }
+      grid-area: big;
     }
 
     &:nth-child(2) {
-      @include mediaTabletL {
-        grid-area: sm-1;
-      }
+      grid-area: sm-1;
     }
 
     &:nth-child(3) {
-      @include mediaTabletL {
-        grid-area: sm-2;
-      }
+      grid-area: sm-2;
     }
 
     &-body {
@@ -143,7 +140,7 @@ onMounted(() => {
       width: 100%;
       height: 100%;
       padding: 12px;
-      @include mediaMobileS {
+      @include mediaMobileM {
         padding: 16px;
       }
       @include mediaTabletL {
