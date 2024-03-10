@@ -99,7 +99,7 @@
 
 @mixin buttonAccented {
   @include buttonTemplate;
-  background: mediumseagreen;
+  background: darkseagreen;
   color: white;
 }
 
@@ -107,10 +107,10 @@
   @include buttonTemplate;
   transition: color 0.3s, border-color 0.3s, background-color 0.3s;
   font-weight: 600;
-  border: 2px solid mediumseagreen;
-  color: mediumseagreen;
+  border: 2px solid darkseagreen;
+  color: darkseagreen;
   &:hover {
-    background: mediumseagreen;
+    background: darkseagreen;
     color: white;
   }
 }
@@ -125,7 +125,7 @@
   }
   @include hoverableDevice {
     &:hover {
-      color: mediumseagreen;
+      color: darkseagreen;
     }
   }
   font-size: $fontSizeM;
@@ -164,7 +164,7 @@
   }
 
   &:hover {
-    color: mediumseagreen;
-    border-color: mediumseagreen;
+    color: darkseagreen;
+    border-color: darkseagreen;
   }
 }

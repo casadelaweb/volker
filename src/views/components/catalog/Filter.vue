@@ -89,7 +89,7 @@ function handleChange(event: InputEvent) {
     transition: color 0.25s;
     @include hoverableDevice {
       &:hover {
-        color: mediumseagreen;
+        color: darkseagreen;
       }
     }
   }

@@ -95,7 +95,7 @@ export default defineComponent({
       margin: 0 auto;
       color: white;
       border-radius: 8px;
-      background: mediumseagreen;
+      background: darkseagreen;
     }
   }
 }

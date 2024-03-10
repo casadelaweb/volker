@@ -137,7 +137,7 @@ export default defineComponent({
 
     @include hoverableDevice {
       &:hover {
-        color: mediumseagreen;
+        color: darkseagreen;
       }
     }
 
@@ -184,7 +184,7 @@ export default defineComponent({
     margin-bottom: auto;
     @include hoverableDevice {
       &:hover {
-        color: mediumseagreen;
+        color: darkseagreen;
       }
     }
   }

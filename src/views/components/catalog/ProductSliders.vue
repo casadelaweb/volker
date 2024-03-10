@@ -65,7 +65,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
       transition: background-color 0.334s;
 
       &:hover {
-        background: mediumseagreen;
+        background: darkseagreen;
       }
     }
   }
@@ -77,7 +77,7 @@ import { Swiper, SwiperSlide } from 'swiper/vue'
     margin: 0 4px;
     padding: 4px 8px;
     color: white;
-    // background: mediumseagreen;
+    // background: darkseagreen;
     border-radius: 8px;
     background: #ff648d;
   }

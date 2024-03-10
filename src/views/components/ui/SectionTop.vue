@@ -63,11 +63,11 @@ defineProps<{
       transition: transform 0.334s;
       transform: scale(0);
       transform-origin: 0 50%;
-      background: mediumseagreen;
+      background: darkseagreen;
     }
 
     &:hover {
-      color: mediumseagreen;
+      color: darkseagreen;
 
       &:before {
         transform: scale(1)

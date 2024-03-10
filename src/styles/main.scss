@@ -34,15 +34,15 @@ main {
 }
 
 [type=checkbox], [type=radio] {
-  border: 2px solid mediumseagreen;
+  border: 2px solid darkseagreen;
 
   &::before {
-    background: mediumseagreen;
+    background: darkseagreen;
   }
 
   &[data-alt] {
     &:checked {
-      background: mediumseagreen;
+      background: darkseagreen;
     }
   }
 }

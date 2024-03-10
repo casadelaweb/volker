@@ -64,7 +64,7 @@ export default defineComponent({
   color: #e6e6e6;
   text-shadow: 0 0 12px lightskyblue,
   2px 2px 14px mediumpurple,
-  4px 4px 20px mediumseagreen;
+  4px 4px 20px darkseagreen;
 
   span {
     animation: neon 3.9s linear 0.1s infinite;
@@ -142,7 +142,7 @@ export default defineComponent({
   max-width: 764px;
 
   .link {
-    color: mediumseagreen;
+    color: darkseagreen;
     font-size: inherit;
   }
 

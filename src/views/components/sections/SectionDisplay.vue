@@ -187,7 +187,7 @@ onMounted(() => {
       bottom: 0;
       width: 40px;
       height: 40px;
-      background: mediumseagreen;
+      background: darkseagreen;
       color: white;
       border-top-left-radius: 50%;
       @include mediaTabletS {

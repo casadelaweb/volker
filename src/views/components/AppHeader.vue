@@ -48,16 +48,6 @@ export default {
           title: 'Custom Shop',
           url: '/promo/custom-shop/',
         },
-        {
-          id: 'pagenotfound',
-          title: '404',
-          url: '/123456/',
-        },
-        // {
-        //   id: 'contacts',
-        //   title: 'Контакты',
-        //   url: '/contacts/',
-        // },
       ]
     }
   },
@@ -95,7 +85,7 @@ export default {
 
   &-catalog {
     @include buttonTemplate;
-    background: mediumseagreen;
+    background: darkseagreen;
     color: white;
   }
 

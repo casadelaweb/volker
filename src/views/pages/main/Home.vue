@@ -56,40 +56,29 @@ export default defineComponent({
           rating: 4.2,
         },
       ],
-      products: [
-        {
-          id: 'testid',
-          title: 'test title',
-          description: 'test description',
-          url: '/product/testid/',
-          price: 1234,
-          currency: 'руб.',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg' },
-            { url: 'src/assets/img/placeholder.jpg' },
-          ],
-        },
-        {
-          id: 'testid2 ',
-          title: 'test title 2',
-          description: 'test description 2',
-          url: '/product/testid2/',
-          price: 12342,
-          currency: 'руб.',
-          images: [
-            { url: 'src/assets/img/placeholder.jpg' },
-            { url: 'src/assets/img/placeholder.jpg' },
-          ],
-        },
-      ],
+      products: [],
       isLoading: true,
-      productsRecommended: [],
     }
   },
   methods: {
     async fetchProducts() {
-      const response = await axios.get('/api/')
-      console.log(response.data)
+      try {
+        this.isLoading = true
+        const response = await axios({
+          method: 'get',
+          url: '/api/products/',
+          params: {
+            is_recommended: 1,
+            limit: 8,
+          },
+        })
+        this.products = response.data
+        console.log(response.data)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        this.isLoading = false
+      }
     },
     async fetchReviews() {
     },

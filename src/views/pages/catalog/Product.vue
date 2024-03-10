@@ -161,7 +161,7 @@ export default defineComponent({
     min-height: 56px;
     color: white;
     border-radius: 8px;
-    background: mediumseagreen;
+    background: darkseagreen;
   }
 
   &-description {
@@ -196,12 +196,12 @@ export default defineComponent({
     padding: 16px;
     border-radius: 8px;
     background: #f5f5f5;
-    // background: mediumseagreen;
+    // background: darkseagreen;
     // color: white;
 
     a {
       font-weight: 500;
-      // color: mediumseagreen;
+      // color: darkseagreen;
     }
   }
 }

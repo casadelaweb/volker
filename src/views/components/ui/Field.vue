@@ -83,7 +83,7 @@ function handleBlur(event: Event) {
     margin-bottom: 4px;
 
     a {
-      color: mediumseagreen;
+      color: darkseagreen;
 
       &:hover {
         text-decoration: underline;
@@ -115,7 +115,7 @@ function handleBlur(event: Event) {
     }
 
     &._success {
-      border-color: mediumseagreen;
+      border-color: darkseagreen;
     }
   }
 

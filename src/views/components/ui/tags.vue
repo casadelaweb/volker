@@ -59,7 +59,7 @@ export default {
 
   &:hover {
     color: white;
-    background: mediumseagreen;
+    background: darkseagreen;
   }
 }
 </style>

@@ -48,7 +48,7 @@ defineProps<{
         height: 10px;
         margin-right: 10px;
         border-radius: 50%;
-        background: mediumseagreen;
+        background: darkseagreen;
       }
     }
   }

@@ -203,7 +203,7 @@ export default {
     transition: color 0.334s;
 
     &.active {
-      color: mediumseagreen;
+      color: darkseagreen;
     }
   }
 
