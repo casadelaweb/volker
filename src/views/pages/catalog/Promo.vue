@@ -30,15 +30,18 @@ const promo = ref({
 const route = useRoute()
 const promoName = route.params.id
 
-async function getPost() {
+async function fetchData() {
   try {
     isLoading.value = true
     const response = await axios({
       method: 'get',
       url: `/api/promo/${ promoName }`,
+      params: {
+        public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
+      }
     })
     console.log(response.data)
-    promo.value = response.data
+    //promo.value = response.data
   } catch (error) {
     console.log(error)
   } finally {
@@ -47,7 +50,7 @@ async function getPost() {
 }
 
 onMounted(() => {
-  getPost()
+  fetchData()
 })
 </script>
 

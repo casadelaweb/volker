@@ -139,7 +139,7 @@ export default defineComponent({
           url: '/api/products/',
           params: {
             limit: 24,
-            category: this.currentRoute,
+            category: this.currentRoute, public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
           },
         })
         this.products = response.data

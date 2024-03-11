@@ -8,6 +8,7 @@ export const useStoreMain = defineStore('storeMain', {
       isLoading: true,
       promos: [] as Array<iPagePromo>,
       products: [] as Array<iPageProduct>,
+      publicKey: '95fsHRwiJoIqvJo1rxPil7Cs',
     }
   },
   getters: {

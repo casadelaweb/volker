@@ -23,17 +23,25 @@
 </template>
 
 <script lang="ts" setup>
+import { useStoreMain } from 'src/stores/storeMain.ts'
 import { iPageCatalog } from 'src/api/base.ts'
 import axios from 'axios'
-import { ref, onMounted, Ref, computed } from 'vue'
+import { ref, onMounted, Ref, } from 'vue'
 
+const store = useStoreMain()
 const categories: Ref<iPageCatalog[]> = ref([])
 const isLoading = ref(true)
 
 async function fetchData() {
   isLoading.value = true
   try {
-    const response = await axios.get('/api/catalog/')
+    const response = await axios({
+      method: 'get',
+      url: '/api/catalog/',
+      params: {
+        public_key: store.publicKey,
+      },
+    })
     console.log(response.data)
     categories.value = response.data
   } catch (error) {

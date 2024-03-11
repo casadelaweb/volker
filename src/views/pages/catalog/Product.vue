@@ -2,7 +2,7 @@
   <section class="product">
     <div class="product-container">
       <div>
-        <img alt="loading" class="lazy" src="../../../assets/img/loading.gif">
+        <img alt="loading" class="lazy" src="src/assets/img/loading.gif">
       </div>
       <div class="product-information">
         <h1 class="product-title"> {{ product.title }}</h1>
@@ -48,16 +48,11 @@ import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 
-// import Suggestions from 'src/views/components/sections/SectionProducts.vue'
-// import breadcrumbs from 'src/views/components/sections/breadcrumbs.vue'
-
 export default defineComponent({
   name: 'Product',
   components: {
     Swiper,
     SwiperSlide,
-    // Suggestions,
-    // breadcrumbs,
   },
   data: function () {
     return {
@@ -79,23 +74,21 @@ export default defineComponent({
       siteTel: '8-800-888-88-88',
       product: {} as iPageProduct,
       currency: '₽',
-      products: [],
       isLoading: false,
-      suggestions: {
-        products: [],
-        title: {
-          text: 'Интересное в категории',
-        },
-      },
     }
   },
   methods: {
     async fetchData() {
       try {
         this.isLoading = true
-        const response = await axios.get(`/api/product/${ this.currentRoute }`)
+        const response = await axios({
+          method: 'get',
+          url: `/api/product/${ this.currentRoute }`,
+          params: {
+            public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
+          }
+        })
         this.product = response.data
-        console.log(response.data)
       } catch (error) {
         console.log(error)
       } finally {

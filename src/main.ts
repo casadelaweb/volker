@@ -1,8 +1,8 @@
-import 'src/styles/main.scss'
 import { createApp } from 'vue'
 import router from 'src/router/router'
 import { createPinia } from 'pinia'
 import App from 'src/views/App.vue'
+import 'src/styles/main.scss'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = createApp(App)

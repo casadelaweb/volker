@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useStoreMain } from 'src/stores/storeMain.ts'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { A11y, Pagination } from 'swiper/modules'
 import 'swiper/scss'
@@ -7,6 +8,7 @@ import 'swiper/scss/free-mode'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
 
+const store = useStoreMain()
 const isLoading = ref(true)
 const slides = ref([
   {
@@ -44,6 +46,9 @@ async function fetchData() {
     const response = await axios({
       method: 'get',
       url: '/api/hero/',
+      params: {
+        public_key: store.publicKey,
+      }
     })
     slides.value = response.data
   } catch (error) {
@@ -104,11 +109,15 @@ onMounted(() => {
 
   &-title {
     @include h2;
+    line-height: 1.25;
     margin-bottom: 0.5em;
   }
 
   &-description {
-    @include h6;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
   }
 
   &-slide {
@@ -123,12 +132,17 @@ onMounted(() => {
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(225deg, transparent 0 50%, hsla(0, 0%, 90%, .85) 0 100%);
+      background: linear-gradient(225deg, transparent 0 25%, rgba(#e6e6e6, 0.8) 0 100%);
       pointer-events: none;
+      @include mediaTabletL {
+        background: linear-gradient(225deg, transparent 0 50%, rgba(#e6e6e6, 0.8) 0 100%);
+      }
     }
 
     &-inner {
-      max-width: 40%;
+      @include mediaTabletL {
+        max-width: 40%;
+      }
     }
   }
 
@@ -136,7 +150,13 @@ onMounted(() => {
     object-fit: cover;
     width: 100%;
     min-height: 50vh;
-    height: 540px;
+    height: 400px;
+    @include mediaTabletL {
+      height: 540px;
+    }
+    @include mediaLaptopL {
+      height: 580px;
+    }
     //aspect-ratio: 21 / 9;
   }
 }

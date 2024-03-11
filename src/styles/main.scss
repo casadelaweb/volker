@@ -14,25 +14,6 @@ main {
   flex-grow: 1;
 }
 
-.swiper-pagination {
-  bottom: 4px !important;
-  background: rgba(white, 0.25);
-
-  &-bullet {
-    $size: 8px;
-    width: $size * 4;
-    height: $size;
-    margin: 0 $size * 0.5;
-    transition: width 0.334s, opacity 0.334s;
-    border-radius: $size;
-    background: black;
-
-    //&-active {
-    //  width: $size * 4;
-    //}
-  }
-}
-
 [type=checkbox], [type=radio] {
   border: 2px solid darkseagreen;
 
@@ -55,5 +36,24 @@ main {
   &, &-wrapper, &-container, &-slide {
     min-width: 0;
     min-height: 0;
+  }
+
+  &-pagination {
+    bottom: 4px;
+    background: none;
+
+    &-bullet {
+      $size: 8px;
+      width: $size;
+      height: $size;
+      margin: 0 $size * 0.667;
+      transition: width 0.334s, opacity 0.334s;
+      border-radius: $size;
+      background: black;
+
+      &-active {
+        width: $size * 3;
+      }
+    }
   }
 }

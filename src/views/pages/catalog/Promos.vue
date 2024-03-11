@@ -29,16 +29,12 @@
 
 <script lang="ts" setup>
 import { onMounted, Ref, ref } from 'vue'
-//import { useStoreMain } from 'src/stores/storeMain.ts'
 import axios from 'axios'
 import { iPagePromo } from 'src/api/base.ts'
 import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
-//import { useRoute } from 'vue-router'
 
 const isLoading = ref(true)
 const promos: Ref<iPagePromo[]> = ref([])
-//const route = useRoute()
-//const currentRoute = route.params.id
 
 async function getPromos() {
   try {
@@ -46,6 +42,9 @@ async function getPromos() {
     const response = await axios({
       method: 'get',
       url: `/api/promos/`,
+      params: {
+        public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
+      },
     })
     promos.value = response.data
   } catch (error) {
@@ -57,13 +56,6 @@ async function getPromos() {
 
 onMounted(() => {
   getPromos()
-  // const counterAnimation = setInterval(() => {
-  //   if (quantity.value < store.getPromosQuantity) {
-  //     quantity.value++
-  //   } else {
-  //     clearInterval(counterAnimation)
-  //   }
-  // }, 100)
 })
 </script>
 

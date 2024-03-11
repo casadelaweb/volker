@@ -70,10 +70,11 @@ export default defineComponent({
           params: {
             is_recommended: 1,
             limit: 8,
+            public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
           },
         })
         this.products = response.data
-        console.log(response.data)
+        //console.log(response.data)
       } catch (error) {
         console.log(error)
       } finally {

@@ -63,6 +63,7 @@ async function fetchData() {
       url: '/api/catalog/',
       params: {
         is_popular: 1,
+        public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
       }
     })
     categories.value = response.data
@@ -135,8 +136,7 @@ onMounted(() => {
     }
 
     &-body {
-      // background: rgba(#e6e6e6, 0.9);
-      background: rgba(white, 0.9);
+      background: rgba(white, 0.8);
       width: 100%;
       height: 100%;
       padding: 12px;
@@ -174,6 +174,7 @@ onMounted(() => {
       object-fit: cover;
       width: 100%;
       height: 100%;
+      // filter: blur(4px);
     }
 
     &-button {
