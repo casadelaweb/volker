@@ -6,7 +6,7 @@ const props = defineProps<{
   id: string,
   label: string,
   errorText: string,
-  type: 'text' | 'radio' | 'checkbox',
+  type: 'text' | 'radio' | 'checkbox' | 'textarea',
   placeholder: string,
   name: string,
   isValid: boolean | null,
@@ -15,6 +15,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits(['update'])
+//const modelTextarea = defineModel('modelTextarea')
 
 // const { el, masked } = useIMask({
 //   mask: '+7-000-000-00-00',
@@ -33,17 +34,17 @@ function handleFocus(event: Event) {
 
   const input = event.target as HTMLInputElement
   const label = input.closest('label') as HTMLLabelElement
-  const error = label.querySelector('.field-error') as HTMLElement
-  label.classList.add('_error')
-  error.classList.add('_active')
+  const error = label?.querySelector('.field-error') as HTMLElement
+  label?.classList.add('_error')
+  error?.classList.add('_active')
 }
 
 function handleBlur(event: Event) {
   const input = event.target as HTMLInputElement
   const label = input.closest('label') as HTMLLabelElement
-  const error = label.querySelector('.field-error') as HTMLElement
-  label.classList.remove('_error')
-  error.classList.remove('_active')
+  const error = label?.querySelector('.field-error') as HTMLElement
+  label?.classList.remove('_error')
+  error?.classList.remove('_active')
 }
 
 </script>
@@ -52,21 +53,26 @@ function handleBlur(event: Event) {
   <template v-if="type === 'checkbox' || type === 'radio'">
     <label :class="{ '_error': isValid === false, }" class="field _checkbox">
       <span class="field-label">{{ label }}</span>
-      <input :id="id" :name="name" :placeholder="placeholder"
-             :type="type" :value="value" class="field-input _checkbox"
-             required @change="handleChange">
+      <input :id="id" :checked="!!checked" :name="name" :placeholder="placeholder" :type="type"
+             :value="value" class="field-input _checkbox" required @change="handleChange">
       <span :class="{ '_active': isValid === false }" class="field-error">
       {{ errorText }}
     </span>
     </label>
   </template>
+  <template v-else-if="type === 'textarea'">
+    <label :class="{ '_error': isValid === false, }" class="field _textarea">
+      <span class="field-label">{{ label }}</span>
+      <textarea :id="id" :name="name" :placeholder="placeholder"
+                class="field-input _textarea" @blur="handleBlur" @focus="handleFocus"></textarea>
+    </label>
+  </template>
   <template v-else>
     <label :class="{ '_error': isValid === false,}" class="field">
       <span class="field-label">{{ label }}</span>
-      <input :id="id" :checked="!!checked" :name="name"
-             :placeholder="placeholder"
-             :type="type" :value="value" class="field-input" required
-             @blur="handleBlur" @focus="handleFocus" @input="handleInput">
+      <input :id="id" :name="name" :placeholder="placeholder" :type="type" :value="value"
+             class="field-input" required @blur="handleBlur" @focus="handleFocus"
+             @input="handleInput">
       <span :class="{ '_active': isValid === false }" class="field-error">
       {{ errorText }}
     </span>
@@ -117,6 +123,10 @@ function handleBlur(event: Event) {
 
     &:focus {
       border-color: #808080;
+
+      &::before {
+        background: #808080;
+      }
     }
 
     &._checkbox {
@@ -126,7 +136,12 @@ function handleBlur(event: Event) {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      // margin: 0 4px 0 0;
+    }
+
+    &._textarea {
+      min-height: 120px;
+      resize: vertical;
+      max-height: 240px;
     }
 
     &._error {

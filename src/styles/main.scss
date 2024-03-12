@@ -17,15 +17,19 @@ main {
 [type=checkbox], [type=radio] {
   flex: 0 0 auto;
   margin: 0 4px 0 0;
-  border: 2px solid darkseagreen;
+  border: 2px solid #e6e6e6;
 
   &::before {
-    background: darkseagreen;
+    background: #e6e6e6;
   }
+
+  //&::after {
+  //  background: #e6e6e6;
+  //}
 
   &[data-alt] {
     &:checked {
-      background: darkseagreen;
+      background: #e6e6e6;
     }
   }
 }

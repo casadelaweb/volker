@@ -206,6 +206,10 @@ const fieldsBusiness = ref([
                          :type="field.type" :value="field.value" @update="handleFieldUpdate"/>
             </fieldset>
           </div>
+          <FieldMain id="comment" :is-valid="true"
+                     error-text="Заполните это поле" label="Оставьте комментарий"
+                     name="comment" placeholder="Оставьте комментарий"
+                     type="textarea" value="" @update="handleFieldUpdate"/>
           <label class="field _checkbox">
             <input name="privacy_policy" required type="checkbox">
             <span>
