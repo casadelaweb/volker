@@ -6,6 +6,11 @@ import FieldMain from 'src/views/components/ui/fields/FieldMain.vue'
 function validateField(input: HTMLInputElement, validationSchemes: string[],) {
   let errorsQuantity: number = 0
   let errorText = ''
+  const schemas = {
+    no_digits: new RegExp(/\d/iumg),
+    tel: new RegExp(/^(\+\d{1,3}\s?)?[\s\-]?(\(\d{3}\)|\d{3})[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{1,2}$/),
+    email: new RegExp(/^[a-zA-Z0-9][-_.+!#$%&'*/=?^`{|]?([a-zA-Z0-9][-_.+!#$%&'*/=?^`{|]?)*[a-zA-Z0-9]@[a-zA-Z0-9][-.]?([a-zA-Z][-.]?)*[a-zA-Z0-9]\.[a-zA-Z0-9]+([.-]?[a-zA-Z])*[a-zA-Z0-9]*$/i)
+  }
 
   validationSchemes.forEach((schemeName: string,) => {
     // todo: декомпозировать валидацию и схемы валидации в отдельные компоненты
@@ -17,28 +22,26 @@ function validateField(input: HTMLInputElement, validationSchemes: string[],) {
       }
     }
     if (schemeName === 'no_digits') {
-      if (/\d/iumg.test(value)) {
+      if (schemas.no_digits.test(value)) {
         errorsQuantity++
         errorText = 'В вашем имени есть цифры? Что-то тут не так.'
       }
     }
     if (schemeName === 'email') {
-      const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-      if (!pattern.test(value)) {
+      if (!schemas.email.test(value)) {
         errorsQuantity++
         errorText = 'Введите корректный email в формате xxx@xxx.xx'
       }
     }
     if (schemeName === 'tel') {
-      if (value.length !== 18) {
+      if (schemas.tel.test(value)) {
         errorsQuantity++
         errorText = 'Введите телефон в формате +7-xxx-xxx-xx-xx'
       }
     }
     if (schemeName === 'inn') {
-      const cond1 = value.length === 10 || value.length === 12
-      console.log(cond1, !cond1)
-      if (!cond1) {
+      const cond = value.length === 10 || value.length === 12
+      if (!cond) {
         errorsQuantity++
         errorText = 'Последовательность из 10 или 12 арабских цифр'
       }
@@ -182,41 +185,25 @@ const fieldsBusiness = ref([
           <div class="form-fields">
             <fieldset class="fieldset">
               <FieldMain v-for="field in fieldsMain" :id="field.id"
-                         :key="field.id"
-                         :error-text="field.errorText"
-                         :is-valid="field.isValid"
-                         :label="field.label"
-                         :name="field.name"
-                         :placeholder="field.placeholder"
-                         :type="field.type"
-                         :value="field.value"
-                         @update="handleFieldUpdate"/>
+                         :key="field.id" :error-text="field.errorText"
+                         :is-valid="field.isValid" :label="field.label"
+                         :name="field.name" :placeholder="field.placeholder"
+                         :type="field.type" :value="field.value" @update="handleFieldUpdate"/>
             </fieldset>
             <fieldset class="fieldset">
               <legend class="fieldset-title">Выберите роль:</legend>
               <FieldMain v-for="(field,index) in fieldsRoles" :id="field.id"
-                         :key="field.id" :checked="field.checked"
-                         :error-text="field.errorText"
-                         :is-valid="field.isValid"
-                         :label="field.label"
-                         :name="field.name"
-                         :placeholder="field.placeholder"
+                         :key="field.id" :checked="field.checked" :error-text="field.errorText"
+                         :is-valid="field.isValid" :label="field.label"
+                         :name="field.name" :placeholder="field.placeholder"
                          :style="(index + 1) === fieldsRoles.length ? 'margin-bottom: 16px;' : null"
-                         :type="field.type"
-                         :value="field.value"
-                         @update="handleFieldUpdate"/>
+                         :type="field.type" :value="field.value" @update="handleFieldUpdate"/>
 
-              <FieldMain v-for="field in fieldsBusiness"
-                         v-if="fieldsRoles[1].checked" :id="field.id"
-                         :key="field.id"
-                         :error-text="field.errorText"
-                         :is-valid="field.isValid"
-                         :label="field.label"
-                         :name="field.name"
-                         :placeholder="field.placeholder"
-                         :type="field.type"
-                         :value="field.value"
-                         @update="handleFieldUpdate"/>
+              <FieldMain v-for="field in fieldsBusiness" v-if="fieldsRoles[1].checked"
+                         :id="field.id" :key="field.id" :error-text="field.errorText"
+                         :is-valid="field.isValid" :label="field.label"
+                         :name="field.name" :placeholder="field.placeholder"
+                         :type="field.type" :value="field.value" @update="handleFieldUpdate"/>
             </fieldset>
           </div>
           <label class="field _checkbox">

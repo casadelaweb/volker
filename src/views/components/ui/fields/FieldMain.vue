@@ -1,7 +1,9 @@
 <script lang="ts" setup>
+// import { IMaskDirective } from 'vue-imask'
 // import { useIMask } from 'vue-imask'
+
 const props = defineProps<{
-  id: string | number,
+  id: string,
   label: string,
   errorText: string,
   type: 'text' | 'radio' | 'checkbox',
@@ -18,15 +20,15 @@ const emit = defineEmits(['update'])
 //   mask: '+7-000-000-00-00',
 // })
 
-function handleInput(event: InputEvent) {
+function handleInput(event: Event) {
   emit('update', event,)
 }
 
-function handleChange(event: InputEvent) {
+function handleChange(event: Event) {
   emit('update', event,)
 }
 
-function handleFocus(event: InputEvent) {
+function handleFocus(event: Event) {
   if (props.isValid === true || props.value === '' || props.type !== 'text') return
 
   const input = event.target as HTMLInputElement
@@ -36,7 +38,7 @@ function handleFocus(event: InputEvent) {
   error.classList.add('_active')
 }
 
-function handleBlur(event: InputEvent) {
+function handleBlur(event: Event) {
   const input = event.target as HTMLInputElement
   const label = input.closest('label') as HTMLLabelElement
   const error = label.querySelector('.field-error') as HTMLElement
@@ -50,9 +52,9 @@ function handleBlur(event: InputEvent) {
   <template v-if="type === 'checkbox' || type === 'radio'">
     <label :class="{ '_error': isValid === false, }" class="field _checkbox">
       <span class="field-label">{{ label }}</span>
-      <input :id="id" :name="name" :placeholder="placeholder" :type="type"
-             :value="value" class="field-input _checkbox" required
-             @change="handleChange">
+      <input :id="id" :name="name" :placeholder="placeholder"
+             :type="type" :value="value" class="field-input _checkbox"
+             required @change="handleChange">
       <span :class="{ '_active': isValid === false }" class="field-error">
       {{ errorText }}
     </span>
@@ -61,7 +63,8 @@ function handleBlur(event: InputEvent) {
   <template v-else>
     <label :class="{ '_error': isValid === false,}" class="field">
       <span class="field-label">{{ label }}</span>
-      <input :id="id" :checked="checked ? true : null" :name="name" :placeholder="placeholder"
+      <input :id="id" :checked="!!checked" :name="name"
+             :placeholder="placeholder"
              :type="type" :value="value" class="field-input" required
              @blur="handleBlur" @focus="handleFocus" @input="handleInput">
       <span :class="{ '_active': isValid === false }" class="field-error">
