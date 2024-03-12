@@ -7,6 +7,7 @@ import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
 
 const store = useStoreMain()
 const isLoading = ref(true)
@@ -65,6 +66,7 @@ onMounted(() => {
 
 <template>
   <section class="hero">
+    <LoadingPlaceholder v-if="isLoading"/>
     <h1 class="hero-title"></h1>
     <swiper :lazy="swiperSettings.lazy"
             :loop="swiperSettings.loop"

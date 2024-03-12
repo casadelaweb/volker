@@ -1,7 +1,7 @@
 <template>
   <SectionHero/>
   <SectionDisplay/>
-  <SectionProducts :products="products"/>
+  <SectionProducts :button="button" :is-loading="isLoading" :products="products" :title="title"/>
   <SectionRegistrationDiscount/>
   <SectionPromos/>
   <SectionReviews :reviews="reviews"/>
@@ -9,6 +9,7 @@
 </template>
 
 <script lang="ts">
+import { PlaceholderProducts } from 'src/api/base.ts'
 import axios from 'axios'
 import { defineComponent } from 'vue'
 import SectionProduction from 'src/views/components/sections/SectionProduction.vue'
@@ -56,8 +57,16 @@ export default defineComponent({
           rating: 4.2,
         },
       ],
-      products: [],
+      products: PlaceholderProducts,
       isLoading: true,
+      title: {
+        text: 'Популярные товары',
+        url: '/catalog/',
+      },
+      button: {
+        text: 'Перейти в каталог',
+        url: '/catalog/',
+      }
     }
   },
   methods: {
@@ -74,7 +83,7 @@ export default defineComponent({
           },
         })
         this.products = response.data
-        //console.log(response.data)
+        console.log(this.products)
       } catch (error) {
         console.log(error)
       } finally {

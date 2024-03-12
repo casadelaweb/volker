@@ -1,9 +1,11 @@
 <template>
   <section class="suggestions">
     <div class="suggestions-container">
-      <SectionTop :button="button" :title="title"/>
+      <SectionTop :button="button" :is-loading="isLoading" :title="title"/>
       <div v-if="products.length > 0" class="suggestions-layout">
-        <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+        <ProductCard v-for="product in products" :key="product.id"
+                     :is-loading="isLoading"
+                     :product="product"/>
       </div>
       <div v-else class="suggestions-empty">
         <div class="suggestions-empty-warning">Пока здесь ничего нет.</div>
@@ -13,52 +15,24 @@
   </section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
 import ProductCard from 'src/views/components/catalog/ProductCard.vue'
-import { defineComponent } from 'vue'
+import { ref } from 'vue'
+import { iPageProduct } from 'src/api/base.ts'
 
-export default defineComponent({
-  name: 'SectionProducts',
-  components: {
-    ProductCard,
-    SectionTop,
-  },
-  props: {
-    title: {
-      type: Object,
-      default: function () {
-        return {
-          text: 'Рекомендуемое',
-          url: '/catalog/recommended/',
-        }
-      },
-      required: false,
-    },
-    button: {
-      type: Object,
-      default: function () {
-        return {
-          text: 'Смотреть все',
-          url: '/catalog/recommended/',
-        }
-      },
-      required: false,
-    },
-    limit: {
-      type: Number,
-      default: 8,
-      required: false,
-    },
-    products: {
-      type: Array,
-      required: true,
-    },
-  },
-  data: function () {
-    return {}
-  },
-})
+const props = defineProps<{
+  isLoading: boolean,
+  products: Array<iPageProduct>,
+  title: {
+    url: string,
+    text: string,
+  }
+  button: {
+    url: string,
+    text: string,
+  }
+}>()
 </script>
 
 <style lang="scss" scoped>

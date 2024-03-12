@@ -1,5 +1,6 @@
 <template>
   <article class="product">
+    <LoadingPlaceholder v-if="isLoading"/>
     <div class="product-buttons">
       <button class="product-fav" title="Добавить в избранное" type="button">
         <span class="iconfont icon-heart"></span>
@@ -57,9 +58,11 @@ import 'swiper/scss'
 import 'swiper/scss/pagination'
 import 'swiper/scss/free-mode'
 import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
 
 export default defineComponent({
   components: {
+    LoadingPlaceholder,
     ButtonMain,
     Swiper,
     SwiperSlide,
@@ -70,6 +73,10 @@ export default defineComponent({
       type: Object as PropType<iPageProduct>,
       required: true,
     },
+    isLoading: {
+      type: Boolean,
+      required: true,
+    }
   },
   data: function () {
     return {

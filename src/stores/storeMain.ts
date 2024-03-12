@@ -6,6 +6,9 @@ export const useStoreMain = defineStore('storeMain', {
   state() {
     return {
       isLoading: true,
+      loading: {
+        titles: [],
+      },
       promos: [] as Array<iPagePromo>,
       products: [] as Array<iPageProduct>,
       publicKey: '95fsHRwiJoIqvJo1rxPil7Cs',

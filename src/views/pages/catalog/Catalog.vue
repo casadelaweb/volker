@@ -4,6 +4,7 @@
       <h1 class="catalog-title">Каталог</h1>
       <div class="catalog-categories">
         <article v-for="category in categories" :key="category.id" class="catalog-category">
+          <LoadingPlaceholder v-if="isLoading" :is-loading="isLoading"/>
           <h2 class="catalog-category-title">
             <router-link :title="category.title" :to="category.url">
               {{ category.title }}
@@ -23,13 +24,15 @@
 </template>
 
 <script lang="ts" setup>
+import { iPageCategory, PlaceholderCategories } from 'src/api/base.ts'
 import { useStoreMain } from 'src/stores/storeMain.ts'
 import { iPageCatalog } from 'src/api/base.ts'
 import axios from 'axios'
 import { ref, onMounted, Ref, } from 'vue'
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
 
 const store = useStoreMain()
-const categories: Ref<iPageCatalog[]> = ref([])
+const categories: Ref<iPageCatalog[]> = ref(PlaceholderCategories)
 const isLoading = ref(true)
 
 async function fetchData() {
@@ -101,6 +104,8 @@ onMounted(() => {
 
   &-category {
     @include flex($d: column);
+    position: relative;
+    z-index: 0;
     row-gap: 8px;
     padding: 12px;
     border: 1px solid #f0f0f0;

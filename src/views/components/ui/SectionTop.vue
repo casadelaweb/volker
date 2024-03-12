@@ -1,5 +1,7 @@
 <template>
   <div class="section-top">
+    <LoadingPlaceholder v-if="isLoading"/>
+    
     <h2 class="section-top-title">
       <a v-if="title.url" :href="title.url" title="Перейти на страницу">
         <span>{{ title.text }}</span>
@@ -14,6 +16,8 @@
 </template>
 
 <script lang="ts" setup>
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
+
 defineProps<{
   title: {
     text: string,
@@ -22,7 +26,8 @@ defineProps<{
   button?: {
     text: string,
     url: string,
-  }
+  },
+  isLoading: boolean,
 }>()
 </script>
 
@@ -31,17 +36,21 @@ defineProps<{
 
 .section-top {
   @include flex(center, space-between);
+  position: relative;
+  z-index: 0;
   margin: 0 0 32px;
 
   &-title {
     @include h2;
+    position: relative;
+    z-index: 0;
   }
 
   &-button {
-    font-size: 13px;
-    font-weight: 500;
     position: relative;
     z-index: 0;
+    font-size: 13px;
+    font-weight: 500;
     transition: color 0.334s;
     color: #808080;
     @include mediaTabletM {

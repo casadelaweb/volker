@@ -10,7 +10,8 @@
       <div class="catalog-layout">
         <Filters :category-filters="categoryFilters"/>
         <ProductsList :length="products.length">
-          <ProductCard v-for="product in products" :key="product.id" :product="product"/>
+          <ProductCard v-for="product in products" :key="product.id" :is-loading="isLoading"
+                       :product="product"/>
         </ProductsList>
       </div>
     </div>
@@ -18,6 +19,7 @@
 </template>
 
 <script lang="ts">
+import { PlaceholderProducts } from 'src/api/base.ts'
 import { defineComponent } from 'vue'
 import card from 'src/views/components/catalog/ProductCard.vue'
 import Filters from 'src/views/components/catalog/Filters.vue'
@@ -38,7 +40,7 @@ export default defineComponent({
   },
   data: function () {
     return {
-      products: [],
+      products: PlaceholderProducts,
       isLoading: false,
       categoryFilters: [
         {

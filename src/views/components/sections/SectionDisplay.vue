@@ -1,12 +1,11 @@
 <template>
   <section class="display">
     <div class="display-container">
-      <SectionTop :button="SectionTopProps.button" :title="SectionTopProps.title"/>
-      <div v-if="isLoading" class="display-empty">
-        <img alt="loading" loading="lazy" src="src/assets/img/placeholder.jpg">
-      </div>
-      <div v-else class="display-layout">
+      <SectionTop :button="SectionTopProps.button" :is-loading="isLoading"
+                  :title="SectionTopProps.title"/>
+      <div class="display-layout">
         <article v-for="category in categories" :key="category.id" class="display-card">
+          <LoadingPlaceholder v-if="isLoading"/>
           <img :alt="category.image.alt" :src="category.image.url"
                class="display-card-img" loading="lazy">
           <div class="display-card-body">
@@ -29,21 +28,46 @@
 </template>
 
 <script lang="ts" setup>
+import { useStoreMain } from 'src/stores/storeMain.ts'
 import { onMounted, ref } from 'vue'
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
 import axios from 'axios'
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
 
+const store = useStoreMain()
 const isLoading = ref(true)
-const categories = ref([{
-  id: '',
-  title: '',
-  description: '',
-  url: '',
-  image: {
+const categories = ref([
+  {
+    id: '',
+    title: '',
+    description: '',
     url: '',
-    alt: '',
-  }
-}])
+    image: {
+      url: '',
+      alt: '',
+    }
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    url: '',
+    image: {
+      url: '',
+      alt: '',
+    }
+  },
+  {
+    id: '',
+    title: '',
+    description: '',
+    url: '',
+    image: {
+      url: '',
+      alt: '',
+    }
+  },
+])
 const SectionTopProps = ref({
   button: {
     url: '/catalog/',
@@ -63,7 +87,7 @@ async function fetchData() {
       url: '/api/catalog/',
       params: {
         is_popular: 1,
-        public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
+        public_key: store.publicKey,
       }
     })
     categories.value = response.data
