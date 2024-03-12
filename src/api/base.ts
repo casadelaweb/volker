@@ -23,6 +23,8 @@ export interface iPagePromo extends iPage {
   image: iImage,
 }
 
+export type iPagesPromos = Array<iPagePromo>
+
 export interface iPageCatalog extends iPage {
   image: iImage,
 }
@@ -30,6 +32,9 @@ export interface iPageCatalog extends iPage {
 export interface iPageCategory extends iPage {
   image: iImage,
 }
+
+export type iPagesCategories = Array<iPageCategory>
+export type iPagesProducts = Array<iPageProduct>
 
 export interface iParameter {
   title: string,
@@ -60,7 +65,7 @@ export const PlaceholderProduct: iPageProduct = {
   url: ''
 }
 
-export const PlaceholderProducts: Array<iPageProduct> = [
+export const PlaceholderProducts: iPagesProducts = [
   {
     body: '',
     currency: '',
@@ -125,7 +130,7 @@ export const PlaceholderCategory: iPageCategory = {
     alt: '',
   }
 }
-export const PlaceholderCategories: Array<iPageCategory> = [
+export const PlaceholderCategories: iPagesCategories = [
   {
     id: 0,
     url: '',
@@ -135,7 +140,8 @@ export const PlaceholderCategories: Array<iPageCategory> = [
       url: '',
       alt: '',
     }
-  }, {
+  },
+  {
     id: 1,
     url: '',
     title: '',
@@ -144,7 +150,8 @@ export const PlaceholderCategories: Array<iPageCategory> = [
       url: '',
       alt: '',
     }
-  }, {
+  },
+  {
     id: 2,
     url: '',
     title: '',
@@ -153,7 +160,8 @@ export const PlaceholderCategories: Array<iPageCategory> = [
       url: '',
       alt: '',
     }
-  }, {
+  },
+  {
     id: 3,
     url: '',
     title: '',
@@ -162,5 +170,64 @@ export const PlaceholderCategories: Array<iPageCategory> = [
       url: '',
       alt: '',
     }
+  },
+]
+
+export const PlaceholderPromo: iPagePromo = {
+  id: 0,
+  url: '',
+  title: '',
+  description: '',
+  body: '',
+  image: {
+    url: '',
+    alt: '',
+  }
+}
+
+export const PlaceholderPromos: iPagesPromos = [
+  {
+    id: 0,
+    url: '',
+    title: '',
+    description: '',
+    body: '',
+    image: {
+      url: '',
+      alt: '',
+    },
+  },
+  {
+    id: 1,
+    url: '',
+    title: '',
+    description: '',
+    body: '',
+    image: {
+      url: '',
+      alt: '',
+    },
+  },
+  {
+    id: 2,
+    url: '',
+    title: '',
+    description: '',
+    body: '',
+    image: {
+      url: '',
+      alt: '',
+    },
+  },
+  {
+    id: 3,
+    url: '',
+    title: '',
+    description: '',
+    body: '',
+    image: {
+      url: '',
+      alt: '',
+    },
   },
 ]

@@ -4,6 +4,7 @@
       <h1 class="promos-title">Акции и предложения</h1>
       <div class="promos-list">
         <article v-for="promo in promos" :key="promo.id" class="promo">
+          <LoadingPlaceholder v-if="isLoading" :is-loading="isLoading"/>
           <h2 class="promo-title">
             {{ promo.title }}
             <span v-if="isLoading" class="_loading"></span>
@@ -30,11 +31,12 @@
 <script lang="ts" setup>
 import { onMounted, Ref, ref } from 'vue'
 import axios from 'axios'
-import { iPagePromo } from 'src/api/base.ts'
+import { iPagesPromos, PlaceholderPromos } from 'src/api/base.ts'
 import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
+import LoadingPlaceholder from 'src/views/components/ui/LoadingPlaceholder.vue'
 
 const isLoading = ref(true)
-const promos: Ref<iPagePromo[]> = ref([])
+const promos: Ref<iPagesPromos> = ref(PlaceholderPromos)
 
 async function getPromos() {
   try {
@@ -92,6 +94,8 @@ onMounted(() => {
 
 .promo {
   @include flex($d: column);
+  position: relative;
+  z-index: 0;
   row-gap: 16px;
   padding: 16px;
   border-radius: 16px;
