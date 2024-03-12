@@ -1,66 +1,78 @@
 <script lang="ts" setup>
+// import { useIMask } from 'vue-imask'
 const props = defineProps<{
+  id: string | number,
   label: string,
   errorText: string,
   type: 'text' | 'radio' | 'checkbox',
   placeholder: string,
   name: string,
-  classList?: string,
   isValid: boolean | null,
-  checked?: boolean | null,
-  value: string,
-  // required: boolean,
+  value: string | number | null,
+  checked?: boolean,
 }>()
 
 const emit = defineEmits(['update'])
-const isCheckbox = props.type === 'radio' || props.type === 'checkbox'
 
-function handleInput(event: Event) {
-  // const value = event.target.value as string
-  //console.log(event)
+// const { el, masked } = useIMask({
+//   mask: '+7-000-000-00-00',
+// })
+
+function handleInput(event: InputEvent) {
   emit('update', event,)
 }
 
-function handleFocus(event: Event) {
-  // if (props.isValid === true) return
-  //
-  // const input = event.target as HTMLInputElement
-  // const label: HTMLLabelElement = input.closest('label')
-  // const error: HTMLElement = label.querySelector('.field-error')
-  // label.classList.add('_error')
-  // error.classList.add('_active')
+function handleChange(event: InputEvent) {
+  emit('update', event,)
 }
 
-function handleBlur(event: Event) {
-  // if (props.isValid === true) return
+function handleFocus(event: InputEvent) {
+  if (props.isValid === true || props.value === '' || props.type !== 'text') return
 
   const input = event.target as HTMLInputElement
-  const label = input.closest('label') as HTMLElement
+  const label = input.closest('label') as HTMLLabelElement
+  const error = label.querySelector('.field-error') as HTMLElement
+  label.classList.add('_error')
+  error.classList.add('_active')
+}
+
+function handleBlur(event: InputEvent) {
+  const input = event.target as HTMLInputElement
+  const label = input.closest('label') as HTMLLabelElement
   const error = label.querySelector('.field-error') as HTMLElement
   label.classList.remove('_error')
   error.classList.remove('_active')
 }
+
 </script>
 
 <template>
-  <label :class="{ '_error': isValid === false,'_checkbox':isCheckbox }" class="field">
-    <span class="field-label">{{ label }}</span>
-    <input :class="{'_checkbox':isCheckbox}"
-           :name="name"
-           :placeholder="placeholder"
-           :type="type"
-           :value="value"
-           class="field-input"
-           required
-           @blur="handleBlur" @focus="handleFocus" @input="handleInput">
-    <span :class="{ '_active': isValid === false, }" class="field-error">
+  <template v-if="type === 'checkbox' || type === 'radio'">
+    <label :class="{ '_error': isValid === false, }" class="field _checkbox">
+      <span class="field-label">{{ label }}</span>
+      <input :id="id" :name="name" :placeholder="placeholder" :type="type"
+             :value="value" class="field-input _checkbox" required
+             @change="handleChange">
+      <span :class="{ '_active': isValid === false }" class="field-error">
       {{ errorText }}
     </span>
-  </label>
+    </label>
+  </template>
+  <template v-else>
+    <label :class="{ '_error': isValid === false,}" class="field">
+      <span class="field-label">{{ label }}</span>
+      <input :id="id" :checked="checked ? true : null" :name="name" :placeholder="placeholder"
+             :type="type" :value="value" class="field-input" required
+             @blur="handleBlur" @focus="handleFocus" @input="handleInput">
+      <span :class="{ '_active': isValid === false }" class="field-error">
+      {{ errorText }}
+    </span>
+    </label>
+  </template>
 </template>
 
 <style lang="scss">
-@use 'src/styles/shared' as *;
+@use 'src/styles/shared/index' as *;
 
 .field {
   position: relative;
@@ -69,7 +81,6 @@ function handleBlur(event: Event) {
   grid-template-columns: 1fr;
   row-gap: 8px;
   flex: 0 0 auto;
-  //width: fit-content;
   width: 100%;
   height: fit-content;
   margin-bottom: 16px;
@@ -80,6 +91,7 @@ function handleBlur(event: Event) {
 
   &._checkbox {
     @include flex(center);
+    width: fit-content;
     margin-bottom: 4px;
 
     a {
@@ -100,6 +112,10 @@ function handleBlur(event: Event) {
       padding: 10px 20px;
     }
 
+    &:focus {
+      border-color: #808080;
+    }
+
     &._checkbox {
       order: -1;
       padding: 0;
@@ -107,7 +123,7 @@ function handleBlur(event: Event) {
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      margin: 0 4px 0 0;
+      // margin: 0 4px 0 0;
     }
 
     &._error {

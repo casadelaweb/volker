@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-
 import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
-import Field from 'src/views/components/ui/Field.vue'
+import FieldMain from 'src/views/components/ui/fields/FieldMain.vue'
 
 function validateField(input: HTMLInputElement, validationSchemes: string[],) {
   let errorsQuantity: number = 0
   let errorText = ''
 
   validationSchemes.forEach((schemeName: string,) => {
+    // todo: декомпозировать валидацию и схемы валидации в отдельные компоненты
     const value = input.value.trim()
     if (schemeName === 'user_name') {
       if (value.length < 2) {
@@ -53,150 +53,120 @@ function validateField(input: HTMLInputElement, validationSchemes: string[],) {
 
 function handleFieldUpdate(event: InputEvent) {
   const input = event.target as HTMLInputElement
+  const value = input.value.trim()
 
-  if (input.name === 'role') {
-    fields.value.roles[1].checked = input.value === 'Юридическое лицо' && input.checked
-  }
+  fieldsMain.value.forEach((field) => {
+    if (field.id === input.id) field.value = value
 
-  // if (input.name === 'user_name') {
-  //   fields.value.main.find((obj) => {
-  //     if (obj.name === 'user_name') {
-  //       const val = validateField(input, obj.validationSchemes)
-  //       obj.isValid = val.isValid
-  //       obj.errorText = val.errorText
-  //     }
-  //   })
-  // }
-  // if (input.name === 'tel') {
-  //   fields.value.main.find((obj) => {
-  //     if (obj.name === 'tel') {
-  //       const val = validateField(input, obj.validationSchemes)
-  //       obj.isValid = val.isValid
-  //       obj.errorText = val.errorText
-  //     }
-  //   })
-  // }
-  // if (input.name === 'email') {
-  //   fields.value.main.find((obj) => {
-  //     if (obj.name === 'email') {
-  //       const val = validateField(input, obj.validationSchemes)
-  //       obj.isValid = val.isValid
-  //       obj.errorText = val.errorText
-  //     }
-  //   })
-  // }
-  //
-  // if (input.name === 'company_name') {
-  //   fields.value.legalEntity.find((obj) => {
-  //     if (obj.name === 'company_name') {
-  //       const val = validateField(input, obj.validationSchemes)
-  //       obj.isValid = val.isValid
-  //       obj.errorText = val.errorText
-  //     }
-  //   })
-  // }
-  // if (input.name === 'inn') {
-  //   fields.value.legalEntity.find((obj) => {
-  //     if (obj.name === 'inn') {
-  //       const val = validateField(input, obj.validationSchemes)
-  //       obj.isValid = val.isValid
-  //       obj.errorText = val.errorText
-  //     }
-  //   })
-  // }
+    if (input.id === field.id) {
+      const val = validateField(input, field.validationSchemes)
+      field.isValid = val.isValid
+      field.errorText = val.errorText
+    }
+  })
+  fieldsBusiness.value.forEach((field) => {
+    if (field.id === input.id) field.value = value
+
+    if (input.id === field.id) {
+      const val = validateField(input, field.validationSchemes)
+      field.isValid = val.isValid
+      field.errorText = val.errorText
+    }
+  })
+  fieldsRoles.value.forEach((field) => {
+    if (input.name === 'role' && field.id === input.id) {
+      field.checked = input.checked
+    } else if (input.name === 'role' && field.id !== input.id) {
+      field.checked = !input.checked
+    }
+  })
 }
 
-interface iField {
-  label: string,
-  placeholder: string,
-  name: string,
-  type: 'text' | 'radio' | 'checkbox',
-  validationSchemes: Array<string>,
-  value: string,
-  isValid: boolean | null,
-  errorText: string,
-}
-
-const fields = ref({
-  main: [
-    {
-      label: 'Введите Ваше имя:',
-      placeholder: 'Томас Круз',
-      name: 'user_name',
-      type: 'text',
-      validationSchemes: ['user_name',],
-      value: '',
-      isValid: null as boolean | null,
-      errorText: '',
-    },
-    {
-      label: 'Введите Вашу электронную почту:',
-      placeholder: 'my@email.io',
-      name: 'email',
-      type: 'text',
-      validationSchemes: ['email',],
-      value: '',
-      isValid: null as boolean | null,
-      errorText: '',
-    },
-    {
-      label: 'Введите Ваше номер телефона:',
-      placeholder: '+7-xxx-xxx-xx-xx',
-      name: 'tel',
-      type: 'text',
-      validationSchemes: ['tel',],
-      value: '',
-      isValid: null as boolean | null,
-      errorText: '',
-    },
-  ],
-  roles: [
-    {
-      label: 'Я физическое лицо',
-      placeholder: 'Физическое лицо',
-      name: 'role',
-      type: 'radio',
-      validationSchemes: ['inn',],
-      value: 'Физическое лицо',
-      isValid: null as boolean | null,
-      errorText: '',
-      checked: null as boolean | null,
-    },
-    {
-      label: 'Я юридическое лицо',
-      placeholder: 'Юридическое лицо',
-      name: 'role',
-      type: 'radio',
-      validationSchemes: ['inn',],
-      value: 'Юридическое лицо',
-      isValid: null as boolean | null,
-      errorText: '',
-      checked: null as boolean | null,
-    },
-  ],
-  legalEntity: [
-    {
-      label: 'ИНН Вашей компании:',
-      placeholder: '1234567890',
-      name: 'inn',
-      type: 'text',
-      validationSchemes: ['inn',],
-      value: '',
-      isValid: null as boolean | null,
-      errorText: '',
-    },
-    {
-      label: 'Название Вашей компании:',
-      placeholder: 'ООО Туда Сюда',
-      name: 'company_name',
-      type: 'text',
-      validationSchemes: ['company_name',],
-      value: '',
-      isValid: null as boolean | null,
-      errorText: '',
-    },
-  ],
-})
+const fieldsMain = ref([
+  {
+    id: 'user_name',
+    label: 'Введите Ваше имя:',
+    placeholder: 'Томас Круз',
+    name: 'user_name',
+    type: 'text',
+    validationSchemes: ['user_name', 'no_digits'],
+    value: '',
+    isValid: null as boolean | null,
+    errorText: '',
+  },
+  {
+    id: 'email',
+    label: 'Введите Вашу электронную почту:',
+    placeholder: 'my@email.io',
+    name: 'email',
+    type: 'text',
+    validationSchemes: ['email',],
+    value: '',
+    isValid: null as boolean | null,
+    errorText: '',
+  },
+  {
+    id: 'tel',
+    label: 'Введите Ваше номер телефона:',
+    placeholder: '+7-xxx-xxx-xx-xx',
+    name: 'tel',
+    type: 'text',
+    validationSchemes: ['tel',],
+    value: '',
+    isValid: null as boolean | null,
+    errorText: '',
+  },
+])
+const fieldsRoles = ref([
+  {
+    id: 'rolePerson',
+    label: 'Я физическое лицо',
+    placeholder: 'Физическое лицо',
+    name: 'role',
+    type: 'radio',
+    validationSchemes: [],
+    value: 'Физическое лицо',
+    isValid: null as boolean | null,
+    errorText: '',
+    checked: false as boolean,
+  },
+  {
+    id: 'roleBusiness',
+    label: 'Я юридическое лицо',
+    placeholder: 'Юридическое лицо',
+    name: 'role',
+    type: 'radio',
+    validationSchemes: [],
+    value: 'Юридическое лицо',
+    isValid: null as boolean | null,
+    errorText: '',
+    checked: false as boolean,
+  },
+])
+const fieldsBusiness = ref([
+  {
+    id: 'inn',
+    label: 'ИНН Вашей компании:',
+    placeholder: '1234567890',
+    name: 'inn',
+    type: 'text',
+    validationSchemes: ['inn',],
+    value: '',
+    isValid: null as boolean | null,
+    errorText: '',
+  },
+  {
+    id: 'company_name',
+    label: 'Название Вашей компании:',
+    placeholder: 'ООО Туда Сюда',
+    name: 'company_name',
+    type: 'text',
+    validationSchemes: ['company_name',],
+    value: '',
+    isValid: null as boolean | null,
+    errorText: '',
+  },
+])
 </script>
 
 <template>
@@ -211,41 +181,42 @@ const fields = ref({
           <h2 class="form-title">Регистрация</h2>
           <div class="form-fields">
             <fieldset class="fieldset">
-              <Field v-for="(field,index) in fields.main" :key="index"
-                     :error-text="field.errorText"
-                     :is-valid="field.isValid"
-                     :label="field.label"
-                     :name="field.name"
-                     :placeholder="field.placeholder"
-                     :type="field.type"
-                     :value="field.value"
-                     @update="handleFieldUpdate"/>
+              <FieldMain v-for="field in fieldsMain" :id="field.id"
+                         :key="field.id"
+                         :error-text="field.errorText"
+                         :is-valid="field.isValid"
+                         :label="field.label"
+                         :name="field.name"
+                         :placeholder="field.placeholder"
+                         :type="field.type"
+                         :value="field.value"
+                         @update="handleFieldUpdate"/>
             </fieldset>
             <fieldset class="fieldset">
               <legend class="fieldset-title">Выберите роль:</legend>
-              <Field v-for="(field,index) in fields.roles" :key="index"
-                     :error-text="field.errorText"
-                     :is-valid="field.isValid"
-                     :label="field.label"
-                     :name="field.name"
-                     :placeholder="field.placeholder"
-                     :style="(index + 1) === fields.roles.length ? 'margin-bottom: 16px;' : null"
-                     :type="field.type"
-                     :value="field.value"
-                     class-list="_checkbox"
-                     @update="handleFieldUpdate"
-              />
-              <Field v-for="(field,index) in fields.legalEntity"
-                     v-if="fields.roles[1].checked"
-                     :key="index"
-                     :error-text="field.errorText"
-                     :is-valid="field.isValid"
-                     :label="field.label"
-                     :name="field.name"
-                     :placeholder="field.placeholder"
-                     :type="field.type"
-                     :value="field.value"
-                     @update="handleFieldUpdate"/>
+              <FieldMain v-for="(field,index) in fieldsRoles" :id="field.id"
+                         :key="field.id" :checked="field.checked"
+                         :error-text="field.errorText"
+                         :is-valid="field.isValid"
+                         :label="field.label"
+                         :name="field.name"
+                         :placeholder="field.placeholder"
+                         :style="(index + 1) === fieldsRoles.length ? 'margin-bottom: 16px;' : null"
+                         :type="field.type"
+                         :value="field.value"
+                         @update="handleFieldUpdate"/>
+
+              <FieldMain v-for="field in fieldsBusiness"
+                         v-if="fieldsRoles[1].checked" :id="field.id"
+                         :key="field.id"
+                         :error-text="field.errorText"
+                         :is-valid="field.isValid"
+                         :label="field.label"
+                         :name="field.name"
+                         :placeholder="field.placeholder"
+                         :type="field.type"
+                         :value="field.value"
+                         @update="handleFieldUpdate"/>
             </fieldset>
           </div>
           <label class="field _checkbox">

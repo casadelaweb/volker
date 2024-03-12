@@ -15,6 +15,8 @@ main {
 }
 
 [type=checkbox], [type=radio] {
+  flex: 0 0 auto;
+  margin: 0 4px 0 0;
   border: 2px solid darkseagreen;
 
   &::before {
