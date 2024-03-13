@@ -81,6 +81,8 @@
 
 @mixin buttonTemplate {
   @include flex(center, center);
+  height: fit-content;
+  flex: 0 0 auto;
   font-size: 14px;
   column-gap: 7px;
   padding: 7px 14px;

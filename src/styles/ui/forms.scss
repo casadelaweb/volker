@@ -1,78 +1,78 @@
-@use 'src/styles/shared' as *;
-
-.form {
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 20px;
-  padding: 24px 20px 32px;
-  background: #f5f5f5;
-
-  &-title {
-    @include h4;
-    text-align: center;
-  }
-
-  &-subtitle {
-    font-size: 14px;
-    letter-spacing: 0.02em;
-    display: inline-block;
-    // margin-bottom: 10px;
-    @include mediaTabletM {
-      font-size: 16px;
-    }
-  }
-
-  &-input {
-    font-size: 14px;
-    width: 100%;
-    padding: 16px 20px;
-    border-radius: 8px;
-    background: white;
-    @include mediaTabletM {
-      font-size: 16px;
-      padding: 20px;
-    }
-  }
-
-  &-obligatory {
-    color: mediumvioletred;
-  }
-
-  &-note {
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: -0.02em;
-    @include mediaTabletM {
-      font-size: 14px;
-    }
-
-    input {
-      margin-right: 10px;
-    }
-  }
-
-  &-button {
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-    padding: 16px 20px;
-    transition: background-color 0.334s;
-    color: white;
-    border-radius: 8px;
-    background: darkseagreen;
-    @include mediaTabletM {
-      font-size: 16px;
-      padding: 20px;
-    }
-
-    &:active {
-      background: darkseagreen;
-    }
-  }
-}
-
-//[type=checkbox] {
-//  flex: 0 0 auto;
-//  border-width: 1px;
-//  border-radius: 4px;
+//@use 'src/styles/shared' as *;
+//
+//.form {
+//  display: grid;
+//  grid-template-columns: 1fr;
+//  row-gap: 20px;
+//  padding: 24px 20px 32px;
+//  background: #f5f5f5;
+//
+//  &-title {
+//    @include h4;
+//    text-align: center;
+//  }
+//
+//  &-subtitle {
+//    font-size: 14px;
+//    letter-spacing: 0.02em;
+//    display: inline-block;
+//    // margin-bottom: 10px;
+//    @include mediaTabletM {
+//      font-size: 16px;
+//    }
+//  }
+//
+//  &-input {
+//    font-size: 14px;
+//    width: 100%;
+//    padding: 16px 20px;
+//    border-radius: 8px;
+//    background: white;
+//    @include mediaTabletM {
+//      font-size: 16px;
+//      padding: 20px;
+//    }
+//  }
+//
+//  &-obligatory {
+//    color: mediumvioletred;
+//  }
+//
+//  &-note {
+//    font-size: 13px;
+//    font-weight: 300;
+//    letter-spacing: -0.02em;
+//    @include mediaTabletM {
+//      font-size: 14px;
+//    }
+//
+//    input {
+//      margin-right: 10px;
+//    }
+//  }
+//
+//  &-button {
+//    font-size: 14px;
+//    font-weight: 500;
+//    letter-spacing: 0.02em;
+//    padding: 16px 20px;
+//    transition: background-color 0.334s;
+//    color: white;
+//    border-radius: 8px;
+//    background: darkseagreen;
+//    @include mediaTabletM {
+//      font-size: 16px;
+//      padding: 20px;
+//    }
+//
+//    &:active {
+//      background: darkseagreen;
+//    }
+//  }
 //}
+//
+////[type=checkbox] {
+////  flex: 0 0 auto;
+////  border-width: 1px;
+////  border-radius: 4px;
+////}

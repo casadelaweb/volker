@@ -40,8 +40,7 @@ async function fetchData() {
         public_key: '95fsHRwiJoIqvJo1rxPil7Cs',
       }
     })
-    console.log(response.data)
-    //promo.value = response.data
+    promo.value = response.data
   } catch (error) {
     console.log(error)
   } finally {

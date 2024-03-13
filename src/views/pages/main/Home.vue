@@ -83,7 +83,6 @@ export default defineComponent({
           },
         })
         this.products = response.data
-        console.log(this.products)
       } catch (error) {
         console.log(error)
       } finally {

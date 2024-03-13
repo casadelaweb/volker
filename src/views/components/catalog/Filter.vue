@@ -39,7 +39,6 @@ function handleClick() {
 
 function handleChange(event: InputEvent) {
   const input = event.target as HTMLInputElement
-  console.log(input.value)
 }
 </script>
 

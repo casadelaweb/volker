@@ -1,22 +1,21 @@
 <template>
   <section class="feedback">
     <div class="feedback-container">
-      <form action="/api/form/feedback" class="form" method="post">
+      <form class="form">
         <h2 class="form-title">Оставьте заявку на обратную связь</h2>
         <div class="form-layout">
           <label class="form-label">
             <span class="form-subtitle">Введите имя <i class="required">*</i></span>
-            <input :value="formValues.userName" class="form-input" placeholder="Томас Круз" required
-                   type="text">
+            <input v-model="userName" class="form-input" placeholder="Томас Круз"
+                   required type="text">
           </label>
           <label class="form-label">
             <span class="form-subtitle">Введите телефон <i class="form-obligatory">*</i></span>
-            <input :value="formValues.userTel" class="form-input" required
-                   @accept="onAccept">
+            <input ref="el" class="form-input" placeholder="+7-xxx-xxx-xx-xx" required>
           </label>
-          <button class="form-button" title="Отправить форму" type="submit" @click="onSubmit">
-            <span>Отправить</span>
-          </button>
+          <ButtonMain class="form-button" title="Отправить" type="submit">
+            Отправить
+          </ButtonMain>
         </div>
         <label class="form-note">
           <input class="form-checkbox" data-alt required type="checkbox">
@@ -27,41 +26,21 @@
   </section>
 </template>
 
-<script lang="ts">
-//import { IMaskDirective } from 'vue-imask'
+<script lang="ts" setup>
+import { useIMask } from 'vue-imask'
+import { ref } from 'vue'
+import ButtonMain from 'src/views/components/ui/ButtonMain.vue'
 
-// interface iMaskEvent extends Event {
-//   detail: {
-//     value: string,
-//     unmaskedValue: string,
-//   }
-// }
+const userName = defineModel('userName', { default: '', })
 
-export default {
-  data: function () {
-    return {
-      formValues: {
-        userName: '',
-        userTel: '',
-      },
-      mask: {
-        mask: '{+7} 000-000-00-00',
-        lazy: false
-      },
-    }
-  },
-  methods: {
-    // onSubmit(event: MouseEvent) {
-    //   event.preventDefault()
-    // },
-    // onAccept(event: iMaskEvent) {
-    //   const maskRef = event.detail
-    //   this.formValues.userTel = maskRef.value
-    // },
-  },
-  // directives: {
-  //   imask: IMaskDirective
-  // }
+const { el, masked } = useIMask({
+  mask: '+7-000-000-00-00'
+})
+
+async function handleSubmit(event: Event) {
+  event.preventDefault()
+  const inputTel = el.value as HTMLInputElement
+  console.log(userName.value, inputTel.value, masked.value)
 }
 </script>
 
@@ -77,6 +56,17 @@ export default {
 }
 
 .form {
+  background: #f5f5f5;
+  box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
+  border-radius: 8px;
+  padding: 40px;
+
+  &-title {
+    @include h3;
+    text-align: center;
+    margin: 0 0 1.5em;
+  }
+
   &-layout {
     display: grid;
     grid-template-columns: 1fr;
@@ -85,12 +75,19 @@ export default {
       grid-template-columns: repeat(3, 1fr);
       column-gap: 20px;
     }
+    margin-bottom: 16px;
   }
 
   &-label {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 10px;
+  }
+
+  &-input {
+    @include buttonTemplate;
+    background: white;
+    border: 2px solid transparent;
   }
 
   &-button {

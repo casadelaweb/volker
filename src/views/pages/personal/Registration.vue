@@ -220,7 +220,7 @@ const fieldsBusiness = ref([
               </router-link>
             </span>
           </label>
-          <ButtonMain class-list="form-submit" title="Зарегистрироваться" type="submit">
+          <ButtonMain class="form-submit" title="Зарегистрироваться" type="submit">
             Зарегистрироваться
           </ButtonMain>
         </div>

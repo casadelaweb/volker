@@ -45,7 +45,7 @@ async function fetchData() {
         public_key: store.publicKey,
       },
     })
-    console.log(response.data)
+    //console.log(response.data)
     categories.value = response.data
   } catch (error) {
     console.log(error)
