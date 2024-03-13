@@ -54,7 +54,7 @@ const props = defineProps<PromoProps>()
   &-img {
     object-fit: cover;
     min-width: 0;
-    height: 160px;
+    aspect-ratio: 16 / 9;
     width: 100%;
     border-radius: 8px;
   }
