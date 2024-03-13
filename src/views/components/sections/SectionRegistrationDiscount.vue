@@ -18,7 +18,7 @@ const sectionButton = ref({
 <template>
   <section class="registration">
     <div class="container">
-      <SectionTop :button="sectionButton" :title="sectionTitle"></SectionTop>
+      <SectionTop :button="sectionButton" :is-loading="false" :title="sectionTitle"></SectionTop>
     </div>
     <div class="registration-container">
       <div class="registration-main">

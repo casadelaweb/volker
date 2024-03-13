@@ -1,7 +1,7 @@
 <template>
   <section class="production">
     <div class="production-container">
-      <SectionTop :title="title"/>
+      <SectionTop :is-loading="false" :title="title"/>
       <div class="production-img"></div>
     </div>
   </section>
@@ -19,7 +19,7 @@ export default defineComponent({
   data: function () {
     return {
       title: {
-        text: 'Видео-презентация',
+        text: 'Заголовок для презентации цеха',
       },
     }
   },

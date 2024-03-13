@@ -1,7 +1,7 @@
 <template>
   <section class="reviews">
     <div class="reviews-container">
-      <SectionTop :title="{ text:'Отзывы', }">
+      <SectionTop :is-loading="false" :title="{ text:'Отзывы', }">
         <div class="reviews-slider-controls">
           <button class="reviews-slider-button" title="Предыдущий слайд" type="button">
             <span class="iconfont icon-arrow-left"></span>

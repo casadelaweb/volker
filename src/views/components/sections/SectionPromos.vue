@@ -1,72 +1,67 @@
 <template>
   <section class="promos">
     <div class="promos-container">
-
-      <SectionTop :button="SectionTopProps.button" :title="SectionTopProps.title"/>
-
-      <div v-if="!isLoading" class="promos-layout">
-
-        <promo v-for="promo in promos" :key="promo.id" :promo="promo"/>
-
-      </div>
-      <div v-else>
-        <img alt="loading" src="src/assets/img/loading.gif">
+      <SectionTop :button="sectionTop.button" :is-loading="isLoading"
+                  :title="sectionTop.title"/>
+      <div class="promos-layout">
+        <PromoCard v-for="promo in promos"
+                   :id="promo.id"
+                   :key="promo.id"
+                   :description="promo.description"
+                   :image="promo.image"
+                   :is-loading="isLoading"
+                   :title="promo.title"
+                   :url="promo.url"/>
       </div>
     </div>
   </section>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import PromoCard from 'src/views/components/catalog/PromoCard.vue'
 import SectionTop from 'src/views/components/ui/SectionTop.vue'
-import promo from 'src/views/components/sections/promo.vue'
+import { useStoreMain } from 'src/stores/storeMain.ts'
+import { onMounted, Ref, ref } from 'vue'
+import { iPagesPromos, PlaceholderPromos } from 'src/api/base.ts'
+import axios from 'axios'
 
-export default {
-  components: {
-    SectionTop, promo,
+const store = useStoreMain()
+const isLoading = ref(true)
+const promos: Ref<iPagesPromos> = ref(PlaceholderPromos)
+
+const sectionTop = ref({
+  title: {
+    text: 'Акции и предложения',
+    url: '/promos/',
   },
-  data: function () {
-    return {
-      SectionTopProps: {
-        title: {
-          text: 'Акции и предложения',
-          url: '/promos/',
-        },
-        button: {
-          text: 'Смотреть все',
-          url: '/promos/',
-        },
+  button: {
+    text: 'Смотреть все',
+    url: '/promos/',
+  }
+})
+
+async function getPromos() {
+  try {
+    isLoading.value = true
+    const response = await axios({
+      method: 'get',
+      url: `/api/promos/`,
+      params: {
+        public_key: store.publicKey,
+        limit: 4,
       },
-      promos: [
-        {
-          id: 'testid1',
-          title: 'test title',
-          url: 'promos/testid1/',
-          description: {
-            short: 'shfonn sapnpnasgd saggas'
-          },
-          preview: {
-            url: 'src/assets/img/placeholder.jpg',
-            alt: 'test',
-          },
-          activity: 'yo',
-          date: {
-            published: '12.12.2023',
-            modified: '13.12.2023',
-          },
-        },
-      ],
-      isLoading: false,
-    }
-  },
-  methods: {
-    async fetchPromos() {
-      this.isLoading = false
-    },
-  },
-  mounted() {
-    this.fetchPromos()
-  },
+    })
+    promos.value = response.data
+  } catch (error) {
+    console.log(error)
+  } finally {
+    isLoading.value = false
+  }
 }
+
+onMounted(() => {
+  getPromos()
+})
 </script>
 
 <style lang="scss">
@@ -86,14 +81,11 @@ export default {
 
   &-layout {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
     row-gap: 20px;
-    @include mediaMobileM {
-      grid-template-columns: repeat(2, 1fr);
-    }
     @include mediaTabletL {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
