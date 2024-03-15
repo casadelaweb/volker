@@ -139,7 +139,7 @@ export class Details {
   private setupScrollbarStyles(element: HTMLElement): void {
     const hasVerticalScrollbar: boolean = this.hasVerticalScrollbar(element)
 
-    if (hasVerticalScrollbar === false) {
+    if (!hasVerticalScrollbar) {
       element.classList.remove(this.selectors.scrollbars.vertical)
     } else {
       element.classList.add(this.selectors.scrollbars.vertical)
