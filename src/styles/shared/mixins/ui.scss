@@ -83,15 +83,15 @@
   @include flex(center, center);
   height: fit-content;
   flex: 0 0 auto;
-  font-size: 14px;
-  column-gap: 7px;
-  padding: 7px 14px;
+  font-size: 16px;
+  column-gap: 10px;
+  padding: 10px 20px;
   border-radius: 8px;
-  @include mediaTabletS {
-    font-size: 16px;
-    column-gap: 10px;
-    padding: 10px 20px;
-  }
+  //@include mediaTabletS {
+  //  font-size: 16px;
+  //  column-gap: 10px;
+  //  padding: 10px 20px;
+  //}
   @include mediaDesktop {
     font-size: 18px;
     column-gap: 12px;

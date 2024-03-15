@@ -74,7 +74,7 @@ function handleClick(event: MouseEvent) {
   pointer-events: none;
   transform: translate(-100%, 0);
   transition: transform 0.334s;
-  @include mediaLaptopXs {
+  @include mediaTabletL {
     position: sticky;
     top: 100px;
     z-index: 1;

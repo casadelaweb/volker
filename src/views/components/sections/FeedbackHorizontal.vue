@@ -59,7 +59,10 @@ async function handleSubmit(event: Event) {
   background: #f5f5f5;
   box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
   border-radius: 8px;
-  padding: 40px;
+  padding: 16px;
+  @include mediaLaptopM {
+    padding: 40px;
+  }
 
   &-title {
     @include h3;
