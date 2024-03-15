@@ -3,7 +3,7 @@
     <div class="catalog-container">
       <div class="catalog-header">
         <h1 class="catalog-title">Название категории товаров</h1>
-        <button style="margin: 20px 0 40px;" type="button" @click="handleClick">
+        <button class="catalog-toggle" type="button" @click="handleClick">
           <span class="iconfont icon-filters"></span>
         </button>
       </div>
@@ -151,7 +151,10 @@ export default defineComponent({
       } finally {
         this.isLoading = false
       }
-    }
+    },
+    handleClick(event: MouseEvent) {
+
+    },
   },
   mounted() {
     this.fetchData()
@@ -195,7 +198,7 @@ export default defineComponent({
   @include section;
 
   &-title {
-    @include h1;
+    @include h2;
     margin-bottom: 40px;
   }
 
@@ -203,63 +206,8 @@ export default defineComponent({
     @include container;
   }
 
-  &-main {
-    position: relative;
-    z-index: 0;
-  }
-
-  &-loading {
-    position: absolute;
-    z-index: 10;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(white, 0.75);
-
-    &-img {
-      position: sticky;
-      top: 50%;
-      display: block;
-      width: 128px;
-      height: 128px;
-      margin: 0 auto;
-      transform: translateY(-50%);
-    }
-  }
-
-
-  &-categories {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
-    row-gap: 20px;
-    margin-bottom: 80px;
-  }
-
-  &-category {
-    padding: 20px;
-    background: #f5f5f5;
-  }
-
-  &-sorting {
-    @include flex(center, space-between);
-    margin-bottom: 40px;
-    padding: 20px;
-    box-shadow: 4px 4px 16px 0 rgba(black, 0.1);
-  }
-
-  &-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
-    row-gap: 40px;
-  }
-}
-
-.catalog {
   &-layout {
-    @include mediaLaptopXs {
+    @include mediaTabletL {
       display: grid;
       grid-template-columns: 320px auto;
       column-gap: 40px;
@@ -268,7 +216,12 @@ export default defineComponent({
       grid-template-columns: 360px auto;
     }
   }
+
+  &-toggle {
+    display: flex;
+    @include mediaLaptopXs {
+      display: none;
+    }
+  }
 }
-
-
 </style>

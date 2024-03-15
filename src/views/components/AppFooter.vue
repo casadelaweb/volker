@@ -55,62 +55,58 @@
   </footer>
 </template>
 
-<script lang="ts">
-export default {
-  data: function () {
-    return {
-      links: [
-        // {
-        //   id: 'home',
-        //   title: 'Главная',
-        //   url: '/',
-        // },
-        {
-          id: 'about',
-          title: 'О компании',
-          url: '/about/',
-        },
-        {
-          id: 'promos',
-          title: 'Акции',
-          url: '/promos/',
-        },
-        {
-          id: 'shipping',
-          title: 'Доставка',
-          url: '/shipping/',
-        },
-        {
-          id: 'contacts',
-          title: 'Контакты',
-          url: '/contacts/',
-        },
-        // {
-        //   id: 'posts',
-        //   title: 'Посты',
-        //   url: '/posts/',
-        // },
-      ],
-      links2: [
-        {
-          id: 'catalog',
-          title: 'Каталог',
-          url: '/catalog/',
-        },
-        {
-          id: 'catalog-new',
-          title: 'Новинки',
-          url: '/catalog/new/',
-        },
-        {
-          id: 'custom',
-          title: 'Custom Shop',
-          url: '/custom/',
-        },
-      ],
-    }
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const links = ref([
+  // {
+  //   id: 'home',
+  //   title: 'Главная',
+  //   url: '/',
+  // },
+  {
+    id: 'about',
+    title: 'О компании',
+    url: '/about/',
   },
-}
+  {
+    id: 'promos',
+    title: 'Акции',
+    url: '/promos/',
+  },
+  {
+    id: 'shipping',
+    title: 'Доставка',
+    url: '/shipping/',
+  },
+  {
+    id: 'contacts',
+    title: 'Контакты',
+    url: '/contacts/',
+  },
+  // {
+  //   id: 'posts',
+  //   title: 'Посты',
+  //   url: '/posts/',
+  // },
+])
+const links2 = ref([
+  {
+    id: 'catalog',
+    title: 'Каталог',
+    url: '/catalog/',
+  },
+  {
+    id: 'catalog-new',
+    title: 'Новинки',
+    url: '/catalog/new/',
+  },
+  {
+    id: 'custom',
+    title: 'Custom Shop',
+    url: '/custom/',
+  },
+])
 </script>
 
 <style lang="scss" scoped>
@@ -119,10 +115,6 @@ export default {
 .footer {
   margin-top: 40px;
   box-shadow: 0 -40px 40px 0 rgba(black, 0.05);
-  display: none;
-  @include mediaLaptopXs {
-    display: block;
-  }
 
   &-logo {
     display: inline-block;
@@ -139,9 +131,9 @@ export default {
 
   &-links {
     @include flex($d: column);
-    font-size: 14px;
-    column-gap: 14px;
-    row-gap: 14px;
+    font-size: 16px;
+    column-gap: 16px;
+    row-gap: 16px;
   }
 
   &-link {
@@ -163,10 +155,10 @@ export default {
   &-tel {
     @include link($addBottomLineOnHover: false);
     height: fit-content;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     @include mediaLaptopL {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
@@ -180,37 +172,49 @@ export default {
 
     &-container {
       @include container;
-      @include flex;
-      column-gap: 80px;
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+      @include mediaTabletM {
+        @include flex;
+        column-gap: 80px;
+      }
     }
   }
 
   &-contacts {
     @include flex($d: column);
-    font-size: 14px;
-    column-gap: 20px;
-    row-gap: 20px;
-    margin-left: auto;
+    font-size: 16px;
+    column-gap: 16px;
+    row-gap: 16px;
+    @include mediaTabletM {
+      margin-left: auto;
+    }
 
     &-socials {
       @include flex;
-      column-gap: 20px;
+      column-gap: 16px;
     }
   }
 
   &-bottom {
     border-top: 2px solid #f0f0f0;
-    padding: 20px 0 40px;
+    padding: 16px 0 40px;
 
     &-container {
       @include container;
-      @include flex;
-      column-gap: 20px;
+      display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 16px;
+      @include mediaTabletM {
+        @include flex;
+        column-gap: 16px;
+      }
     }
   }
 
   &-copyright {
-    font-size: 14px;
+    font-size: 16px;
     margin-right: auto;
   }
 }

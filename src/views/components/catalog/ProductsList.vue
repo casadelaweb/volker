@@ -65,6 +65,12 @@ defineProps<{
   @include mediaTabletM {
     grid-template-columns: repeat(3, 1fr);
   }
+  @include mediaTabletL {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mediaLaptopS {
+    grid-template-columns: repeat(3, 1fr);
+  }
   @include mediaDesktop {
     grid-template-columns: repeat(4, 1fr);
   }
